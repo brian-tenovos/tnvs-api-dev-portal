@@ -1,40 +1,70 @@
 intro:
-  - group: Tenovos REST API Overview
+  - group: Getting Started
     expanded: true
+    separatorLine: true
     pages: 
       - page: developer-portal/index.md
         label: Introduction
-      - page: developer-portal/v1/index.md
-        label: Version 1
-      - page: developer-portal/hermes/index.md
-        label: Version 1.5
-      - page: developer-portal/v2/index.md
-        label: Version 2
-v1:
-  - group: Getting Started
+#      - page: developer-portal/v1/index.md
+#        label: Version 1
+#      - page: developer-portal/hermes/index.md
+#        label: Version 1.5
+#      - page: developer-portal/v2/index.md
+#        label: Version 2
+      - group: API v1 Documentation
+        expanded: false
+        pages:
+          - page: developer-portal/v1/overview.md
+            label: Overview
+          - page: developer-portal/training/authenticating.md
+            label: Sample Code
+      - group: API v1.5 Documentation
+        expanded: false
+        pages:
+          - page: developer-portal/hermes/overview.md
+            label: Overview
+          - page: developer-portal/hermes/oauth.md
+            label: OAuth 2.0 Authentication
+          - page: developer-portal/hermes/changelog.md
+            label: Changelog 
+          - page: developer-portal/hermes/migration.md
+            label: Upgrade from v1
+      - group: API v2 Documentation
+        expanded: false
+        pages:
+          - page: developer-portal/v2/overview.md
+            label: Overview
+
+  - group: Endpoint References
     expanded: true
     pages:
-      - page: developer-portal/v1/index.md
-  - group: Tenovos Endpoints
-    expanded: true
-    pages:
-      - page: openapi/tnvs.oas.yaml/*
-hermes:
-  - group: Getting Started
-    expanded: true
-    pages:
-      - page: developer-portal/hermes/index.md
-  - group: Tenovos Endpoints
-    expanded: true
-    pages:
-      - page: openapi/hermes.oas.yaml/*
-v2:
-  - group: Getting Started
-    expanded: true
-    pages:
-      - page: developer-portal/v2/index.md
-  - group: Tenovos Endpoints
-    expanded: true
-    pages:
-      - page: openapi/tnvsV2.oas.yaml/*
+      - page: openapi/reference.page.yaml
+        label: Endpoints
+#v1:
+#  - group: Getting Started
+#    expanded: true
+#    pages:
+#      - page: developer-portal/v1/index.md
+#  - group: Tenovos Endpoints
+#    expanded: true
+#    pages:
+#      - page: openapi/tnvs.oas.yaml/*
+#hermes:
+#  - group: Getting Started
+#    expanded: true
+#    pages:
+#      - page: developer-portal/hermes/index.md
+#  - group: Tenovos Endpoints
+#    expanded: true
+#    pages:
+#      - page: openapi/hermes.oas.yaml/*
+#v2:
+#  - group: Getting Started
+#    expanded: true
+#    pages:
+#      - page: developer-portal/v2/index.md
+#  - group: Tenovos Endpoints
+#    expanded: true
+#    pages:
+#      - page: openapi/tnvsV2.oas.yaml/*
 

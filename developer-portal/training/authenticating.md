@@ -1,5 +1,11 @@
 ## Getting Started
 
+:::info Applicable Versions
+
+The code examples provided do not apply to Tenovos API version 2.x.
+
+:::
+
 The information below provides the fundamental information needed to get started with using the Tenovos API.  
 Code examples provided are written in JavaScript using Node.js 16.  
 
