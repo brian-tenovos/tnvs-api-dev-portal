@@ -1,0 +1,74 @@
+properties:
+  id: 
+    type: string
+    format: uuid
+    description: Unique Identifier of the Collection.  Can be used to reference nested hierarchy.
+    example: f45c87aa-2ff7-4f2c-9c38-9d69554a1c8a
+  type:
+    type: string
+    x-nullable: false
+    example: shared
+    enum:
+      - shared
+      - private
+  name:
+    x-nullable: false
+    type: string
+    example: Fall Jackets 2024
+  parent:
+    x-nullable: true
+    type: string
+    format: uuid
+    example: a6e4f3ba-5c18-4daa-a630-463420e006bd
+    description: If nesting a Collection within a Collection, provide the Collection ID of the lowest level parent Collection.  The new Collection will be created within it.  **Omit if not nesting Collections.**
+  createdBy:
+    $ref: ../schemas/created-by.yaml
+  lastUpdated:
+    $ref: ../schemas/last-updated.yaml
+  securityTemplates:
+    x-nullable: true
+    type: array
+    description: If Creating a Shared Collection, one or more Security Templates must be assigned.  **Omit when collectionType is Private.**
+    maxItems: 20
+    minItems: 1
+    items:
+      type: object
+      properties: 
+        id: 
+          type: string
+          format: uuid
+          example: c8aa6410-2034-476e-981a-e4aee71da3c2
+        name: 
+          type: string
+          maxLength: 100
+          example: TechCrunch Middle Out
+  contents:
+    x-nullable: true
+    type: object
+    description: An array of object ID's for assets that you wish to add to the Collection.  Assets must be available in the system, and user must have permission to view the assets.  **Omit if creating an empty Collection.**
+    properties: 
+      assets:
+        type: array
+        description: Contains a listing of unique asset identifiers for each asset at the root of the collection
+        example: [
+          d71366e7-1fe2-476d-8681-134eece68f4b,
+          0a62078b-ecf9-4265-8f12-38f85afc26d8,
+          84d865d3-9613-494b-90c5-febdcbdf9f06,
+          f033e242-e52a-4bca-a1e0-2593067ef59a, 
+          6276c65a-aaa1-413a-89ad-b1190ebac9ca, 
+          0d6b91f5-d11a-46d3-9f4c-880a9a8a1b8c, 
+          8bede975-9fd8-43b5-af64-f6630d49639b, 
+          d4667739-f8ab-4022-b367-66acbd0ba576, 
+          3da393ba-cbf6-47c6-85d4-acb142a0e872, 
+          895a88fc-e485-4545-865c-970878722f73
+        ]
+      collections:
+        type: array
+        description: Contains a listing of the collections that are nested within this collection.
+        example: [
+          8fe27f12-9635-4adb-9072-6ced4f9bc81f,
+          6eb61d40-dd97-48a8-87db-70aee5a1eaad,
+          a6035cd7-821a-45d2-b692-ebb006d7f1e5,
+          db4e5d58-3a57-4f9a-965d-dda444656b5c,
+          8e443dca-f2fc-4d5f-a6c8-a67218751062
+        ]

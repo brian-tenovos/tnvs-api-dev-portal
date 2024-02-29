@@ -1,0 +1,41 @@
+type: object
+properties:
+  subscriptionId:
+    type: string
+    format: uuid
+    example: 4d4d835b-c188-4120-87f9-1208c001e170
+  event:
+    type: string 
+    enum:
+      - Create
+      - Update
+      - Delete
+  topic: 
+    type: string
+    enum: 
+      - Assets
+      - Versions
+      - Collections
+      - Users
+      - Story Boards
+      - Security Templates
+      - Metadata Templates
+    example: Assets
+  target: 
+    type: string
+    format: url
+    description: The destination target where Tenovos will send the automated notification.
+    example: 'https://yourendpoint.com'
+  active: 
+    type: boolean
+    example: true
+  signatureKey:
+    type: string
+    format: uuid
+    example: 884b423a-1912-46af-96e9-72f6d8e4470b
+  createdBy:
+    $ref: created-by.yaml
+  lastRan:
+    type: string
+    format: date-time
+    example: 2023-10-12T10:12:23Z

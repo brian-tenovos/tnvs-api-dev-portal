@@ -1,0 +1,12 @@
+'400':
+  description: "Bad Request."
+  content:
+    application/json:
+      schema:
+        $ref: 400.yaml
+'403':
+  description: "Forbidden. You do not have permissions to perform this action, or your connection information is not correct."
+  content:
+    application/json:
+      schema:
+        $ref: 403.yaml

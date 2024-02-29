@@ -1,0 +1,10 @@
+type: object
+properties:
+  eventType:
+    type: string
+    description: Combination of the Topic and the Event
+    example: collection.created
+  event:
+    $ref: ../../schemas/event.yaml
+  user:
+    $ref: ../../../v2/schemas/user.yaml

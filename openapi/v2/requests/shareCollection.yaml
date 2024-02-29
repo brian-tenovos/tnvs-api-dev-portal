@@ -1,0 +1,40 @@
+type: object
+properties:
+  type: 
+    type: string
+    required:
+      - type
+    x-nullable: false
+    enum: [internal, external]
+    description: Type of share, either internal or external.  If the user has a Tenovos account, internal share is recommended.
+    example: external
+  shareOriginal:
+    type: boolean
+    default: false
+    x-nullable: false
+    description: Whether to share the original file, or a rendition of the original at a lower quality.  If true, the original file for every asset in the collection will be shared.
+    example: true
+  emails:
+    description: Provide the email addresses to share the Collection with.  Whether internal or external, provide one or more emails.
+    type: array
+    x-nullable: false
+    required: 
+      - emails
+    uniqueItems: true
+    items:
+      type: string
+      format: email
+      x-nullable: false
+    minItems: 1
+    maxItems: 50
+    example: [
+      richard.hendricks@piedpiper.com,
+      jian.yang@aviato.com,
+      peter.gregory@ravigacapital.com,
+      gilfoyle@piedpiper.com,
+      dinesh@piedpiper.com,
+      bighead@hooli.com
+    ]
+
+
+    

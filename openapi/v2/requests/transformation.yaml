@@ -1,0 +1,45 @@
+type: object
+properties:
+  assetId:
+    type: string
+    format: uuid
+    example: e6f4bd5e-9bea-43cb-b15e-22582fa5322e
+    description: Unique Asset Identifier for the asset you wish to perform a transformation against
+  convertTo:
+    type: string
+    enum:
+      - JPG
+      - PNG
+      - PSD
+      - TIFF
+      - WEBP
+      - BMP
+      - HEIC
+      - GIF
+      - PDF
+    example: JPG
+    description: Indicates the requested output file format for the transformation.  Content will be converted to this format.
+    required:
+      - convertTo
+  width:
+    type: integer
+    example: 2048
+    description: Indicates the width of the image after transformation. If aspect ratio is fixed and width is null, width will be dynamically sized based on height.
+  height:
+    type: integer
+    description: Indicated the height of the image after transformation.  If aspect ratio is fixed and height is null, height will be dynamically sized based on width.
+  aspectRatio:
+    type: string
+    enum:
+      - native
+      - 4:3
+      - 3:2
+      - 16:9
+      - 5:3
+      - 5:4
+      - 1:1
+    description: When native, the native aspect ratio of the original asset will be used.
+  interlaced:
+    type: boolean
+    default: false
+    example: false

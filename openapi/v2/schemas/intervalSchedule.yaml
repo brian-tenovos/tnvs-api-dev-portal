@@ -1,0 +1,7 @@
+type: object
+properties:
+  interval:
+    type: integer
+    description: The amount of minutes the system wait between each run of the trigger.  If you want to wait an hour, the interval would be 60.
+    example: 60
+    x-nullable: true

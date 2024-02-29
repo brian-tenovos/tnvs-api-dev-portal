@@ -1,0 +1,59 @@
+type: object
+properties:
+  type: 
+    type: string
+    required:
+      - type
+    x-nullable: false
+    enum: [internal, external]
+    description: Type of share, either internal or external.  If the user has a Tenovos account, internal share is recommended.
+    example: external
+  shareOriginal:
+    type: boolean
+    default: false
+    x-nullable: false
+    description: Whether to share the original file, or a rendition of the original at a lower quality.
+    example: true
+  assets:
+    type: array
+    x-nullable: false
+    description: Array of Asset Identifiers for which you would like to share.  **At least one asset must be shared, and no more than 50 at a time.**
+    required:
+      - assets
+    uniqueItems: true
+    items:
+      type: string
+      x-nullable: false
+    example: [
+      d9b243ab-c6d1-4bf7-92a8-77451dc431d8,
+      536d733b-5fe1-4150-978f-3350816a6950,
+      2a1216c4-177b-4006-b66d-c0a1b25d57a5,
+      a3b45551-dae9-4efb-85c5-796eb08167ee, 
+      56644cac-cea2-475a-bbce-b4008f1c292a, 
+      3503ddc7-8c6e-49a2-9f49-a7593b3bea6e, 
+      bd9f5bd8-24b9-434b-9c23-1304518921f9, 
+      e0c35e97-d84c-4c98-9215-f302dd0244aa, 
+      4bf0f079-9945-4764-b884-c8898ebbf821, 
+      55bd3900-fbe8-44f0-911e-b4c21a96fd02
+    ]
+  emails:
+    description: Provide the email addresses to share the Assets with.  Whether internal or external, provide one or more emails.
+    type: array
+    x-nullable: false
+    required: 
+      - emails
+    uniqueItems: true
+    items:
+      type: string
+      format: email
+      x-nullable: false
+    minItems: 1
+    maxItems: 50
+    example: [
+      richard.hendricks@piedpiper.com,
+      jian.yang@aviato.com,
+      peter.gregory@ravigacapital.com,
+      gilfoyle@piedpiper.com,
+      dinesh@piedpiper.com,
+      bighead@hooli.com
+    ]

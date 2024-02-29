@@ -1,0 +1,10 @@
+type: object
+properties:
+  groups:
+    type: array
+    maxItems: 50
+    minItems: 1
+    items:
+      $ref: ../schemas/group.yaml
+  pagination:
+    $ref: pagination.yaml

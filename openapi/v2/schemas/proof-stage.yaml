@@ -1,0 +1,46 @@
+type: object
+properties:
+  name:
+    type: string
+    x-nullable: false
+    description: Name of the Proof Stage, created as part of a Proof Workflow Template, and specific to the Workflow.
+    example: Creative Review
+  deadline:
+    type: string
+    format: datetime
+    x-nullable: true
+    description: A date and time representing when the stage must be completed by.
+    example: 2018-06-07T09:24:43.919Z
+  status:
+    type: string
+    x-nullable: false
+    description: Current status of the stage
+    example: in_progress
+    enum:
+      - in_progress
+      - not_started
+      - completed
+      - view_only
+  locked:
+    type: boolean
+    x-nullable: false
+    description: Reflects if the stage is currently locked
+    example: false
+  decisionStatus:
+    type: string
+    x-nullable: false
+    description: Current status of the decision process for the stage of the workflow.  If the stage does not contain any reviewers with decision rights, the decision_status will be "not_relevant" and the stage status will be set to "completed".
+    example: changes_required
+    enum:
+      - changes_required
+      - approved_with_changes
+      - approved
+      - not_relevant
+  skipped:
+    type: boolean
+    x-nullable: false
+    example: true
+    default: false
+    description: Informs if the stage is skipped or not.
+  
+

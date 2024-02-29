@@ -1,0 +1,21 @@
+type: object
+properties:
+  results:
+    type: array
+    description: Array containing a result for each match against your search.
+    items: 
+      type: object
+      properties: 
+        createdBy: 
+          $ref: ../schemas/created-by.yaml
+        fileInformation: 
+          $ref: ../schemas/file-information.yaml
+        assetInformation: 
+          $ref: ../schemas/asset-information.yaml
+        renditions: 
+          $ref: ../schemas/renditions.yaml
+        relationships:
+          $ref: ../schemas/relationships.yaml
+    maxItems: 100
+  pagination:
+    $ref: pagination.yaml

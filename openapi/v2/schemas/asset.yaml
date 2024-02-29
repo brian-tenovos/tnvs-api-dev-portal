@@ -1,0 +1,25 @@
+type: object
+properties:
+  createdBy:
+    $ref: created-by.yaml
+  currentVersion:
+    type: string
+    description: Current version flag
+    example: "Y"
+    enum:
+    - "Y"
+    - "N"
+  fileInformation:
+    $ref: file-information.yaml
+  lastUpdatedBy:
+    description: User ID who last updated the asset
+    format: uuid
+    example: 7d675ef0-f423-11e9-8071-89c0c40133ds
+  metadataTemplate:
+    $ref: metadata-template.yaml
+  metadata:
+    $ref: 'metadata.yaml'
+  renditions:
+    $ref: renditions.yaml
+  relationships:
+    $ref: relationships.yaml

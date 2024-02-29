@@ -1,0 +1,13 @@
+type: object
+properties:
+  attributeName:
+    type: string
+    description: Sort the result set according to specified metadata attributes
+    example: Product Name
+  order:
+    type: string
+    description: Sort Order
+    example: desc
+    enum:
+    - asc
+    - desc

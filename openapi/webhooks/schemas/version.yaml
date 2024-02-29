@@ -1,0 +1,47 @@
+type: object
+properties:
+  number:
+    type: integer
+    format: int32
+    description: Indicates the version number for the asset
+    minimum: 1
+    maximum: 500
+    example: 2
+  latest:
+    type: boolean
+    description: Indicates whether the identified version number is the latest version
+    example: true
+  previous:
+    type: object
+    properties:
+      assetId: 
+        type: string
+        format: uuid
+        description: The Unique Identifier for the asset in Tenovos that was the previous version of this asset.
+      versionNumber:
+        type: integer
+        format: int32
+        description: Indicates the version number for the previous asset
+        minimum: 1
+        maximum: 500
+      createdBy:
+        type: object
+        description: Provides user information about the Tenovos user who created the previous version
+        properties: 
+          userId:
+            type: string
+            format: uuid
+            description: Unique user identifier from Tenovos
+            example: 7d675ef0-f423-11e9-8071-89c0c405214e
+          firstName:
+            type: string
+            description: First Name of the User
+            example: Erlich
+          lastName:
+            type: string
+            description: Last Name of the User
+            example: Bachman
+          time:
+            type: string
+            format: date-time
+            description: Date/Time that the asset was originally created

@@ -1,0 +1,9 @@
+name: "before"
+in: "query"
+description: The cursor value returned by Tenovos to retrieve the previous page of results.  If the before parameter is used, the after parameter cannot be used.
+schema: 
+  type: "string"
+  x-nullable: true
+  maxLength: 36
+  minLength: 12
+  example: 196100ac-4ee

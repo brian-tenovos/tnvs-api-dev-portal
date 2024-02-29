@@ -1,0 +1,10 @@
+type: object
+properties: 
+  templates:
+    type: array
+    maxItems: 50
+    minItems: 1
+    items: 
+      $ref: ../../schemas/metadata-template.yaml
+  pagination:
+    $ref: ../pagination.yaml

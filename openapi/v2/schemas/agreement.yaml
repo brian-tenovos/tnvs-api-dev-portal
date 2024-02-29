@@ -1,0 +1,70 @@
+type: object
+properties:
+  id: 
+    type: string
+    format: uuid
+    x-nullable: false
+    description: Unique Identifier for the Rights Agreement
+    example: 5dc14cdd-65c4-4755-bdbf-975ca373e38d
+  name:
+    type: string
+    description: Agreement Name
+    required:
+      - name
+    x-nullable: false
+    example: Agreement Name
+  status:
+    type: string
+    description: Indicates whether or not the Agreement is approved
+    enum: 
+      - approved
+      - unapproved
+    example: approved
+  thumbnail:
+    type: string
+    format: url
+    example: https://host.io/1571671854145/3a76743f-45f6-4d30-a7d4-05de2dc8c232/cc8f089a-1464-89d5-42f6-77217a9f09f2-200x200.png
+    description: Rendition URL to the thumbnail provided for the Agreement.
+  attributes:
+    type: array
+    description: Array of object items for each metadata attribute associated with the Agreement.
+    minItems: 1
+    maxItems: 50
+    items:
+      type: object
+      description: An object containing attribute details for the metadata associated with the Agreement.
+      properties:
+        id:
+          type: string
+          example: 9d675ef1-a428-41e6-1072-99h0i40133bf
+          x-nullable: false
+        name:
+          type: string
+          example: Extension Options
+        value:
+          type: string
+          example: 1 year
+        type:
+          type: string
+          example: textbox
+          enum: 
+            - textbox
+            - textarea
+            - date
+            - vocabulary
+        system:
+          type: boolean
+          description: Indicates whether or not the attribute is a system field.  System fields cannot be altered or removed.
+          example: false
+        sensitive:
+          type: boolean
+          description: Indicates whether or not the attribute is sensitive and controlled by Sensitive attribute permissions
+          example: false
+        required:
+          type: boolean
+          description: Indicates whether or not the attribute is required
+          example: false
+  security: 
+    type: array
+    items: 
+      $ref: ../schemas/security.yaml

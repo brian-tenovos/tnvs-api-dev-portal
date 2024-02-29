@@ -1,0 +1,15 @@
+- label: Tenovos Webhooks
+  page: index.md
+  group: Webhooks Group
+  expanded: true
+  pages:
+    - page: event-types.md
+      label: Event Types
+    - page: event-types.md
+      label: Event Types
+    - page: retry-schedule.md
+      label: Retries and Errors
+    - group: Payload Examples
+      expanded: true
+      pages:
+        - page: reference.page.yaml/*

@@ -1,0 +1,24 @@
+'400':
+  description: "One or more required parameters are missing or invalid."
+  content:
+    application/json:
+      schema:
+        $ref: 400.yaml
+'401':
+  description: "Authentication failed (unauthorized)."
+  content:
+    application/json:
+      schema:
+        $ref: 400.yaml
+'403':
+  description: "Forbidden. You do not have permissions to perform this action, or your connection information is not correct."
+  content:
+    application/json:
+      schema:
+        $ref: 403.yaml
+'503':
+  description: The server is too busy to handle the request.
+  content: 
+    application/json:
+      schema: 
+        $ref: 503.yaml

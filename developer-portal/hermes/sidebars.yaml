@@ -1,0 +1,15 @@
+- label: Tenovos API - Coming Soon
+  page: index.md
+  group: Getting Started
+  expanded: true
+  pages:
+    - page: index.md
+      label: Getting Started
+    - page: migration.md
+      label: Migrating to version 1.5
+    - page: oauth.md
+      label: Using OAuth2
+    - group: Endpoint Definitions
+      expanded: true
+      pages:
+        - page: reference.page.yaml/*

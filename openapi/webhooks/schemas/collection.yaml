@@ -1,0 +1,17 @@
+type: object
+properties:
+  id: 
+    type: string
+    format: uuid
+    description: The unique identifier of the Collection from Tenovos
+    example: 147c8d3d-e0f4-497f-86d3-aa2a4166f304
+  name:
+    type: string
+    description: The name of the Collection
+    example: Grand Opening
+  type:
+    type: string
+    description: The type of collection, either shared or private
+    enum:
+      - shared
+      - private

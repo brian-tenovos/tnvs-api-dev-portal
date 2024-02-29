@@ -1,0 +1,17 @@
+type: object
+properties: 
+  fileId: 
+    type: string
+    example: a1c6a2ab-4b01-4253-b4c9-70e04b3b48fc
+  fileName: 
+    type: string
+    example: product-shot.tif
+  fileState: 
+    type: string
+    example: available
+  originalFileId: 
+    type: string
+    example: 003391e4-e78a-4186-b2d7-b5d4fcbe445d
+  presignedURL: 
+    type: string
+    example: string

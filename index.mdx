@@ -1,5 +1,5 @@
 ---
-title: Demo API Portal
+title: Tenovos Developer Portal
 ---
 
 import {
@@ -18,82 +18,52 @@ import {
   NavBar,
 } from '@redocly/developer-portal/ui';
 
-import icon1 from './images/icon1.png';
-import launchFastIcon from './images/launch-fast.svg';
-import icon3 from './images/icon3.png';
-import bookManagementIcon from './images/book-management.svg';
-import foundOrPrivate from './images/found-or-private.svg';
-
 export default LandingLayout;
 
 <Jumbotron>
   <NavBar location={props.location} standalone={false} />
-  <H1>Redocly training</H1>
-  <H2>A starter developer portal with training exercises</H2>
+  <H1>Tenovos Developer Portal</H1>
+  <H2>Leveraging the Power of Tenovos</H2>
   <Flex p={20} justifyContent="center">
-    {/* <Button size="xlarge" to="https://app.redoc.ly">
-      Redocly app
-    </Button> */}
      <Button variant="outlined" size="xlarge" to="developer-portal/index.md">
-      Get started
+      Begin Integrating!
     </Button>
-    {/* <Button variant="outlined" size="xlarge" to="https://redoc.ly/docs">
-      Docs
-    </Button> */}
   </Flex>
 </Jumbotron>
 <Box my={25}>
   <SectionHeader>
-    Create your <Emphasis> developer portal </Emphasis> today!
+    Create your custom <Emphasis> Integration </Emphasis> today!
   </SectionHeader>
   <FlexSection justifyContent="space-around" flexWrap="wrap">
-    <ThinTile to="developer-portal/index.md" icon={icon1} header="Rock">
-        Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo invenire
-        aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril labitur
-        an usu.Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo
-        invenire aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril
-        labitur an usu.Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea
-        justo invenire aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing.
+    <ThinTile to="developer-portal/#training-exercises" header="Automate Tasks">
+        Leverage the Tenovos API to automate complex tasks such as creating numerious collections and asset releationships.
     </ThinTile>
-    <ThinTile to="developer-portal/index.md" icon={launchFastIcon} header="Paper">
-        Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo invenire
-        aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril labitur
-        an usu.
+    <ThinTile to="developer-portal/#training-exercises" header="Custom Experiences">
+        The Tenovos API can be used to create your own custom front end solution in the langage of your choice.
     </ThinTile>
-    <ThinTile to="contact.mdx" icon={icon3} header="Scissors">
-        Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo invenire
-        aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril labitur
-        an usu.
+    <ThinTile to="developer-portal/#training-exercises" header="Migrate Seemlessly">
+        Migrations can be the most daunting part of standing up a new DAM.  Leverage the Tenovos API to seemlessly migrate files and metadata.
     </ThinTile>
   </FlexSection>
-  {/* <Jumbotron parallaxEffect bgImage={icon1}>
-    <H1>Tutorials</H1>
-    <H2>Get setup faster...</H2>
-  </Jumbotron> */}
   <SectionHeader>
     <Emphasis>Need help? </Emphasis>
     Try our training exercises.
   </SectionHeader>
   <FlexSection justifyContent="space-around" flexWrap="wrap">
-    <WideTile to="developer-portal/index.md" header="Rock">
-        Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo invenire
-        aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril labitur
-        an usu.
+    <WideTile to="developer-portal/training/authenticating.md" header="Geting Started">
+        Learn how to get started with the API, to include making Authentication calls, storing JWT tokens for subsequent requests, and everything you need to get going!
     </WideTile>
-    <WideTile to="developer-portal/index.md" header="Paper">
-        Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo invenire
-        aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril labitur
-        an usu.
+    <WideTile to="developer-portal/training/search.md" header="Searching">
+        Learn how to perform keyword and faceted searches using the Tenovos API, and how to page result sets for best performance.
     </WideTile>
-    <WideTile to="developer-portal/index.md" header="Scissors">
-        Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo invenire
-        aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril labitur
-        an usu.
+    <WideTile to="developer-portal/training/relationships.md" header="Relationships">
+        Learn how to create relationships for assets in Tenovos.
     </WideTile>
-    <WideTile to="developer-portal/index.md" header="Go">
-        Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo invenire
-        aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril labitur
-        an usu.
+    <WideTile to="developer-portal/training/bulk-relationships.md" header="Bulk Relationships">
+        Learn how to process a list of relationships to programatically create asset relationships within Tenovos for large bulk jobs.
+    </WideTile>
+    <WideTile to="developer-portal/training/large-upload.md" header="Upload Large Assets">
+        Learn how to use multi-part upload to ingest large assets into Tenovos.
     </WideTile>
   </FlexSection>
 </Box>

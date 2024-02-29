@@ -1,0 +1,22 @@
+type: object
+properties:
+  session: 
+    type: object
+    properties: 
+      ttl:
+        type: integer
+        description: The Time To Live in milliseconds after which the authorization token will expire. 
+        default: 36000000
+        example: 36000000
+      authorization: 
+        type: string
+        example: eyJraWQiOiJqQWNzNDFBdFBEcXdKTVN6Y0dzV01SNFR0T3hETDhcL3dtOW9qQ0JOWVdqcz0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI0ZmUwZTVhZi0yMjU1LTRiZDUtYjAwYS0yM2FkMTIxZTA2ZjIiLCJhdWQiOiI3c201amlsZG5iZnJyOGNncTNrZWRpZW83IiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJldmVudF9pZCI6IjQ1YWI3YzJjLTJjYWUtNDE2MS1hYmE4LWMyMmIxZmQ5NGViYyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjEzNzUyODE3LCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9PU2dRdlRhVEEiLCJjb2duaXRvOnVzZXJuYW1lIjoiamVmZiIsImV4cCI6MTYxMzc1NjQyMCwiaWF0IjoxNjEzNzUyODIwLCJlbWFpbCI6ImplZmZAdGVub3Zvcy5jb20ifQ.kzu1AddXc-HIopmmsxnnXjDiKXhOLox6P2Hx5HCg0gzupbjW9hjbMWVl0NIZRgrLJIEkYjTl9zRUre_QpiJdeVdluMVPLi6OfMUy8XskeqrOAUFDr3nqrkt99uR-LSrVd_hI8NSGvRPXEcWXV6A35Nq8_xZ8tHHlWEanGhtNcEPzgWa1JU1LdQPDCtixgwQGhroevX2TByGC_yfbimn9l5JeveQGyWKNIfvUPR9zLu2g8bPgCzCUroNWU1QRh1o-p1-8lMVwyROl3mIiCfSTo_QwtLArcFTJi5MyMsWCwWHXV
+        description: JWT Bearer Authorization token for the impersonated user
+      refreshToken:
+        type: string
+        example: ggJraWQiOiJqQWNzNDFBdFBEcXdKTVN6Y0dzV01SNFR0T3hETDhcL3dtOW9qQ0JOWVdqcz0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI0ZmUwZTVhZi0yMjU1LTRiZDUtYjAwYS0yM2FkMTIxZTA2ZjIiLCJhdWQiOiI3c201amlsZG5iZnJyOGNncTNrZWRpZW83IiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJldmVudF9pZCI6IjQ1YWI3YzJjLTJjYWUtNDE2MS1hYmE4LWMyMmIxZmQ5NGViYyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjEzNzUyODE3LCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9PU2dRdlRhVEEiLCJjb2duaXRvOnVzZXJuYW1lIjoiamVmZiIsImV4cCI6MTYxMzc1NjQyMCwiaWF0IjoxNjEzNzUyODIwLCJlbWFpbCI6ImplZmZAdGVub3Zvcy5jb20ifQ.kzu1AddXc-HIopmmsxnnXjDiKXhOLox6P2Hx5HCg0gzupbjW9hjbMWVl0NIZRgrLJIEkYjTl9zRUre_QpiJdeVdluMVPLi6OfMUy8XskeqrOAUFDr3nqrkt99uR-LSrVd_hI8NSGvRPXEcWXV6A35Nq8_xZ8tHHlWEanGhtNcEPzgWa1JU1LdQPDCtixgwQGhroevX2TByGC_yfbimn9l5JeveQGyWKNIfvUPR9zLu2g8bPgCzCUroNWU1QRh1o-p1-8lMVwyROl3mIiCfSTo_QwtLArcFTJi5MyMsWCwWHXV
+        description: JWT Bearer Authorization token for the impersonated user
+      groups:
+        $ref: ../schemas/user-groups.yaml
+      role:
+        $ref: ../schemas/user-role.yaml

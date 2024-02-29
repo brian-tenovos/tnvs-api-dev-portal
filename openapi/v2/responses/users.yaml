@@ -1,0 +1,9 @@
+type: object
+properties:
+  users:
+    type: array
+    description: Array containing a result for each user
+    items: 
+      $ref: ../schemas/user.yaml
+  pagination:
+    $ref: pagination.yaml

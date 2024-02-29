@@ -1,0 +1,27 @@
+type: array
+description: Array of relationship objects needed to perform the creation of asset relationships in bulk.  Maximum of 50 relationships can be created at once.
+minItems: 1
+maxItems: 10
+items:
+  type: object
+  properties:
+    parent:
+      type: string
+      format: uuid
+      description: The Asset ID of the asset which will serve as the parent.
+      example: 67ef18b7-045a-4219-ab08-02ef57c71be8
+    type: 
+      type: string
+      description: The name of the relationship type
+      example: child
+    related:
+      type: array
+      minItems: 1
+      maxItems: 50
+      example: [
+        "4e111d2a-ddd6-477a-b694-83174688f9d9", 
+        "e3b24410-1e6d-4e0c-b012-8ce34cc00428",
+        "243275fe-bfda-476d-ad01-44c83e42d79b",
+        "bc4b2a59-b6e0-45b7-8650-f991fad5eb62",
+        "ef54624a-dbdc-4cc6-890c-528929ead6da"
+        ]

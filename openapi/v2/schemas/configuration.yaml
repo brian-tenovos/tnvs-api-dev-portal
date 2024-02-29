@@ -1,0 +1,83 @@
+headerLogoImage:
+  x-nullable: true
+  type: string
+  format: url
+  example: https://enterprise3.content.tenovos.io/web/branding/tenovos/header-logo.png
+loginBannerImage:
+  x-nullable: true
+  type: string
+  format: url
+  example: https://enterprise3.content.tenovos.io/web/branding/tenovos/login-banner.png
+loginLogoImage:
+  x-nullable: true
+  type: string
+  format: url
+  example: https://enterprise3.content.tenovos.io/web/branding/tenovos/loginpage-logo.png
+searchBannerImage:
+  x-nullable: true
+  type: string
+  format: url
+  example: https://enterprise3.content.tenovos.io/web/branding/tenovos/search-banner.png
+favIcon:
+  x-nullable: true
+  type: string
+  format: url
+  example: https://enterprise3.content.tenovos.io/web/branding/tenovos/favicon.ico
+accentColor:
+  x-nullable: true
+  type: string
+  example: '#3a91c3'
+terminology:
+  x-nullable: true
+  type: object
+  properties:
+    content:
+      x-nullable: true
+      type: string
+      example: Gallery
+      description: The value to use in the navigation for the main Content page where assets are displayed.  Overwriting this value will change what is displayed for "Content" in the system.  Note that the original term will still be referenced in Tenovos user guides and product updates.
+    templates:
+      x-nullable: true
+      type: string
+      example: Template Store
+      description: The value to use in the navigation for the main Templates page where assets are displayed.  Overwriting this value will change what is displayed for "Templates" in the system. Note that the original term will still be referenced in Tenovos user guides and product updates.
+    collections:
+      x-nullable: true
+      type: string
+      example: Collections
+      description: The value to use in the navigation for the main Collections page where collections are displayed.  Overwriting this value will change what is displayed for "Collections" in the system. Note that the original term will still be referenced in Tenovos user guides and product updates.
+    storyBoards:
+      x-nullable: true
+      type: string
+      example: Portals
+      description: The value to use in the navigation for the main Story Boards page where Story Boards are displayed.  Overwriting this value will change what is displayed for "Story Boards" in the system. Note that the original term will still be referenced in Tenovos user guides and product updates.
+landingPage:
+  x-nullable: true
+  type: object
+  properties:
+    landingPage:
+      type: string
+      example: Content
+      enum:
+        - Homepage
+        - Content
+        - Templates
+        - Collections
+        - Story Boards
+        - Getty Images
+      description: Value for the default landing page for users after they log in.
+    isDefaultHomePage:
+      type: boolean
+      example: false
+      description: If true, users will not be able to get to the Tenovos default home page.  This will make it so that when users click your header logo, they are directed to this same page.  If false, the default home page will be accessible.
+displayCollections:
+  type: boolean
+  example: true
+  description: If true, Collections will be displayed on the Home Page to users.
+defaultContentView:
+  type: string
+  example: Grid
+  enum:
+    - Grid
+    - Masonry
+    - List

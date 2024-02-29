@@ -1,0 +1,189 @@
+type: object
+properties:
+  file_metadata: 
+    type: object
+    properties: 
+      fileName: 
+        type: string
+        example: adventure-alps-beautiful-landscape-2444403.jpg
+      fileSize: 
+        type: string
+        example: 4.4 MB
+      MD5Checksum: 
+        type: string
+        example: 6cbc612262877e8502904ea3ffd6a278
+  image_metadata: 
+    type: object
+    properties: 
+      fileName: 
+        type: string
+        example: adventure-alps-beautiful-landscape-2444403.jpg
+      fileSize: 
+        type: string
+        example: 4.4 MB
+      fileType: 
+        type: string
+        example: JPEG
+      fileTypeExtension: 
+        type: string
+        example: jpg
+      mimeType: 
+        type: string
+        example: image/jpeg
+      jfifVersion: 
+        type: string
+        example: 1.01
+      resolutionUnit: 
+        type: string
+        example: inches
+      xResolution: 
+        type: string
+        example: 72
+      yResolution: 
+        type: string
+        example: 72
+      profileCMMType: 
+        type: string
+        example: Linotronic
+      profileVersion: 
+        type: string
+        example: 2.1.0
+      profileClass: 
+        type: string
+        example: Display Device Profile
+      colorSpaceData: 
+        type: string
+        example: RGB
+      profileConnectionSpace: 
+        type: string
+        example: XYZ
+      profileDateTime: 
+        type: string
+        example: 1998:02:09 06:49:00
+      profileFileSignature: 
+        type: string
+        example: acsp
+      primaryPlatform: 
+        type: string
+        example: Microsoft Corporation
+      cmmFlags: 
+        type: string
+        example: Not Embedded Independent
+      deviceManufacturer: 
+        type: string
+        example: Hewlett-Packard
+      deviceModel: 
+        type: string
+        example: sRGB
+      deviceAttributes: 
+        type: string
+        example: Reflective Glossy Positive Color
+      renderingIntent: 
+        type: string
+        example: Perceptual
+      connectionSpaceIlluminant: 
+        type: string
+        example: 0.9642 1 0.82491
+      profileCreator: 
+        type: string
+        example: Hewlett-Packard
+      profileID: 
+        type: string
+        example: 0
+      profileCopyright: 
+        type: string
+        example: Copyright (c) 1998 Hewlett-Packard Company
+      profileDescription: 
+        type: string
+        example: sRGB IEC61966-2.1
+      mediaWhitePoint: 
+        type: string
+        example: 0.95045 1 1.08905
+      mediaBlackPoint: 
+        type: string
+        example: 0 0 0
+      redMatrixColumn: 
+        type: string
+        example: 0.43607 0.22249 0.01392
+      greenMatrixColumn: 
+        type: string
+        example: 0.38515 0.71687 0.09708
+      blueMatrixColumn: 
+        type: string
+        example: 0.14307 0.06061 0.7141
+      deviceMfgDesc: 
+        type: string
+        example: IEC http://www.iec.ch
+      deviceModelDesc: 
+        type: string
+        example: IEC 61966-2.1 Default RGB colour space - sRGB
+      viewingCondDesc: 
+        type: string
+        example: Reference Viewing Condition in IEC61966-2.1
+      viewingCondIlluminant: 
+        type: string
+        example: 19.6445 20.3718 16.8089
+      viewingCondSurround: 
+        type: string
+        example: 3.92889 4.07439 3.36179
+      viewingCondIlluminantType: 
+        type: string
+        example: D50
+      luminance: 
+        type: string
+        example: 76.03647 80 87.12462
+      measurementObserver: 
+        type: string
+        example: CIE 1931
+      measurementBacking: 
+        type: string
+        example: 0 0 0
+      measurementGeometry: 
+        type: string
+        example: Unknown
+      measurementFlare: 
+        type: string
+        example: 0.999%
+      measurementIlluminant: 
+        type: string
+        example: D65
+      technology: 
+        type: string
+        example: Cathode Ray Tube Display
+      redToneReproductionCurve: 
+        type: string
+        example: (Binary data 2060 bytes use -b option to extract)
+      greenToneReproductionCurve: 
+        type: string
+        example: (Binary data 2060 bytes use -b option to extract)
+      blueToneReproductionCurve: 
+        type: string
+        example: (Binary data 2060 bytes use -b option to extract)
+      imageWidth: 
+        type: integer
+        format: int32
+        example: 3264
+      imageHeight: 
+        type: integer
+        format: int32
+        example: 4080
+      encodingProcess: 
+        type: string
+        example: Baseline DCT Huffman coding
+      bitsPerSample: 
+        type: integer
+        format: int32
+        example: 8
+      colorComponents: 
+        type: integer
+        format: int32
+        example: 3
+      yCbCrSubSampling: 
+        type: string
+        example: YCbCr4:2:0 (2 2)
+      imageSize: 
+        type: string
+        example: 3264x4080
+      megapixels: 
+        type: number
+        example: 13.3

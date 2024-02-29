@@ -1,0 +1,5 @@
+paginationToken:
+  type: string
+  x-nullable: false
+  description: Generated token from Tenovos that is returned in responses with multiple results.  Implements keyset pagination.
+  example: 7140k9

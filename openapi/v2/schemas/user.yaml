@@ -1,0 +1,85 @@
+type: object
+properties:
+  id:
+    type: string
+    description: User ID
+    format: uuid
+    example: 7d675ef0-f423-11e9-8071-89c0c4052141
+    readOnly: true
+  username:
+    type: string
+    description: The Username assigned to the User
+    example: richard.hendricks
+  email:
+    type: string
+    description: Email address for the specified user.
+    format: email
+    example: richard@piedpiper.com
+  firstName:
+    type: string
+    description: User first name
+    example: Richard
+  lastName:
+    type: string
+    description: User last name
+    example: Hendricks
+  friendlyName:
+    type: string
+    description: Friendly Name of the User
+    example: Richard Hendricks
+  company:
+    type: string
+    description: The value entered for the Company field for a user
+    example: Pied Piper
+  country:
+    type: string
+    description: The value for Country as assigned to the Users Profile
+    example: USA
+  phone:
+    type: string
+    description: The value for Phone Number as assigned to the Users Profile
+    example: '18884562317'
+  contact:
+    type: string
+    description: The value for Contact as assigned to the Users Profile
+    example: Jian Yang
+  role:
+    type: object
+    description: Contains the role id and name for the given user
+    properties:
+      id:
+        type: string
+        x-nullable: false
+        format: uuid
+        minLength: 36
+        maxLength: 36
+        description: Identifier assigned to the Role.
+        example: f4c15b2b-5540-35e5-96ef-7245322fb07d
+      name:
+        type: string
+        x-nullable: false
+        minLength: 1
+        maxLength: 32
+        description: Name of the Role.
+        example: Art Directors
+  status:
+    type: string
+    description: User account status
+    example: enabled
+    enum:
+      - enabled
+      - disabled
+      - pending
+  accountType:
+    type: string
+    description: Indicates the authentication type of the user account
+    example: local
+    enum:
+      - local
+      - sso
+  groups:
+    type: array
+    maxItems: 50
+    minItems: 0
+    items:
+      $ref: group.yaml

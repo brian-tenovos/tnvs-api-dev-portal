@@ -1,0 +1,44 @@
+properties:
+  firstName:
+    x-nullable: true
+    type: string
+    example: John
+  lastName:
+    x-nullable: true
+    type: string
+    example: Wick
+  friendlyName:
+    x-nullable: false
+    type: string
+    example: John Wick
+  email:
+    x-nullable: true
+    type: string
+    format: email
+    example: john.wick@tenovos.com
+  country:
+    x-nullable: true
+    type: string
+    example: USA
+  company:
+    x-nullable: true
+    type: string
+    example: Tenovos
+  phone:
+    x-nullable: true
+    type: string
+    example: '15402166600'
+  contact:
+    x-nullable: true
+    type: string
+    description: Provide a name for the Point of Contact associated to this user.
+    example: Winston at the Continental
+  roleId:
+    x-nullable: true
+    type: string
+    description: The ID of the Role that will be assigned to this user
+    example: 7d5620e0-f423-11e9-8071-89c0c4052141
+  groups:
+    $ref: ../schemas/user-groups.yaml
+    x-nullable: true
+      

@@ -1,0 +1,28 @@
+type: object
+properties: 
+  isParent: 
+    type: boolean
+    example: true
+  relatedAssets: 
+    type: object
+    properties: 
+      count: 
+        type: integer
+        format: int32
+        example: 1
+      linkedAssets: 
+        type: array
+        items: 
+          type: object
+          properties: 
+            id: 
+              type: string
+              example: 003391e4-e78a-4186-b2d7-b5d4fcbe445d
+              description: The Unique Identifier of the asset
+            fileName: 
+              type: string
+              example: product-shot-1.tif
+            relationshipType: 
+              type: string
+              example: child
+              description: The relationship type between this asset and the parent

@@ -1,0 +1,11 @@
+OAuth2:
+  description: Tenovos OAuth Connection
+  type: oauth2
+  flows: 
+    clientCredentials:
+      tokenUrl: 'https://staytuned.api.tenovos.io/oauth/token'
+      scopes: {}
+BearerAuth:
+  type: "http"
+  scheme: "bearer"
+  bearerFormat: "JWT"

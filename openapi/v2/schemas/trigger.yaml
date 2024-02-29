@@ -1,0 +1,101 @@
+type: object
+properties:
+  active:
+    type: boolean
+    example: true
+    required: 
+      -  active
+  name: 
+    type: string
+    description: The name given to the trigger.
+    example: Set Archive Date on Assets when Expiration Date reached.
+    required: 
+      -  name
+    minLength: 3
+    maxLength: 250
+  rules:
+    type: array
+    items:
+      type: object
+      properties: 
+        operation: 
+          type: string
+          required: 
+            -  operation
+          enum: 
+            - lteq
+            - gteq
+            - eq
+            - neq
+            - lt
+            - gt 
+            - contains
+            - startsWith
+            - endsWith
+            - and 
+            - or   
+            - not   
+            - any
+          example: lteq
+          description: The operator determines the type of logic to apply as a condition.  Less Than or Equal To (lteq), Great Than or Equal To (gteq), Equals (eq) can be applied to check an attribute for a given value to determine if the condition is met, what action should be performed.
+        attributeId:
+          type: string
+          format: uuid
+          minLength: 36
+          maxLength: 36
+          x-nullable: false
+          example: 1f9dbc8e-41ea-4e11-add1-e13a989dd780
+          description: The metadata attribute id <uuid> for the attribute on which you want to base your condition.
+        value:
+          type: string
+          x-nullable: false
+          required: 
+            -  value 
+          example: CURRENT_DATE
+          description: The value which should be compared to the values on assets in the given attribute.
+  action:
+    type: object
+    properties: 
+      operation:
+        type: string
+        description: When a triggers conditions are all met, an action is performed to either replace, append, or remove the value defined in the action.
+        enum:
+          - replace
+          - append
+          - remove
+        example: replace
+        required: 
+          -  operation
+      type: 
+        type: string
+        description: The type of action to be performed.  Options include taking an action of the security templates of assets, metadata of assets, or to receive an email notification when the given conditions are met.
+        example: metadata
+        required:
+          - type
+        enum: 
+          - security_template
+          - metadata 
+          - email_notification
+      attributeId:
+        type: string
+        format: uuid
+        minLength: 36
+        maxLength: 36
+        x-nullable: false
+        example: 1f9dbc8e-41ea-4e11-add1-e13a989dd780
+        description: The metadata attribute id <uuid> for the attribute on which you want to be the target of your action.  **Omit if type is other than metadata.**
+      value:
+        type: string
+        example: CURRENT_DATE
+        required:
+          - value
+        description: The value in this example is the date time stamp for when this trigger ran (CURRENT_DATE) and will replace the Archive Date metadata attribute value on all assets matching all of the given rules for this trigger.
+  schedule:
+    oneOf: 
+      -  $ref: intervalSchedule.yaml
+      -  $ref: eventSchedule.yaml
+      
+
+
+
+

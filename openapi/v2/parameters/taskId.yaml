@@ -1,0 +1,11 @@
+name: "taskId"
+in: "path"
+required: true
+description: The Identifier of the task in Tenovos.
+schema: 
+  type: "string"
+  format: uuid
+  x-nullable: false
+  maxLength: 36
+  minLength: 36
+  example: 4e428628-2537-40b5-91a4-5393cbf167df

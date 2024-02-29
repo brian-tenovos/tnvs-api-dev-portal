@@ -1,0 +1,11 @@
+name: "subscriptionId"
+in: "path"
+required: true
+description: The Identifier of the subscription, active or not, that you wish to delete.
+schema: 
+  type: "string"
+  format: uuid
+  x-nullable: false
+  maxLength: 36
+  minLength: 36
+  example: 4d4d835b-c188-4120-87f9-1208c001e170

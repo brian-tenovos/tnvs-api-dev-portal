@@ -1,0 +1,23 @@
+properties:
+  related:
+    x-nullable: false
+    type: array
+    maxItems: 50
+    items:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          required:
+            - id
+          description: Asset Identifier of the asset in Tenovos that you which to relate to the parent asset.
+          example: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+        type:
+          type: string
+          x-nullable: false
+          required:
+            - type
+          description: Type of relationship which is to be applied to the specified asset as it's relationship type to specified parent.
+          example: child
+

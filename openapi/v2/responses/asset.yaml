@@ -1,0 +1,14 @@
+type: object
+properties:
+  createdBy: 
+    $ref: ../schemas/created-by.yaml
+  fileInformation: 
+    $ref: ../schemas/file-information.yaml
+  assetInformation: 
+    $ref: ../schemas/asset-information.yaml
+  metadata:
+    $ref: ../schemas/metadata.yaml
+  renditions: 
+    $ref: ../schemas/renditions.yaml
+  relationships:
+    $ref: ../schemas/relationships.yaml

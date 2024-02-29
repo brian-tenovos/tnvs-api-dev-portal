@@ -1,0 +1,18 @@
+type: object
+properties:
+  users:
+    type: array
+    description: User ID and email will be returned after a successful update to or creation of the user
+    minItems: 1
+    maxItems: 50
+    items:
+      type: object
+      properties: 
+        id:
+          type: string
+          format: uuid
+          example: 7d675ef0-f423-11e9-8071-89c0c4052141
+        email:
+          type: string
+          format: email
+          example: john.wick@tenovos.com

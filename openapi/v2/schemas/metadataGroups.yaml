@@ -1,0 +1,18 @@
+type: array
+description: List of metadata groups and associated attributes assigned to a Metadata Template.
+items:
+  properties:
+    name:
+      type: string
+      example: Product Information
+    groupOrder:
+      type: integer
+      example: 1
+    metadataAttributes:
+      type: array
+      description: A list of the attributes included in the group.  All available properties are shown, however actual results will be specific the attribute type.
+      items:
+        allOf: 
+          - $ref: dateAttribute.yaml
+          - $ref: textAttribute.yaml
+          - $ref: vocabAttribute.yaml

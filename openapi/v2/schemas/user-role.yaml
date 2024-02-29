@@ -1,0 +1,10 @@
+type: object
+description: User Role Information of the user
+properties:
+  roleId:
+    type: string
+    format: uuid
+    example: 7d5620e0-f423-11e9-8071-89c0c4052141
+  roleName:
+    type: string
+    example: CEO

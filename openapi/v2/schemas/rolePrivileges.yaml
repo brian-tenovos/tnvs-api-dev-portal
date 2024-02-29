@@ -1,0 +1,5 @@
+type: object
+properties:
+  $ref: role.yaml
+  privileges:
+    $ref: privileges.yaml

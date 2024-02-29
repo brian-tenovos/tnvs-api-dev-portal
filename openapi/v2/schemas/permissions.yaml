@@ -1,0 +1,16 @@
+type: array 
+items: 
+  type: object
+  properties: 
+    id:
+      type: string
+      format: uuid
+      maxLength: 36
+      minLength: 36
+      x-nullable: false
+      example: 0132dfe2-61f4-405b-922f-7a2254bb1151
+    name: 
+      type: string
+      x-nullable: false
+      example: Download
+      enum: [Edit Metadata, Delete, Purge, PDF Preview, Version Asset, Download, Assign Security Template, Replace Preview, Relationships, Transform, Request Download, Proof Initiation, Sensitive Data]

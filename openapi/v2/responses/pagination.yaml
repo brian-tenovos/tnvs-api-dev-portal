@@ -1,0 +1,15 @@
+type: object
+description: Contains information needed to page through the result set of responses where more than one result is expected.
+properties:
+  total:
+    type: integer
+    description: The total count of records matching the request criteria.
+    example: 1000
+  before:
+    type: string
+    description: Pass this token as the query parameter value for **before** in your request to return the **previous** page of results.
+    example: 7140k9-44f
+  after:
+    type: string
+    description: Pass this token as the query parameter value for **after** in your request to return the **next** page of results.
+    example: 169677qp8-afe

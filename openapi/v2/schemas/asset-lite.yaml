@@ -1,0 +1,24 @@
+type: object
+properties:
+  id: 
+    type: string
+    format: uuid
+    maxLength: 36
+    minLength: 36
+    x-nullable: false
+    example: 1f9dbc8e-41ea-4e11-add1-e13a989dd780
+  createdBy:
+    $ref: created-by.yaml
+  currentVersion:
+    type: boolean
+    description: Current version flag
+    example: true
+  fileInformation:
+    $ref: file-information.yaml
+  lastUpdatedBy:
+    description: User ID who last updated the asset
+    example: 7d675ef0-f423-11e9-8071-89c0c40133ds
+  renditions:
+    $ref: renditions.yaml
+  relationships:
+    $ref: relationships.yaml

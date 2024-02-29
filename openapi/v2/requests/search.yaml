@@ -1,0 +1,46 @@
+properties:
+  searchTerm:
+    x-nullable: false
+    type: string
+    example: "*"
+    required: 
+      -  searchTerm
+  includeDeleted:
+    x-nullable: true
+    type: "boolean"
+    example: false
+  includeVersions:
+    x-nullable: true
+    type: "boolean"
+    example: true
+  relevancy:
+    type: boolean
+    x-nullable: false
+    required: 
+      -  relevancy
+    default: true
+    example: false
+    description: Relevancy returns results based on a relevancy ranking against your search term.  Default is true.  **With relevancy set to true, the sortBy property should be omitted.** 
+  sortBy:
+    $ref: ../schemas/sort-by.yaml
+  target:
+    x-nullable: true
+    type: string
+    description: Target your search against specific search indexes
+    example: metadata
+    enum:
+    - metadata
+    - filenames
+    - content
+    - technicalMetadata
+  metadata:
+    x-nullable: true
+    type: array
+    description: Provide up to 5 additional metadata values to return by providing an array of metadata attribute names.
+    example: [
+      'Product Name',
+      'Product Category',
+      'Campaign Name',
+      'Campaign Year',
+      'Published',
+    ]

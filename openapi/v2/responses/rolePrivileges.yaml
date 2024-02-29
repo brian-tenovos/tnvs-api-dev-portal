@@ -1,0 +1,10 @@
+type: object
+properties:
+  privileges:
+    type: array
+    minItems: 1
+    maxItems: 50
+    items: 
+      $ref: ../schemas/privilege.yaml
+  pagination:
+    $ref: pagination.yaml

@@ -1,0 +1,35 @@
+type: object
+properties:
+  length:
+    type: integer
+    description: Length validation for text input
+    example: 100
+  type:
+    type: string
+    enum:
+      - Text box
+      - Text area
+    example: Text box
+  required:
+    type: boolean
+    description: Indicated if the attribute is required to have a value or not.
+    example: false
+  readonly:
+    type: boolean
+    description: Indication whether the attribute is read only
+    example: false
+  name:
+    type: string
+    description: Name of the attribute
+    example: Product Description
+  facetable:
+    type: boolean
+    description: Indication if field is facetable
+    example: true
+  attributeId:
+    type: string
+    format: uuid
+  isSensitive:
+    type: boolean
+    description: Indicates whether or not the ability to see values assigned to this attribute require the Sensitive Data Role Privilege.  If true, and the user does not have this role, data will not be returned on calls that return asset data.
+    example: false

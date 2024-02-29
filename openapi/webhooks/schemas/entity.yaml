@@ -1,0 +1,19 @@
+type: object
+properties:
+  id: 
+    type: string
+    format: uuid
+    description: Unique identifier for the Rights Management Entity in Tenovos
+    example: 3aa4d097-71f0-4c61-8cd9-927d276a9287
+  thumbnail:
+    type: string
+    format: uri
+    description: Rendition of the master provided for this Entity, returned as a 200x200 thumbnail from the uri
+    example: https://host.io/1571671854145/3a76743f-45f6-4d30-a7d4-05de2dc8c232/cc8f089a-1464-89d5-42f6-77217a9f09f2-200x200.png
+  name:
+    type: string
+    description: The name of the Rights Management Entity
+  type: 
+    type: string
+    description: Indicates the type of entity
+    example: Influencer or Creator Content

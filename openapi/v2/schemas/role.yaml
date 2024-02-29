@@ -1,0 +1,15 @@
+id:
+  type: string
+  x-nullable: false
+  format: uuid
+  minLength: 36
+  maxLength: 36
+  description: Identifier assigned to the Role.
+  example: f4c15b2b-5540-35e5-96ef-7245322fb07d
+name:
+  type: string
+  x-nullable: false
+  minLength: 1
+  maxLength: 32
+  description: Name of the Role.
+  example: Art Directors

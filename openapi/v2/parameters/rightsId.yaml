@@ -1,0 +1,11 @@
+name: "rightsId"
+in: "path"
+description: The Unique Identifier of a Rights Agreement, Entity, or Project.
+required: true
+schema: 
+  type: "string"
+  format: uuid
+  x-nullable: false
+  maxLength: 36
+  minLength: 36
+  example: 86f3218b-908b-4d20-9d04-7ce9ba6c0593

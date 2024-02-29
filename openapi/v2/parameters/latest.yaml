@@ -1,0 +1,7 @@
+name: "latest"
+in: "query"
+description: Boolean flag to indicate whether or not the asset returned should be the latest version for the Asset Identifier provided.
+schema: 
+  type: "boolean"
+  x-nullable: true
+  example: true

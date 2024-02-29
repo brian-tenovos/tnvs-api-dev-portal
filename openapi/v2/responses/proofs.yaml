@@ -1,0 +1,11 @@
+type: object
+properties:
+  proofs:
+    type: array
+    minItems: 1
+    maxItems: 50
+    description: List of proofs in an Active status only.
+    items: 
+      $ref: ../schemas/proof.yaml
+  pagination:
+    $ref: pagination.yaml

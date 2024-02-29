@@ -1,0 +1,51 @@
+type: object
+properties: 
+  id: 
+    type: string
+    example: e6f4bd5e-9bea-43cb-b15e-22582fa5322e
+  currentVersion:
+    type: boolean
+    example: true
+  objectType: 
+    type: string
+    example: Asset
+  metadataTemplate: 
+    type: object
+    properties: 
+      id: 
+        type: string
+        example: ea6eb24d-adef-4380-bd02-f64f567c437f
+      name: 
+        type: string
+        example: Product Asset
+  securityTemplate: 
+    type: array
+    items: 
+      $ref: ../schemas/security.yaml
+  metadata:
+    type: array
+    x-nullable: true
+    description: Optional array used when additional metadata fields are added to the request.  
+    items: 
+      type: object
+      properties: 
+        id:
+          type: string
+          description: Unique Identifier of the metadata attribute
+          example: 9d675ef1-a428-41e6-1072-99h0i40133bf
+        name:
+          type: string
+          description: The Name of the Metadata Attribute
+          example: Product Name
+        value:
+          type: string
+          description: The value of the attribute for a given asset
+          example: Galvin Belson Signature Box III
+        attributeType:
+          type: string
+          example: textbox
+          enum: 
+            - textbox
+            - textarea
+            - date
+            - vocabulary

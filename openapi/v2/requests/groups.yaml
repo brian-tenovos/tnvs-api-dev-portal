@@ -1,0 +1,14 @@
+properties:
+  groups:
+    x-nullable: false
+    type: array
+    maxItems: 50
+    example: [
+      Art Directors,
+      Marketing Managers,
+      Creative Studio,
+      Image Editors,
+      Videographers,
+      Marketing - Asia Pacific,
+      External Printers
+    ]

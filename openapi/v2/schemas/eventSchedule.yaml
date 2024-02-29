@@ -1,0 +1,11 @@
+type: object
+properties: 
+  eventType:
+    type: string
+    x-nullable: true
+    enum: 
+      - upload
+      - edit
+      - version
+    description: To run a trigger on each occurrence of an asset being created, you would choose the **upload** event type.  Executing triggers based on event provides near real time processing of triggers.  When using interval based execution, event properties can be omitted.
+    example: upload

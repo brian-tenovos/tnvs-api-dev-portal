@@ -1,0 +1,7 @@
+type: object
+properties: 
+  templates:
+    type: array
+    description: Array containing all Security Templates.
+    items: 
+      $ref: ../schemas/securityTemplate.yaml

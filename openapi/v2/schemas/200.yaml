@@ -1,0 +1,9 @@
+type: object
+properties:
+  success:
+    type: object
+    properties:
+      message:
+        type: string
+        example: Operation performed successfully.
+    description: The success object will contain a message, appropriate to the operation performed, as confirmation.

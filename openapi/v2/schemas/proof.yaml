@@ -1,0 +1,90 @@
+type: object
+properties:
+  id: 
+    type: string
+    format: uuid
+    x-x-nullable: false
+    description: Identifier of the Proof
+    example: 7c7f0b55-0a34-4fc7-a009-798051a22b61
+  name:
+    type: string
+    description: Name of the Proof
+    x-x-nullable: false
+    example: Proof Name
+  owner:
+    type: object
+    properties:
+      id: 
+        type: string
+        format: uuid
+        x-x-nullable: false
+        description: Identifier of the user who is the proof owner
+        example: ec2b4aee-42b6-42f8-92cd-264d1c9d4d0c
+      type:
+        type: string
+        x-x-nullable: false
+        description: Type of user account
+        enum:
+          - user
+          - guest
+        example: user
+      firstName: 
+        type: string
+        x-nullable: false
+        description: First Name of the User who is the Proof Owner
+        example: Russ
+      lastName: 
+        type: string
+        x-nullable: false
+        description: Last Name of the User who is the Proof Owner
+        example: Hanneman
+      email:
+        type: string
+        x-nullable: false
+        description: Email address of the user who is the Proof Owner
+        example: russ@piedpiper.com
+  version:
+    type: integer
+    x-nullable: false
+    description: Highest version number of the proof
+    example: 3
+  locked:
+    type: boolean
+    x-nullable: false
+    description: Indicated whether the proof is currently locked or not.
+    example: false
+  decisionStatus:
+    type: string
+    x-nullable: false
+    description: Reflects the current decision status of the active stage on the proof.
+    enum:
+      - changes_required
+      - in_progress
+      - completed
+      - failed
+      - view_only
+      - approved
+    example: in_progress
+  workflowTemplate:
+    type: object
+    properties:
+      id: 
+        type: string
+        format: uuid
+        x-nullable: false
+        description: Identifier of the workflow template in use by the Proof
+        example: 43d6beaa-7e00-45a7-b0a7-3ec05f8cae10
+      name: 
+        type: string
+        x-nullable: false
+        description: Name of the Workflow Template in use by the Proof
+        example: Marketing Approval Template
+  stages:
+    type: array
+    items:
+      $ref: proof-stage.yaml
+  lockOnDecisions:
+    type: boolean
+    description: Indicates whether the proof will be locked when a decision is made.
+    example: true
+  

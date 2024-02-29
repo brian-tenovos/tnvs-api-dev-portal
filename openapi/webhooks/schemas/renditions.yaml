@@ -1,0 +1,27 @@
+type: object
+properties:
+  thumbnail: 
+    type: string
+    format: uri
+    description: Uri of the 200x200 rendition of the master content
+    example: https://host.io/1571671854145/3a76743f-45f6-4d30-a7d4-05de2dc8c232/cc8f089a-1464-89d5-42f6-77217a9f09f2-200x200.png
+  preview: 
+    type: string
+    format: uri
+    description: Uri of the 700x700 rendition of the master content
+    example: https://host.io/1571671854145/3a76743f-45f6-4d30-a7d4-05de2dc8c232/cc8f089a-1464-42f6-89d5-77217a9f09f2-700x700.png
+  fpo: 
+    type: string
+    format: uri
+    description: Uri of the FPO rendition of the master content
+    example: https://host.io/1571671854145/3a76743f-45f6-4d30-a7d4-05de2dc8c232/adventure-alps-beautiful-landscape-2444403-fpo.png
+  large: 
+    type: string
+    format: uri
+    description: Uri of the 1000x1000 rendition of the master content
+    example: https://host.io/1571671854145/3a76743f-45f6-4d30-a7d4-05de2dc8c232/adventure-alps-beautiful-landscape-1000x1000.png
+  mezzanine: 
+    type: string
+    format: uri
+    description: Uri of the 3000x3000 rendition of the master content
+    example: https://host.io/1571671854145/3a76743f-45f6-4d30-a7d4-05de2dc8c232/adventure-alps-beautiful-landscape-3000x3000.png

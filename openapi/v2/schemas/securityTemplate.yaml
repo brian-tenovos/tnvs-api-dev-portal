@@ -1,0 +1,19 @@
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    x-nullable: false
+    minLength: 36
+    maxLength: 36
+    description: Identifier of a Security Template.  Security Templates are applied to assets and control the permissions of user groups on an asset level.
+    example: 7d7345d0-f423-11e9-8071-89c0c4052141
+  name:
+    type: string
+    description: The name of a Security Template.
+    x-nullable: false
+    minLength: 1
+    maxLength: 32
+    example: Archived
+  createdBy: 
+    $ref: ../schemas/created-by.yaml

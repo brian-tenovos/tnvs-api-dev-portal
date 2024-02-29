@@ -1,0 +1,32 @@
+type: object
+description: Role and Privilege information.
+properties:
+  roles:
+    type: array
+    description: Provide a role object for each role you wish to create.
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+          x-nullable: false
+          minLength: 1
+          maxLength: 32
+          description: Name of the Role.
+          example: Art Directors
+        privileges:
+          type: array
+          format: uuid
+          description: Provide an array of privilege id's to assign to this role.
+          example: [
+            49788fb8-40b5-4cab-94c7-a4f1db8ea9e0,
+            51964760-707a-428a-8b24-4dbf9fa0aedf, 
+            43dfc23f-20ae-4ae1-92af-2941879ff067, 
+            cf24a832-fc9e-4a43-a870-ff007ff4c9e2, 
+            dac9ebb2-d009-4668-8ad3-2bebe81c239c,
+            e18cb0e9-76b1-4ecc-80b3-cd44cedc1a84,
+            ad78e057-b2eb-44d6-a3ff-a52458c54c83,
+            19761414-5af0-4c6b-b51e-6fb8b44d0f57,
+            dc518fa9-2562-4ee2-9043-044dce978bb4,
+            2e671f20-d2aa-4c84-90ac-78f729e0eed6
+          ] 

@@ -1,0 +1,13 @@
+type: reference-docs
+versions:
+- definitionId: webhooks
+  id: v1
+  title: v1
+  isDefault: true
+settings:
+  hideTryItPanel: true
+  generateCodeSamples:
+    languages:
+       - lang: curl
+       - lang: JavaScript
+       - lang: Node.js

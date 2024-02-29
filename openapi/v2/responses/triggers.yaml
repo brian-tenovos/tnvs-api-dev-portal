@@ -1,0 +1,12 @@
+type: object
+properties: 
+  triggers:
+    type: array
+    items:
+      id: 
+        type: string
+        description: Unique Identifier of the trigger
+        format: uuid
+      $ref: ../schemas/trigger.yaml
+  pagination:
+    $ref: pagination.yaml

@@ -1,0 +1,70 @@
+type: array
+maxItems: 50
+minItems: 1
+items:
+  type: object
+  properties:
+    firstName:
+      x-nullable: false
+      type: string
+      example: John
+    lastName:
+      x-nullable: false
+      type: string
+      example: Wick
+    friendlyName:
+      x-nullable: false
+      type: string
+      example: John Wick
+    email:
+      x-nullable: false
+      type: string
+      format: email
+      example: john.wick@tenovos.com
+    username:
+      x-nullable: true
+      type: string
+      description: Username for the Account
+      example: john.wick
+    password:
+      x-nullable: true
+      type: "string"
+      description: Enter a temporary password for the user if the account is a local account.
+      x-createOnly: true
+    accountType:
+      x-nullable: false
+      type: "string"
+      enum:
+        - local
+        - sso
+      example: local
+    country:
+      x-nullable: true
+      type: string
+      example: USA
+    company:
+      x-nullable: true
+      type: string
+      example: Tenovos
+    phone:
+      x-nullable: true
+      type: string
+      example: '15402166600'
+    contact:
+      x-nullable: true
+      type: string
+      description: Provide a name for the Point of Contact associated to this user.
+      example: Winston at the Continental
+    roleId:
+      x-nullable: false
+      type: string
+      description: The ID of the Role that will be assigned to this user
+      example: 7d5620e0-f423-11e9-8071-89c0c4052141
+    proofing:
+      x-nullable: true
+      type: boolean
+      description: Set to true if you'd like to assign a proofing license to this user and automatically provision their proofing account.
+      example: false
+    groupIds:
+      $ref: ../schemas/user-groups.yaml
+        

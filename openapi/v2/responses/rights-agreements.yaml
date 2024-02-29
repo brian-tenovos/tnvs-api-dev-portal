@@ -1,0 +1,12 @@
+type: object
+description: Provides a collection of the Agreements configured in your instance and the metadata for each one.
+properties:
+  agreements:
+    type: array
+    minItems: 1
+    maxItems: 50
+    description: Array of Rights Agreements.
+    items:
+      $ref: ../schemas/agreement.yaml
+  pagination:
+    $ref: pagination.yaml

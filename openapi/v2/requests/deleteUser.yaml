@@ -1,0 +1,28 @@
+type: object
+properties:
+  transfers:
+    type: array
+    items:
+      type: object
+      properties:
+        objectType:
+          type: string
+          required:
+            - objectType
+          description: When deleting a user account, certain system object must be transferred to another user.
+          example: assets
+          enum: 
+            - assets
+            - storyboards
+            - collections
+            - searches
+        designee: 
+          type: string
+          required:
+            - designee
+          format: uuid
+          x-nullable: false
+          maxLength: 36
+          minLength: 36
+          description: The Tenovos User Id for who the object will be transferred to.  Does not impact the permissions or privileges on the designee user.
+          example: 4e428628-2537-40b5-91a4-5393cbf167df

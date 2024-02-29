@@ -1,0 +1,8 @@
+type: object
+properties:
+  collectionId:
+    type: string
+    description: Collection ID will be returned after a successful create or update to the collection
+    format: uuid
+    example: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+  

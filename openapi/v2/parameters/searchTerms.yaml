@@ -1,0 +1,10 @@
+name: "searchTerm"
+in: "path"
+required: true
+description: The term to search against.  When searching for users, can include values such as "disabled", "enabled", "local", a last name, email address, etc.
+schema: 
+  type: "string"
+  x-nullable: false
+  maxLength: 256
+  minLength: 2
+  example: John Continental

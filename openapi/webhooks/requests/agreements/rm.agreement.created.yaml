@@ -1,0 +1,10 @@
+type: object
+properties:
+  eventType:
+    type: string
+    description: Combination of the Topic and the Event
+    example: rm.agreement.created
+  event:
+    $ref: ../../schemas/event.yaml
+  agreement:
+    $ref: ../../schemas/agreement.yaml

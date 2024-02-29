@@ -1,0 +1,13 @@
+name: "status"
+in: "query"
+description: The task status as a value to apply as a filter.  For example, status=processing, when you only want to return tasks where the status is "processing". Query parameters are always case insensitive.
+schema: 
+  type: "string"
+  x-nullable: false
+  maxLength: 24
+  minLength: 5
+  example: processing
+  enum:
+    - queued
+    - processing
+    - completed

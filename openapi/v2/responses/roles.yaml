@@ -1,0 +1,11 @@
+type: object
+description: Provides a collection of the Roles configured in your instance and the privileges assigned to them.
+properties:
+  roles:
+    type: array
+    items:
+      type: object
+      properties:
+        $ref: ../schemas/role.yaml
+  pagination:
+    $ref: pagination.yaml

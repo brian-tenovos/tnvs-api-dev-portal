@@ -1,0 +1,94 @@
+type: array 
+items: 
+  type: object
+  description: Privileges are assigned at the Role level and determine what resources are available to a user within the system, as a whole, not asset specific.
+  properties: 
+    id:
+      type: string
+      format: uuid
+      maxLength: 36
+      minLength: 36
+      x-nullable: false
+      description: Identifier of the Tenovos defined Role Privilege.  
+      example: 0132dfe2-61f4-405b-922f-7a2254bb1151
+    name: 
+      type: string
+      x-nullable: false
+      maxLength: 32
+      minLength: 1
+      example: Download
+      description: Name of the Tenovos defined Role Privilege
+      enum: [
+        Action Management,
+        Asset External Share,
+        Asset Transformations,
+        Bulk Operations,
+        Channel Admin,
+        Channel Publish,
+        Clone Asset,
+        Configuration Management,
+        Content Management,
+        Content Store,
+        Delete,
+        Download,
+        Edit Metadata,
+        Enhanced Filters,
+        External Library Access,
+        Impersonate User,
+        Insights Management,
+        Metadata Export,
+        Metadata Template Management,
+        PDF Preview,
+        Private Collections,
+        Product Store Management,
+        Proof Admin,
+        Proof Admin Inbox,
+        Proof Initiation,
+        Proof Modification,
+        Proof Participation,
+        Proof Submission Management,
+        Purge,
+        Relationship,
+        Replace Preview,
+        Request Inbox,
+        Request Management,
+        Rights Maintenance,
+        Rights Management,
+        Rights User,
+        Role Management,
+        Save Getty Asset To Content Store,
+        Security Template Management,
+        Share,
+        Share External Link/Embed Code,
+        Share External Location,
+        Shared Collections,
+        Shared Saved Search,
+        Story Board Management,
+        Story Board External Share,
+        Story Board Share Internal,
+        Story Board View,
+        Supporting Documents,
+        Template Store Management,
+        Upload,
+        Upload With Approval,
+        User Management,
+        User Preference,
+        Version Asset,
+        View Collections,
+        View Management,
+        View More,
+        View Saved Search
+      ]
+    type:
+      type: string
+      description: Indicates the type of Privilege
+      example: End User
+      enum: [
+        Administrator,
+        End User,
+        Feature
+      ]
+    description: 
+      type: string
+      description: Text that explains what the privilege grants access to.
+      example: Single and bulk asset download.

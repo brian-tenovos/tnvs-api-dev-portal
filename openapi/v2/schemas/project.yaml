@@ -1,0 +1,70 @@
+type: object
+properties:
+  id: 
+    type: string
+    format: uuid
+    x-nullable: false
+    description: Unique Identifier for the Rights Project object
+    example: 86f3218b-908b-4d20-9d04-7ce9ba6c0593
+  name:
+    type: string
+    description: Project Name
+    required:
+      - name
+    x-nullable: false
+    example: Project Name
+  status:
+    type: string
+    description: Indicates whether or not the Project is approved
+    enum: 
+      - approved
+      - unapproved
+    example: approved
+  thumbnail:
+    type: string
+    format: url
+    example: https://host.io/1571671854145/3a76743f-45f6-4d30-a7d4-05de2dc8c232/cc8f089a-1464-89d5-42f6-77217a9f09f2-200x200.png
+    description: Rendition URL to the thumbnail provided for the Project.
+  attributes:
+    type: array
+    description: Array of object items for each metadata attribute associated with the Project.
+    minItems: 1
+    maxItems: 50
+    items:
+      type: object
+      description: An object containing attribute details for the metadata associated with the Project.
+      properties:
+        id:
+          type: string
+          example: 5d675ef2-l428-41b6-1072-99h0i40133bf
+          x-nullable: false
+        name:
+          type: string
+          example: Project Description
+        value:
+          type: string
+          example: Tech Crunch Disrupt
+        type:
+          type: string
+          example: textbox
+          enum: 
+            - textbox
+            - textarea
+            - date
+            - vocabulary
+        system:
+          type: boolean
+          description: Indicates whether or not the attribute is a system field.  System fields cannot be altered or removed.
+          example: false
+        sensitive:
+          type: boolean
+          description: Indicates whether or not the attribute is sensitive and controlled by Sensitive attribute permissions
+          example: false
+        required:
+          type: boolean
+          description: Indicates whether or not the attribute is required
+          example: false
+  security: 
+    type: array
+    items: 
+      $ref: ../schemas/security.yaml

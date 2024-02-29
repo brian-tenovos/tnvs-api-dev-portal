@@ -1,0 +1,17 @@
+properties:
+  id:
+    type: string
+    format: uuid
+    minLength: 36
+    maxLength: 36
+    description: Identifier assigned to the user security group.
+    example: e4c15b2b-8540-45e5-96ef-4145322fb07c
+  name:
+    type: string
+    minLength: 1
+    maxLength: 32
+    description: Name of the security user group.
+    example: Art Directors
+  permissions:
+    description: Returned values are for permissions that are **enabled** for the group.
+    $ref: permissions.yaml

@@ -1,0 +1,10 @@
+type: object
+properties:
+  eventType:
+    type: string
+    description: Combination of the Topic and the Event
+    example: rm.project.created
+  event:
+    $ref: ../../schemas/event.yaml
+  project:
+    $ref: ../../schemas/project.yaml

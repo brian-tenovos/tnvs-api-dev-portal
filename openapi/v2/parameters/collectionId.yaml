@@ -1,0 +1,11 @@
+name: "collectionId"
+in: "path"
+required: true
+description: The Collection Identifier.
+schema: 
+  type: "string"
+  format: uuid
+  x-nullable: false
+  maxLength: 36
+  minLength: 36
+  example: f45c87aa-2ff7-4f2c-9c38-9d69554a1c8a

@@ -1,0 +1,10 @@
+type: object
+properties:
+  type: 
+    type: string
+    description: Defines the type of relationship between assets
+    example: child
+  parent:
+    type: string
+    format: uuid
+    description: Unique identifier of the asset designated as the parent of this relationship

@@ -1,0 +1,51 @@
+type: object
+description: Provides details about a Rights Management Agreement and it's associated Entities, Projects and Rights.
+properties:
+  agreement:
+    $ref: ../schemas/agreement.yaml
+  associations:
+    type: object
+    properties: 
+      projects:
+        type: array
+        minItems: 0
+        maxItems: 200
+        items: 
+          type: object
+          description: Array of Rights Management Projects to which the Agreement is associated.
+          properties: 
+            id: 
+              type: string
+              format: uuid
+              x-nullable: false
+              description: Unique Identifier for the Rights Project object
+              example: 86f3218b-908b-4d20-9d04-7ce9ba6c0593
+            name:
+              type: string
+              description: Project Name
+              required:
+                - name
+              x-nullable: false
+              example: Project Name
+      entities:
+        type: array
+        minItems: 0
+        maxItems: 200
+        items: 
+          type: object
+          properties: 
+            id: 
+              type: string
+              format: uuid
+              x-nullable: false
+              description: Unique Identifier for the Rights Entity object
+              example: 86f3218b-908b-4d20-9d04-7ce9ba6c0593
+            name:
+              type: string
+              description: Entity Name
+              required:
+                - name
+              x-nullable: false
+              example: Entity Name
+      rights:
+        $ref: ../schemas/right.yaml

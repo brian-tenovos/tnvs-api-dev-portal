@@ -1,0 +1,12 @@
+type: object
+properties:
+  eventType:
+    type: string
+    description: Combination of the Topic and the Event
+    example: asset.shared
+  event:
+    $ref: ../../schemas/event.yaml
+  asset:
+    $ref: ../../schemas/asset.yaml
+  share:
+    $ref: ../../schemas/share.yaml

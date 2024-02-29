@@ -1,0 +1,10 @@
+type: object
+properties:
+  id: 
+    type: string
+    format: uuid
+    description: Unique identifier for the Rights Management Agreement in Tenovos
+    example: 3aa4d097-71f0-4c61-8cd9-927d276a9287
+  name:
+    type: string
+    description: The name of the Rights Management Agreement

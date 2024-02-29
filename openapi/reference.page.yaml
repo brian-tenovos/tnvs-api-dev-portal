@@ -1,5 +1,17 @@
 type: reference-docs
-definitionId: petstore
+versions:
+  - definitionId: tenovos
+    id: v1
+    title: v1
+    isDefault: true
+  - definitionId: hermes
+    id: v1.5
+    title: v1.5
+    isDefault: false
+  - definitionId: tenovosV2
+    id: v2
+    title: v2
+    isDefault: false
 settings:
   generateCodeSamples:
     languages:

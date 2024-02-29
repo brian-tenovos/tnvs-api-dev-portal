@@ -1,0 +1,11 @@
+name: "metadataTemplateId"
+in: "path"
+required: true
+description: The Identifier of the Metadata Template in Tenovos.
+schema: 
+  type: "string"
+  format: uuid
+  x-nullable: false
+  maxLength: 36
+  minLength: 36
+  example: 196100ac-4eec-4fb6-a7f7-86c8b584771d

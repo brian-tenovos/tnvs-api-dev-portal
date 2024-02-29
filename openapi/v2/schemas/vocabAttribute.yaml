@@ -1,0 +1,51 @@
+type: object
+properties:
+  isMultipleSelect:
+    type: boolean
+    description: Indicates whether the attribute allows multiple values
+    example: false
+  length:
+    type: integer
+    description: Length validation in case text input
+    example: 100
+  type:
+    type: string
+    enum:
+    - multiSelect
+    - singleSelect
+    - cascade
+  required:
+    type: boolean
+    description: Toggle required validation on the attribute
+    example: false
+  vocabulary:
+    type: object
+    description: Object containing the identifier and name of the controlled vocabulary list used by the attribute
+    properties:
+      id: 
+        type: string
+        description: Identifier of the vocabulary list used by the attribute
+        example: efa68bb7-5504-43a6-8956-666d4e811225
+      name: 
+        type: string
+        description: Name of the Vocabulary List used by the attribute
+        example: Country Vocab List
+  readonly:
+    type: boolean
+    description: Indication whether the field is read only
+    example: false
+  name:
+    type: string
+    description: Name of the attribute
+    example: Size
+  facetable:
+    type: boolean
+    description: Indication if field is facetable
+    example: true
+  id:
+    type: string
+    format: uuid
+  isSensitive:
+    type: boolean
+    description: Indicates whether or not the ability to see values assigned to this attribute require the Sensitive Data Role Privilege.  If true, and the user does not have this role, data will not be returned on calls that return asset data.
+    example: false

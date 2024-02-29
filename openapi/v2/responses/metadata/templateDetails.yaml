@@ -1,0 +1,6 @@
+type: object
+properties: 
+  template:
+    $ref: ../../schemas/metadata-template.yaml
+  metadataGroups:
+    $ref: ../../schemas/metadataGroups.yaml

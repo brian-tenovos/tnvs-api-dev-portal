@@ -1,0 +1,17 @@
+type: object
+properties:
+  type: 
+    type: string
+    description: Indicates the type of share event, either internal or external
+    example: external
+    enum:
+      - internal
+      - external
+  recipients:
+    type: array
+    minItems: 1
+    maxItems: 100
+    example: [
+      "richard.hendricks@piedpiper.com",
+      "gavin.belson@huli.com"
+    ]

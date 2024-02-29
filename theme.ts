@@ -15,7 +15,7 @@ export const theme = {
   colors: {
     // tonalOffset: 0.2,
     primary: {
-      main: '#227a88',
+      main: '#304E82',
       // light: ({ colors }) => lighten(colors.tonalOffset, colors.primary.main),
       // dark: ({ colors }) => darken(colors.tonalOffset, colors.primary.main),
       // contrastText: ({ colors }) => readableColor(colors.primary.main),
@@ -94,7 +94,7 @@ export const theme = {
 
   sidebar: {
     backgroundColor: '#fafafa',
-    width: '260px',
+    width: '300px',
   },
   // tocPanel: {
   //   width: '240px',

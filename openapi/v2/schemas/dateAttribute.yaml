@@ -1,0 +1,33 @@
+type: object
+properties:
+  dateFormat:
+    type: string
+    description: Date format in case of date input.
+    example: MM/dd/yyyy
+  type:
+    type: string
+    format: date-time
+    example: 2023-11-12T13:14:15Z
+  required:
+    type: boolean
+    description: Toggle required validation on the attribute
+    example: false
+  readonly:
+    type: boolean
+    description: Indication whether the field is read only
+    example: false
+  name:
+    type: string
+    description: Name of the attribute
+    example: Product Launch Date
+  facetable:
+    type: boolean
+    description: Indication if field is facetable
+    example: true
+  id:
+    type: string
+    format: uuid
+  isSensitive:
+    type: boolean
+    description: Toggle attribute access
+    example: false

@@ -1,0 +1,11 @@
+type: object
+properties:
+  id:
+    type: string
+    description: Security Template ID
+    format: uuid
+    example: dfeb57c1-b149-4b15-920f-3f40ff0b959a
+  name:
+    type: string
+    example: Restricted - Hooli Only
+description: Defines an object of Security Template information applied to an Asset, which controls which user groups have which permissions on the individual asset.

@@ -1,0 +1,15 @@
+type: object
+properties: 
+  userId: 
+    type: string
+    example: 6d675ef0-f423-11e9-5471-89c0c405355b
+  firstName: 
+    type: string
+    example: Jared
+  lastName: 
+    type: string
+    example: Dunn
+  lastUpdatedDate: 
+    type: string
+    format: date-time
+    example: 2010-11-12T13:14:15Z

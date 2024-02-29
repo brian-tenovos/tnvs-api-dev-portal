@@ -1,0 +1,10 @@
+type: object
+properties:
+  taskId:
+    type: string
+    format: uuid
+    example: bae50be9-7262-4a52-8760-8dfe3ea99166
+  message:
+    type: string
+    example: Delete operation has been started.
+description: 202 response will be sent when a Delete operation is performed asynchronously.  Use the Task ID to retrieve the latest status from the task endpoint.

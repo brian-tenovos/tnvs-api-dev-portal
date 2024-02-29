@@ -1,0 +1,34 @@
+type: array
+description: Array of object items for each metadata attribute associated with the Rights.
+minItems: 1
+maxItems: 50
+items:
+  type: object
+  description: An object containing attribute details for the metadata associated with the Project.
+  properties:
+    name:
+      type: string
+      example: Classification
+    value:
+      type: string
+      example: Extension
+    type:
+      type: string
+      example: textbox
+      enum: 
+        - textbox
+        - textarea
+        - date
+        - vocabulary
+    system:
+      type: boolean
+      description: Indicates whether or not the attribute is a system field.  System fields cannot be altered or removed.
+      example: false
+    sensitive:
+      type: boolean
+      description: Indicates whether or not the attribute is sensitive and controlled by Sensitive attribute permissions
+      example: false
+    required:
+      type: boolean
+      description: Indicates whether or not the attribute is required
+      example: false

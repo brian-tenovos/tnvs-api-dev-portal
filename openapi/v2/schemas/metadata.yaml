@@ -1,0 +1,42 @@
+type: array
+description: List of metadata attributes and values assigned to an asset.
+items:
+  type: object
+  properties:
+    id:
+      type: string
+      example: 9d675ef1-a428-41e6-1072-99h0i40133bf
+    name:
+      type: string
+      example: Product Name
+    value:
+      type: string
+      example: Galvin Belson Signature Box III
+    attributeType:
+      type: string
+      example: textbox
+      enum: 
+        - textbox
+        - textarea
+        - date
+        - vocabulary
+    metadataGroup:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          x-nullable: true
+          description: Identifier of the Metadata Group.  Metadata groups are a collection of metadata attributes.
+          example: 4c367a23-bcb8-4893-9a40-b1ff2789bf89
+        name:
+          type: string
+          x-nullable: false
+          description: The name of the metadata group for which the attribute is assigned given a specific metadata template applied to an asset.
+          example: Product Information
+    isSystem:
+      type: boolean
+      example: false
+    isSensitive:
+      type: boolean
+      example: false

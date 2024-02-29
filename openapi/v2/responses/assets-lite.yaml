@@ -1,0 +1,9 @@
+type: object
+properties: 
+  results:
+    type: array
+    description: Array containing a result for each match against your search.
+    items: 
+      $ref: ../schemas/asset-lite.yaml
+  pagination:
+    $ref: pagination.yaml

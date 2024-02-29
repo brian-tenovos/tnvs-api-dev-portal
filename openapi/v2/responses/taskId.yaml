@@ -1,0 +1,10 @@
+type: object
+properties:
+  taskId:
+    type: string
+    format: uuid
+    x-nullable: false
+    minLength: 36
+    maxLength: 36
+    description: The Unique Identifier of the task.  Use the task endpoint to get current status.
+    example: fba70961-0091-4a07-a4c3-42182d67572f

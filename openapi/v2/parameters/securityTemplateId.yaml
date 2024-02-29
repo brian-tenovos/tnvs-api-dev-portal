@@ -1,0 +1,11 @@
+name: "securityTemplateId"
+in: "path"
+required: true
+description: The Identifier of the Security Template in Tenovos.
+schema: 
+  type: "string"
+  format: uuid
+  x-nullable: false
+  maxLength: 36
+  minLength: 36
+  example: 7d7345d0-f423-11e9-8071-89c0c4052141

@@ -1,0 +1,27 @@
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: Unique Identifier for the Metadata Template.
+    example: 2161eee0-c0c7-47e0-b66d-be366a77e729
+  name:
+    type: string
+    description: Unique Name for the Metadata Template.
+    example: Hooli Products
+  enabled:
+    type: boolean
+    description: Indicated whether or not the Metadata Template is enabled for use.  Inactive metadata templates prevent users from uploading new content to a metadata template.
+    example: true
+  isSystem:
+    type: boolean
+    description: Indicates whether or not the metadata template is required by the system.  System templates cannot be deleted.
+    example: false
+  assetCount:
+    type: integer
+    description: Indicates the number of assets currently assigned the given metadata template.  Includes all assets that have not been purged.
+    example: 420
+  createdBy:
+    $ref: created-by.yaml
+  lastUpdated:
+    $ref: last-updated.yaml

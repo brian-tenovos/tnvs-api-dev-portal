@@ -1,55 +1,67 @@
 meta:
-  title: Redocly Training
-  description: The best API documentation generator ever.
-  siteUrl: https://developer-portal-starter.redoc.ly
-  keywords: redocly developer portal, api portal starter, api reference docs
+  title: Tenovos Developer
+  description: Documentation and Developer Help for Tenovos.
+  siteUrl: https://api.tenovos.com
+  keywords: Tenovos developer portal, Tenovos API Portal, Tenovos API Reference Docs
   lang: en-US
 linkChecker:
   severity: warning
   options:
     CheckExternal: false
 logo:
-  image: ./images/logo.png
-  altText: Redocly Training
+  image: ./images/tenovos-developers.png
+  altText: Tenovos Developer Portal
 toc:
   enable: true
 oasDefinitions:
-  petstore: ./openapi/petstore.yaml
-  # add links to definitions in our API registry by using a fully qualified URL.
+  tenovos: ./openapi/tnvs.oas.yaml
+  hermes: ./openapi/hermes.oas.yaml
+  tenovosV2: ./openapi/tnvsV2.oas.yaml
+  webhooks: ./openapi/webhooks.oas.yaml
 stylesheets:
   - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
   - https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600,700&display=swap
-#analytics:
-  # ga:
-  # note that GA doesn't work in the development environment
-  #  trackingId: UA-45997213-1
-#scripts:
-#  - ./static/intercom.js
 nav:
-
-  - label: Training exercises
-    page: developer-portal/index.md
-
-  - label: External docs
-    icon: ./images/redocly-icon-white.png
-    href: https://redoc.ly/docs/developer-portal/introduction/
-
+  - label: Code Examples
+    icon: ./images/literature-24.png
+    page: developer-portal/training/authenticating.md
+  - label: Tenovos Support
+    icon: ./images/decision-24.png
+    href: https://tenovoshelp.zendesk.com
+  - label: API Docs
+    icon: ./images/code-24.png
+    page: developer-portal/v1/index.md
+  - label: Webhooks
+    icon: ./images/webhook-icon.png
+    page: developer-portal/webhooks/index.md
   - search: true
 
 footer:
-  copyrightText: Copyright © Redocly 2019-2021. All right reserved.
+  copyrightText: Copyright © Tenovos 2021-2025. All rights reserved.   
   columns:
     - group: Legal
       items:
-        - label: Terms of Use
-          href: 'https://redoc.ly/subscription-agreement/'
-        - label: Privacy Notice
-          href: 'https://redoc.ly/privacy-notice/'
-        - label: Cookie Notice
-          href: 'https://redoc.ly/cookie-notice/'
+        - label: Terms of Service
+          href: 'https://tenovos.com/terms-of-service/'
+        - label: Privacy Policy
+          href: 'https://tenovos.com/privacy-policy/'
+    - group: Resources
+      items:
+        - label: Blog
+          href: 'https://tenovos.com/resources/'
+        - label: Events
+          href: 'https://tenovos.com/resources/events/'
+        - label: Webinars
+          href: 'https://tenovos.com/resources/webinars/'
+        - label: Press & Media
+          href: 'https://tenovos.com/resources/press/'
+        - label: Security
+          href: 'https://tenovos.com/security/'
     - group: Support
       items:
         - label: FAQ
           page: faq.md
-        - label: Contact us
-          page: contact.mdx
+        - label: Contact Us
+          href: 'https://tenovos.com/about/#contacts'
+        - label: Tenovos Support
+          href: 'http://support.tenovos.com/'

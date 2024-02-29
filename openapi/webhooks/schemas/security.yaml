@@ -1,0 +1,36 @@
+type: object
+properties:
+  securityTemplates:
+    type: object
+    properties:
+      current:
+        type: array
+        description: An array of objects for each Security Template currently applied to the Asset
+        minItems: 1
+        maxItems: 100
+        items: 
+          type: object
+          properties:
+            id: 
+              type: string
+              format: uuid
+              description: Unique identifier for the Security Template in Tenovos
+            name:
+              type: string
+              description: Name of the Security Template 
+      previous:
+        type: array
+        description: An array of objects for each Security Template previous applied to the Asset before this change
+        minItems: 1
+        maxItems: 100
+        items: 
+          type: object
+          properties:
+            id: 
+              type: string
+              format: uuid
+              description: Unique identifier for the Security Template in Tenovos
+            name:
+              type: string
+              description: Name of the Security Template 
+  

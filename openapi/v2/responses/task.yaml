@@ -1,0 +1,30 @@
+type: object
+properties: 
+  id:
+    type: string
+    description: Task ID will be returned after a successful response with code 202.
+    format: uuid
+    example: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+  status:
+    type: string
+    description: Current Status of the Task
+    enum:
+      - Queued
+      - Processing
+      - Completed
+    example: Completed
+  type:
+    type: string
+    description: Reflects the type of task that was performed
+    enum:
+      - Delete User
+      - Bulk Ingest
+      - Bulk Delete
+      - Bulk Relationships
+    example: Bulk Relationships
+  batchSize:
+    type: integer
+    description: Total records in the batch to be processed
+    example: 50
+  createdBy:
+    $ref: ../schemas/created-by.yaml

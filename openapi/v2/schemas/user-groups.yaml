@@ -1,0 +1,10 @@
+type: array
+description: List of user group IDs to assign when creating users or that the user belongs to.
+items:
+  type: string
+  minItems: 1
+example: [
+  7d6207c0-f423-11e9-8071-89c0c4052141, 
+  86207c0-fft423-11e9-83071-89c0c4052878, 
+  9v2207c0-f423-55e9-1234-71b0c4052626
+]

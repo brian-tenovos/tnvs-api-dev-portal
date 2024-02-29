@@ -1,0 +1,12 @@
+type: object
+properties:
+  securityTemplate:
+      $ref: ../schemas/securityTemplate.yaml
+  groups:
+    type: array
+    minItems: 1
+    maxItems: 50
+    items:
+      $ref: ../schemas/groupPermissions.yaml
+  pagination:
+    $ref: pagination.yaml

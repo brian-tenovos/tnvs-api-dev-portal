@@ -1,0 +1,10 @@
+type: object
+properties:
+  eventType:
+    type: string
+    description: Combination of the Topic and the Event
+    example: storyboard.deleted
+  event:
+    $ref: ../../schemas/event.yaml
+  storyboard:
+    $ref: ../../schemas/storyboard.yaml

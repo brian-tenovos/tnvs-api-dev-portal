@@ -1,0 +1,6 @@
+type: object
+properties:
+  message:
+    type: string
+    example: Delete operation completed successfully.
+description: 204 response will be sent when a Delete operation is performed synchronously.

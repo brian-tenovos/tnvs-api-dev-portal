@@ -1,0 +1,67 @@
+- name: ASSETS
+  description: |
+    ### Tenovos Assets
+    #### Asset endpoints allow you to perform various operations against Tenovos assets, such as getting metadata, technical metadata, creating assets, updating assets, and more.
+- name: COLLECTIONS
+  description: |
+    #### Use the Collection endpoints
+- name: CONFIGURATIONS
+  description: |
+    ### System Configurations
+    #### Use these endpoints to get and set configuration values for your Tenovos instance.
+- name: METADATA
+  description: |
+    ### Tenovos Metadata
+    #### Metadata endpoints allow you to perform various operations against Tenovos metadata, such as getting metadata templates, creating templates, and updating templates, or working with individual attributes.
+- name: PEOPLE
+  description: |
+    ### Tenovos User Accounts
+    #### Asset endpoints allow you to perform various operations against Tenovos assets, such as getting metadata, technical metadata, creating assets, updating assets, and more.
+- name: PROOFING
+  description: |
+    ### Creative Review and Approval - Proofing
+    #### Use these endpoints to get proof information.
+- name: RELATIONSHIPS
+  description: |
+  ### Fully manage asset relationships and they types of relationships that are available.  
+  #### Asset Relationships are important for understanding how content is applied across use cases.  Common relationship are Child, Derivative, and Placed Graphic, however, Tenovos allows you to create your own relationship types, and fully manage relationship types.
+- name: RIGHTS MANAGEMENT
+  description: |
+  ### Tenovos Rights Management (RM)
+  #### Tenovos Rights Management is organized into Agreements, Rights, Entities, and Projects.  
+
+  #### **Agreements**: are the starting point for all rights.  An Agreement must have one or more parties that grant the rights (grantors).  Agreements must have a name and are comprised of individual rights which must have a term (start and end date), territories (allowed or denied), and media channels or other distributions.
+  #### **Rights**: are defined within an Agreement.  Each right defines a specific set of terms and permitted uses - the most common being 'exhibition' rights across a variety of media and distribution channels.  Another common right is 'identification', which clears talent, 3rd party IP, such as brands, and other items to appear in the works being distributed or used.
+  #### **Entities**: are people and organizations with various roles.  In the context of a rights agreement, they may be the grantor and grantee parties to an agreement.  Examples of entities are photographers, musicians, actors, and models.
+  #### **Assets**: are any media asset such as photography, images, video, voiceover, music tracks, etc.
+  #### **Projects**: are containers that serve to make it easy to associate assets with rights and entities.  A project may also have other dimensions such as information about photo shoots, budget, marketing campaigns, etc.
+- name: SEARCH
+  description: |
+    ### Tenovos DAM Search
+    #### Search allows you to return assets and basic metadata related to a search term for Tenovos hosted assets.  Search results are return based on Relevancy by default, however you may use a variety of sort options instead.
+
+    **Example Use Case:** Set up a gallery that uses a search field on your assets to expose content renditions and basic metadata to users.
+- name: SECURITY
+  description: |
+    ### Security Operations against assets and users.
+- name: SHARING
+  description: |
+    ### Share Content
+    ### Use these endpoints to share assets, collections, storyboards, and other sharable content.
+- name: TASKS
+  description: |
+    ### Tasks
+    #### Use this endpoint to check on the status of long running tasks.  Task ID's are returned from asynchronous tasks running over a period of time that is longer than API's can properly handle, such as completing the process of deleting a user account.
+- name: TRANSFORMS
+  description: |
+  ### Transformations
+  #### Use our Transformation endpoints to perform content transformations against original content in Tenovos.
+- name: TRIGGERS
+  description:  |
+  ### Triggers allow you to run automated workflows on your assets based on metadata that is on your assets.
+  #### Some examples may include things like automatically applying security templates when a date in one of your metadata fields is reached.
+- name: WEBHOOKS
+  description: |
+    ### Tenovos Webhook Subscriptions
+    #### Asset endpoints allow you to perform various operations against Tenovos assets, such as getting metadata, technical metadata, creating assets, updating assets, and more.  For more information about our Webhooks, see the [Webhook section](https://api.tenovos.com/developer-portal/webhooks) of our Developer Portal
+

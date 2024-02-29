@@ -1,0 +1,32 @@
+'400':
+  $ref: 400.yaml
+'403':
+  $ref: 403.yaml
+CreatedBy:
+  $ref: created-by.yaml
+UserGroups:
+  $ref: user-groups.yaml
+UserRole:
+  $ref: user-role.yaml
+User:
+  $ref: user.yaml
+TechnicalMetadata:
+  $ref: technical-metadata.yaml
+SortBy:
+  $ref: sort-by.yaml
+Security:
+  $ref: security.yaml
+Renditions:
+  $ref: renditions.yaml
+Relationships:
+  $ref: relationships.yaml
+Metadata:
+  $ref: metadata.yaml
+MetadataTemplate:
+  $ref: metadata-template.yaml
+FileInformation:
+  $ref: file-information.yaml
+Asset:
+  $ref: asset.yaml
+AssetInformation:
+  $ref: asset-information.yaml

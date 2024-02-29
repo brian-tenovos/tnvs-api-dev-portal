@@ -1,0 +1,17 @@
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    x-nullable: false
+    minLength: 36
+    maxLength: 36
+    description: The Unique Identifier of the task.  Use the task endpoint to get current status.
+    example: 4e428628-2537-40b5-91a4-5393cbf167df
+  name:
+    type: string
+    x-nullable: false
+    minLength: 1
+    maxLength: 36
+    description: The name given to the Role.
+    example: Art Directors

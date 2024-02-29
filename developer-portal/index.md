@@ -1,45 +1,28 @@
+## Tenovos API Reference
+
+The Tenovos API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer).  Our API has predictable resource-oriented URLs, accepts JSON request bodies,
+returns [JSON-encoded](http://www.json.org/) responses, and uses standard HTTP response codes, authentication, and verbs.
+
+### Introduction
+
+Tenovos REST API currently contains three versions, v1, v1.5, and v2.  The current production build for all customers is leveraging v1 only.
+
+
+### Version 1 API Reference Documenation
+
+[Version 1 - Latest Stable Version](./v1/index.md)
+
 ---
-title: Training program
+
+### Version 1.5 API Reference Documenation
+
+[Version 1.5 - Beta Release/Private Preview](./hermes/index.md)
+
 ---
 
-# Training program
+### Version 2 API Reference Documenation
 
-This interactive training program is designed to help you understand how to create and edit content using Redocly's developer portal.
-It's a great companion to our [developer portal docs](https://docs.redoc.ly/developer-portal/introduction/).
+[Version 2 - In Development](./v1/index.md)
+Version 2 of the Tenovos API is currently in development and expected for early customer access in June 2024.
 
-Spend between an hour and a day playing with the most commonly utilized features.
-
-## Prerequisites
-- Basic Git and markdown knowledge
-- Node and yarn installed
-- A text editor or IDE (we like VS Code)
-- [Setup the developer portal](setup.md)
-
-## Training exercises
-
-Follow the training exercises sequentially.
-Or cherry-pick them independently if you're limited on time.
-
-- [Plain markdown pages](markdown.md)
-- [Changing the url paths](awesome/folders.md)
-- [Markdown with a mermaid diagram](mermaid.md)
-- [The page table of contents](page-table-of-contents.md)
-- [Adding a page to the sidebar navigation](sidebar-nav.md)
-- [Disabling the search box](search.md)
-- [Changing nav and footer links](nav-footer.md)
-- [Change your logo](logo.md)
-- [Change metadata](metadata.md)
-- [Change your colors](colors.md)
-- [Change your typography](typography.md)
-- [Enable Google Analytics](analytics.md)
-- [Modify the homepage](home-page.md)
-- [Modify the OAS definitions](oas-definitions.md)
-- [Adding a response object to an MDX page](mdx.mdx)
-- [Upgrade to a different version of the developer portal](upgrade.md)
-
-Upon completion, you may have questions, or you may be ready to start building your content out.
-Learn how to [deploy the developer portal](https://docs.redoc.ly/ci-cd-workflows/) to our global CDN or contact us about purchasing an enterprise license key.
-
-## Asking for help
-
-Don't be shy... we're here to help.
+---
