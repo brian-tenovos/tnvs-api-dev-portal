@@ -22,18 +22,12 @@ stylesheets:
   - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
   - https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600,700&display=swap
 nav:
-  - label: Code Examples
-    icon: ./images/literature-24.png
-    page: developer-portal/training/authenticating.md
   - label: Tenovos Support
     icon: ./images/decision-24.png
     href: https://tenovoshelp.zendesk.com
   - label: API Docs
     icon: ./images/code-24.png
     page: developer-portal/v1/index.md
-  - label: Webhooks
-    icon: ./images/webhook-icon.png
-    page: developer-portal/webhooks/index.md
   - search: true
 
 footer:

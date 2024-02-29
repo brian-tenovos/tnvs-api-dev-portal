@@ -5,8 +5,6 @@
   pages:
     - page: event-types.md
       label: Event Types
-    - page: event-types.md
-      label: Event Types
     - page: retry-schedule.md
       label: Retries and Errors
     - group: Payload Examples
