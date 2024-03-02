@@ -28,8 +28,6 @@ intro:
         pages:
           - page: developer-portal/v2/overview.md
             label: Overview
-          - page: developer-portal/v2/migration.md
-            label: Upgrading from prior versions
           - page: developer-portal/v2/pagination.md
             label: Response Pagination
       - group: Webhooks

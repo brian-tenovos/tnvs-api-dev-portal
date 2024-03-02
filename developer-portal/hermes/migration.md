@@ -3,7 +3,7 @@ showNextButton: false
 showPrevButton: false
 ---
 
-## Updating your integrations to Tenovos API (v1.5)
+## Updating integrations to API (v1.5)
 
 :::info Coming Soon
 
@@ -30,4 +30,8 @@ With v1.5 of the Tenovos REST API, the base url is now the same for every custom
 
 ---
 
+:::success It's that easy
+
 **Upgrading from v1 to v1.5 is as easy as updating the base url in your integration!**
+
+:::
