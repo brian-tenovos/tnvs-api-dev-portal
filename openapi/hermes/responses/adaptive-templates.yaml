@@ -1,0 +1,192 @@
+type: object
+properties: 
+  childProductIds: 
+    type: array
+    items: 
+      type: string 
+      format: uuid
+  renditionsDocument: 
+    type: object
+    properties: 
+      fpo: 
+        type: string
+        format: url
+        example: 'https://tenant.tenovos.io/1623232044386/74216a5c-386d-47d6-854c-dc28535116cf/Template Store Asset 1-fpo.png'
+      aiRendition: 
+        type: string
+        format: url
+        example: 'https://tenant.tenovos.io/1623232044386/74216a5c-386d-47d6-854c-dc28535116cf/aiRendition.png'
+      imagePreviewLarge: 
+        type: string
+        format: url
+        description: Rendition of the original asset in PNG format with a size of 1000x1000
+        example: 'https://tenant.tenovos.io/1623232044386/74216a5c-386d-47d6-854c-dc28535116cf/09789d41-0b7b-4c13-b060-41b5e479f844-1000x1000.png'
+      imageThumb: 
+        type: string
+        format: url
+        description: Rendition of the original asset in PNG format with a size of 200x200
+        example: 'https://tenant.tenovos.io/1623232044386/74216a5c-386d-47d6-854c-dc28535116cf/09789d41-0b7b-4c13-b060-41b5e479f844-200x200.png'
+      imagePreview: 
+        type: string
+        format: url
+        description: Rendition of the original asset in PNG format with a size of 700x700
+        example: 'https://tenant.tenovos.io/1623232044386/74216a5c-386d-47d6-854c-dc28535116cf/09789d41-0b7b-4c13-b060-41b5e479f844-700x700.png'
+      mezzaninePreview: 
+        type: string
+        format: url
+        description: Rendition of the original asset in PNG format with a size of 3000x3000
+        example: 'https://tenant.tenovos.io/1623232044386/74216a5c-386d-47d6-854c-dc28535116cf/Template Store Asset 1-3000x3000.png'
+      height: 
+        type: integer
+        format: int32
+        example: 1080
+      width: 
+        type: integer
+        format: int32
+        example: 1920
+  avamTags: 
+    type: array
+    items: 
+      type: string 
+  lockType: 
+    type: array
+    items: 
+      type: string 
+  objectType: 
+    type: string
+  digitalAssetIds: 
+    type: array
+    items: 
+      type: string
+  fileState: 
+    type: string
+  technicalMetadataDocument: 
+    type: object
+    properties: 
+      image_metadata: 
+        type: object
+      tenovos_metadata: 
+        type: object
+        properties: 
+          fileName: 
+            type: string
+          fileSize: 
+            type: string
+          fileSizeInBytes: 
+            type: integer
+            format: int32
+          MD5Checksum: 
+            type: string
+  customerId: 
+    type: string
+    description: Unique Identifier for the Tenovos Cusotmer
+  lastUpdatedEpoch: 
+    type: integer
+    format: int64
+  metadataTemplateId: 
+    type: string
+  objectId: 
+    type: string
+  metadataDocument: 
+    type: object
+    properties: 
+      system_created_epoch: 
+        type: string
+      template_title: 
+        type: string
+      description: 
+        type: string
+      system_content_type: 
+        type: string
+      system_is_federated: 
+        type: string
+      system_security_templates: 
+        type: array
+        items: 
+          type: string
+      title: 
+        type: string
+      system_metadata_templates: 
+        type: string
+      web2print_template_name: 
+        type: string
+      system_mime_type: 
+        type: string
+      web2print_job_name: 
+        type: string
+      system_checksum: 
+        type: string
+      system_last_updated_by: 
+        type: string
+      system_skip_transcode: 
+        type: string
+      system_created_date: 
+        type: integer
+        format: int64
+      system_created_by: 
+        type: string
+      web2print_job_xml: 
+        type: string
+      web2printlink: 
+        type: string
+      system_match: 
+        type: string
+      system_last_updated_date: 
+        type: integer
+        format: int64
+  metadataState: 
+    type: string
+  lastUpdatedBy: 
+    type: string
+    format: uuid
+    description: Unique Identifier of the Tenovos user who last updated the template.
+  originalFileId: 
+    type: string
+    format: uuid
+  securityTemplateIds: 
+    type: array
+    items: 
+      type: string
+      format: uuid
+  currentVersion: 
+    type: string
+    description: Indicates whether or not this template/asset is the latest version available
+    example: 'Y'
+    enum: 
+      - 'Y'
+      - 'N'
+  versionNumber: 
+    type: integer
+    format: int64
+  filename: 
+    type: string
+  createdEpoch: 
+    type: integer
+    format: int64
+  technicalMetadataText: 
+    type: string
+  createdBy: 
+    type: string
+    format: uuid
+    description: Unique Identifier of the Tenovos user who created the template/asset
+  AITags: 
+    type: array
+    items: 
+      type: string  
+  fileId: 
+    type: string
+    format: uuid
+  securityTemplateDenormalized: 
+    type: array
+    description: Contains an array of objects, one for each Tenovos user group assigned permissions on the Security Template applied to the asset, identified by user goup id, and includes an array of persmission identifiers for each user group.
+    items: 
+      type: object
+      properties: 
+        groupId: 
+          type: string
+          format: uuid
+        permissions: 
+          type: array
+          items: 
+            type: string
+            format: uuid

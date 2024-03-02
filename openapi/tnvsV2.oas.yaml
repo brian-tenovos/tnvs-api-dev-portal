@@ -1,7 +1,7 @@
 openapi: "3.1.0"
 info:
   version: "2.0"
-  title: "Tenovos API"
+  title: "API Endpoint Reference"
   description: |
     ### **Tenovos API v2 is currently in design and is not ready for Production use.**  This documentation serves as an early preview in order to retrieve customer feedback. 
     #### Note that the v2 API supports OAUTH Authentication.  Calling an authorization endpoint is no longer required.

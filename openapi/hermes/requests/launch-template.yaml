@@ -1,0 +1,8 @@
+type: object
+properties:
+  templateId:
+    type: string
+    format: uuid
+    required:
+      - templateId
+    x-nullable: false

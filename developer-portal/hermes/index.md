@@ -1,3 +1,8 @@
+---
+showNextButton: false
+showPrevButton: false
+---
+
 # V1.5 Overview
 
 ## Tenovos API Reference

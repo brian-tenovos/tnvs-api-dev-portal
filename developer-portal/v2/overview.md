@@ -1,3 +1,8 @@
+---
+showNextButton: false
+showPrevButton: false
+---
+
 ## V2 Overview
 
 :::info V2 Availability

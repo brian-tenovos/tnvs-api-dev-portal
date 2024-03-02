@@ -49,19 +49,19 @@ Contains breaking changes when migrating from v1 or v1.5.
 
 ### Version 1 API Reference Documenation
 
-[Version 1 - Latest Stable Version](./v1/index.md)
+[Version 1 - Latest Stable Version](./v1/overview.md)
 
 ---
 
 ### Version 1.5 API Reference Documenation
 
-[Version 1.5 - Beta Release/Private Preview](./hermes/index.md)
+[Version 1.5 - Beta Release/Private Preview](./hermes/overview.md)
 
 ---
 
 ### Version 2 API Reference Documenation
 
-[Version 2 - In Development](./v1/index.md)
+[Version 2 - In Development](./v2/overview.md)
 Version 2 of the Tenovos API is currently in development and expected for early customer access in June 2024.
 
 ---

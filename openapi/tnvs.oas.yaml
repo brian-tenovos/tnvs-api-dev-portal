@@ -1,7 +1,7 @@
 ---
   openapi: 3.0.0
   info:
-    title: Tenovos API
+    title: API Endpoint Reference
     description: "Tenovos offers a REST API for partner and customer integrations.  This API provides a RESTful endpoint, token-based authorization, HTTP methods for operations, and JSON-formatted payloads.  Use this API to incorporate Tenovos functionality into your own application.\n\nThis API is up-versioned when a breaking change is introduced such as\n  - a change in the format of the response data for one or more calls \n  - a change in the request or response type (i.e. changing an integer to a float) \n  - removing any part of the API. \n  \nThis API is not up-versioned for non-breaking changes such as\n  - new endpoints \n  - new response parameters\n  - new optional request parameters\n  "
     termsOfService: https://tenovos.com/terms-of-service
     contact:

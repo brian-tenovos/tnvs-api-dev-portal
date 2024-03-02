@@ -1,7 +1,7 @@
 ---
   openapi: 3.0.0
   info:
-    title: "Tenovos  API"
+    title: "API Endpoint Reference"
     description: |
       ### Version 1.5 of the Tenovos API
       
@@ -28,13 +28,15 @@
     description: Find out more about Tenovos
     url: https://tenovos.com
   servers:
-  - url: 'https://api.uat.tenovos.io/content-store-v1'
-  - url: 'https://api.tenovos.io/content-store-v1'
+  - url: 'https://api.uat.tenovos.io/v1'
+  - url: 'https://api.tenovos.io/v1'
   security: 
     -  ApiKeyAuth: []
     -  BasicAuth: []
   tags:
   - name: ACTIONS
+    description: Invoke the Action API to retrieve information about invoked Actions.
+  - name: ADAPTIVE TEMPLATES
     description: Invoke the Action API to retrieve information about invoked Actions.
   - name: ASSETS
     description: Invoke the Asset API to create, retrieve, manipulate, and share Assets.  This API also provides operations to manage Asset relationships and download Asset content.
@@ -2141,7 +2143,6 @@
             The Request Body must be a JSON-formatted string.
   
             The following parameters are required to request an access token:
-            * clientId
             * username
             * password
   
@@ -4083,6 +4084,116 @@
                   Missing_X-API-key:
                     value:
                       message: Forbidden
+    /template:
+      post: 
+        operationId: getTemplates
+        tags: 
+          -  ADAPTIVE TEMPLATES
+        summary: Get all templates
+        description: For customers with the Adapative Template templates feature, use this endpoint to return a list of all available templates in the system
+        parameters:
+          - name: X-API-Key
+            in: header
+            description: Customer-specific API key required to invoke API.
+            required: true
+            style: simple
+            explode: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Provided by Authentication Token creation operation
+            required: true
+            style: simple
+            explode: false
+            schema:
+              type: string
+          - name: AccessToken
+            in: header
+            description: JWT token provided by Authentication Token creation operation.
+            required: true
+            style: simple
+            explode: false
+            schema:
+              type: string
+          - name: Content-Type
+            in: header
+            required: true
+            style: simple
+            explode: false
+            schema:
+              type: string
+              enum:
+              - application/json
+        requestBody: 
+          description: The Request Body must be a JSON object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdaptiveTemplateSearch'
+          required: true
+        responses:
+          200:
+            description: The Response Body is a JSON object.
+            content:
+              application/json:
+                schema:
+                  $ref: hermes/responses/adaptive-templates.yaml
+          401:
+            description: Unauthorized. Missing Authorization or AccessToken or Access Token expired
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/GeneralErrorMessageResponse'
+                example:
+                  message: Unauthorized
+          403:
+            description: Forbidden. Missing X-API-key
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/GeneralErrorMessageResponse'
+                example:
+                  message: Forbidden
+    /template/launch:
+      post: 
+        operationId: lanchTemplate
+        tags: 
+          -  ADAPTIVE TEMPLATES
+        summary: Get template URL
+        description: Returns a secure url to open the template via web broswer by template identifier
+        requestBody: 
+          description: The Request Body must be a JSON object
+          content:
+            application/json:
+              schema:
+                $ref: hermes/requests/launch-template.yaml
+          required: true
+        responses:
+          200:
+            description: The Response Body is a JSON object.
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/UserResponse'
+          401:
+            description: Unauthorized. Missing Authorization or AccessToken or Access Token expired
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/GeneralErrorMessageResponse'
+                example:
+                  message: Unauthorized
+          403:
+            description: Forbidden. Missing X-API-key
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/GeneralErrorMessageResponse'
+                example:
+                  message: Forbidden    
+          
+        
   components:
     securitySchemes:
       bearerAuth:
@@ -5129,15 +5240,12 @@
       AuthRequest:
         type: object
         properties:
-          clientId:
-            type: string
-            description: Use in **new token** request
           username:
             type: string
-            description: Use in **new token** request
+            description: Use in a **new token** request.  Username of the user in Tenovos.
           password:
             type: string
-            description: Use in **new token** request
+            description: Use in **new token** request.  Valid password for the Tenovos user account.
           session:
             $ref: '#/components/schemas/AuthRequest_session'
       AuthResponse:
@@ -6578,6 +6686,47 @@
             type: string
             description: Contact of User
             example: ""
+      AdaptiveTemplateSearch:
+        type: object
+        properties:
+          from:
+            type: integer
+            description: Search offset from which index search will start
+            example: 0
+            required: 
+              -  from
+            x-nullable: false
+          limit:
+            type: integer
+            default: 50
+            maximum: 50
+            minimum: 1
+            example: 50
+            description: The maximum number of templates to return per page
+            required: 
+              -  limit
+            x-nullable: true
+          searchTerm:
+            type: array
+            description: List of search terms with AND operation be default
+            items:
+              type: string
+              example: '*'
+            x-nullable: true
+          sortBy:
+            type: array
+            items:
+              $ref: '#/components/schemas/Search_sortBy'
+            required: 
+              -  sortBy
+            x-nullable: true
+          operation:
+            type: string
+            description: Indicates whether to apply an AND conditions or an OR condition between search terms 
+            example: 'AND'
+            required: 
+              -  operation
+            x-nullable: false
     examples:
       impersonateUserExample:
         value:

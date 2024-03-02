@@ -6,14 +6,14 @@ intro:
       - page: developer-portal/index.md
         label: Introduction
       - group: API v1 Documentation
-        expanded: true
+        expanded: false
         pages:
           - page: developer-portal/v1/overview.md
             label: Overview
           - page: developer-portal/training/authenticating.md
             label: Sample Code
       - group: API v1.5 Documentation
-        expanded: true
+        expanded: false
         pages:
           - page: developer-portal/hermes/overview.md
             label: Overview
@@ -24,12 +24,16 @@ intro:
           - page: developer-portal/hermes/migration.md
             label: Upgrade from v1
       - group: API v2 Documentation
-        expanded: true
+        expanded: false
         pages:
           - page: developer-portal/v2/overview.md
             label: Overview
+          - page: developer-portal/v2/migration.md
+            label: Upgrading from prior versions
+          - page: developer-portal/v2/pagination.md
+            label: Response Pagination
       - group: Webhooks
-        expanded: true
+        expanded: false
         pages:
           - page: developer-portal/webhooks/index.md
             label: Overview
@@ -41,12 +45,13 @@ intro:
             expanded: false
             pages:
               - page: developer-portal/webhooks/reference.page.yaml
-
-  - group: Endpoint References
-    expanded: true
-    pages:
-      - page: openapi/reference.page.yaml
-        label: Endpoints
+  - page: openapi/reference.page.yaml
+    label: Endpoints
+ # - group: Endpoint References
+ #   expanded: true
+ #   pages:
+ #     - page: openapi/reference.page.yaml
+ #       label: Endpoints
 #v1:
 #  - group: Getting Started
 #    expanded: true

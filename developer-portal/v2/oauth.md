@@ -1,3 +1,8 @@
+---
+showNextButton: false
+showPrevButton: false
+---
+
 ## Using OAuth 2.0 with Tenovos API
 
 [OAuth 2.0](https://oauth.net/2/) is an authorization protocol that gives an API client limited access to user data on a web server. GitHub, Google, and Facebook APIs notably use it. OAuth relies on authentication scenarios called flows, which allow the resource owner (user) to share the protected content from the resource server without sharing their credentials. For that purpose, an OAuth 2.0 server issues access tokens that the client applications can use to access protected resources on behalf of the resource owner. For more information about OAuth 2.0, see oauth.net and [RFC 6749](https://tools.ietf.org/html/rfc6749).

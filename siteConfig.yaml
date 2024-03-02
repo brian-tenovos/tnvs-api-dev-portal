@@ -13,6 +13,8 @@ logo:
   altText: Tenovos Developer Portal
 toc:
   enable: true
+enableToc: true
+tocMaxDepth: 3
 oasDefinitions:
   tenovos: ./openapi/tnvs.oas.yaml
   hermes: ./openapi/hermes.oas.yaml

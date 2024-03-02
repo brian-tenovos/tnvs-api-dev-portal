@@ -1,5 +1,6 @@
 ---
-title: Welcome to the Tenovos API
+showNextButton: false
+showPrevButton: false
 ---
 
 # v1 Overview
