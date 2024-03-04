@@ -30,6 +30,8 @@ intro:
             label: Overview
           - page: developer-portal/v2/pagination.md
             label: Response Pagination
+          - page: developer-portal/v2/migration.md
+            label: How to Migrate to v2
       - group: Webhooks
         expanded: false
         pages:
