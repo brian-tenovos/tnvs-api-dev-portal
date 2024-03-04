@@ -5354,7 +5354,7 @@
             example: Best of the month
           shareDocument:
             type: array
-            description: Array of Asset File IDs for shared Collection
+            description: Array of Asset IDs for shared Collection
             items:
               type: string
               format: uuid

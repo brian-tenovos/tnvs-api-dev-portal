@@ -5327,7 +5327,7 @@
             example: Best of the month
           shareDocument:
             type: array
-            description: Array of Asset File IDs for shared Collection
+            description: Array of Asset IDs for shared Collection
             items:
               type: string
               format: uuid
@@ -5355,7 +5355,7 @@
             example: 4dc328ce-4b3f-4f76-b7bb-1e83ad35458a
           collectionDocument:
             type: array
-            description: Array of Asset File IDs in Collection
+            description: Array of Asset IDs in Collection
             items:
               type: string
               format: uuid
