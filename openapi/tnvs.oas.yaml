@@ -5397,7 +5397,7 @@
           collectionType:
             type: string
             enum:
-            - public
+            - secured
             - private
           name:
             type: string
@@ -5405,11 +5405,33 @@
             example: Best of the month
           collectionDocument:
             type: array
-            description: List of Asset File IDs to be added to the Collection.
+            description: List of Asset IDs to be added to the Collection.
             items:
               type: string
-              description: FileID of the asset
+              description: ID of the asset
               format: uuid
+          metadataTemplateId:
+            type: string
+            description: Unique ID of the metadata template for 'secure' or 'private' collections
+            format: uuid
+            example: ea6eb24d-adef-4380-bd02-f64f567c437f
+          securityTemplateIds:
+            type: array
+            description: List of Security Template IDs
+            items:
+              type: string
+              format: uuid
+              example: 7d6f4e30-f423-11e9-8071-89c0c4052156
+          MetadataDocument:
+            type: array
+            description: Array of metadata attributes that are required for the metadata template
+            items:
+              anyOf:
+              - $ref: '#/components/schemas/MetadataStringValue'
+              - $ref: '#/components/schemas/MetadataRestrictedVocabularyValue'
+              - $ref: '#/components/schemas/MetadataDateValue'
+              - $ref: '#/components/schemas/MetadataMultiValue'
+              - $ref: '#/components/schemas/MetadataGridValue'
       CartCreateRequest:
         type: object
         properties:
