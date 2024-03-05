@@ -1473,12 +1473,12 @@ paths:
           description: Invalid data.  The convertTo value is not compatible for the asset.
         '503':
           $ref: v2/schemas/503.yaml
-  /webhooks:
+  /webhooks/endpoint:
     post: 
       operationId: createSubscription
       tags: 
         -  WEBHOOKS
-      summary: Create Subscriptions
+      summary: Create Endpoint
       security: 
         -  OAuth2: [admin]
       description: Create a subscription based on the topic and event type in order to be notified at your target URL when events about that topic occur.
@@ -1509,25 +1509,87 @@ paths:
           $ref: v2/schemas/403.yaml
         '503':
           $ref: v2/schemas/503.yaml
+  /webhooks/endpoint/list:
     get:
-      operationId: getWebhooks
+      operationId: getEndpointSubscriptionsList
       tags: 
         -  WEBHOOKS
-      summary: Subscriptions
-      security:
-        - OAuth2: [user]
-      description: Get a listing of the webhooks for which your organization is subscribed to.
-      parameters:
+      summary: List Endpoints
+      security: 
+        -  OAuth2: [admin]
+      description: This endpoint returns an array (List) of all endpoints (your endpoints) and the event types subscribed. 
+      parameters: 
         - $ref: v2/parameters/before.yaml
         - $ref: v2/parameters/after.yaml
         - $ref: v2/parameters/content-type.yaml
         - $ref: v2/parameters/authorization.yaml
-      responses:
+      responses: 
         '200':
-          description: "Successful Request. Webhook Subscriptions Retrieved Successfully."
+          description: "Successful Request. Endpoints Retrieved Successfully."
           content:
             application/json:
-              schema:
+              schema: 
+                type: array
+                items: 
+                  $ref: v2/responses/webhooks.yaml
+        '400':
+          $ref: v2/schemas/400.yaml
+        '401':
+          $ref: v2/schemas/401.yaml
+        '403':
+          $ref: v2/schemas/403.yaml
+        '503':
+          $ref: v2/schemas/503.yaml  
+  /webhooks/event-type/list:
+    get:
+      operationId: getEventTypeList
+      tags: 
+        -  WEBHOOKS
+      summary: List Event Types
+      security: 
+        -  OAuth2: [admin]
+      description: This endpoint returns an array (List) of all event types.
+      parameters: 
+        - $ref: v2/parameters/before.yaml
+        - $ref: v2/parameters/after.yaml
+        - $ref: v2/parameters/content-type.yaml
+        - $ref: v2/parameters/authorization.yaml
+      responses: 
+        '200':
+          description: "Successful Request. Event Types Retrieved Successfully."
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: v2/responses/eventType.yaml
+        '400':
+          $ref: v2/schemas/400.yaml
+        '401':
+          $ref: v2/schemas/401.yaml
+        '403':
+          $ref: v2/schemas/403.yaml
+        '503':
+          $ref: v2/schemas/503.yaml  
+  /webhooks/endpoint/{id}:
+    get: 
+      operationId: getEndpointById
+      tags: 
+        -  WEBHOOKS
+      summary: Endpoint by ID
+      security: 
+        -  OAuth2: [admin]
+      description: This endpoint returns a single endpoint and its configuration by ID.
+      parameters: 
+        - $ref: v2/parameters/subscriptionId.yaml
+        - $ref: v2/parameters/content-type.yaml
+        - $ref: v2/parameters/authorization.yaml
+      responses: 
+        '200':
+          description: "Successful Request. Endpoint Retrieved Successfully."
+          content:
+            application/json:
+              schema: 
                 $ref: v2/responses/webhooks.yaml
         '400':
           $ref: v2/schemas/400.yaml
@@ -1536,13 +1598,44 @@ paths:
         '403':
           $ref: v2/schemas/403.yaml
         '503':
-          $ref: v2/schemas/503.yaml
-  /webhooks/{subscriptionId}:
+          $ref: v2/schemas/503.yaml 
+    patch: 
+      operationId: updateEndpointById
+      tags: 
+        -  WEBHOOKS
+      summary: Update Endpoint
+      security: 
+        -  OAuth2: [admin]
+      description: This endpoint updates a single endpoint and its configuration by ID.
+      parameters: 
+        - $ref: v2/parameters/subscriptionId.yaml
+        - $ref: v2/parameters/content-type.yaml
+        - $ref: v2/parameters/authorization.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: v2/requests/webhook.yaml
+      responses: 
+        '200':
+          description: "Successful Request. Endpoint Updated Successfully."
+          content:
+            application/json:
+              schema: 
+                $ref: v2/responses/webhooks.yaml
+        '400':
+          $ref: v2/schemas/400.yaml
+        '401':
+          $ref: v2/schemas/401.yaml
+        '403':
+          $ref: v2/schemas/403.yaml
+        '503':
+          $ref: v2/schemas/503.yaml   
     delete:
       operationId: deleteWebhook
       tags:
         - WEBHOOKS
-      summary: Delete a Subscription
+      summary: Delete Endpoint
       security: 
         - OAuth2: [admin]
       description: Delete a subscription you have to a Webhook based on the ID of the Webhook Subscription
