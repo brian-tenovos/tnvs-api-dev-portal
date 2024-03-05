@@ -1,0 +1,19 @@
+type: object
+properties:
+  name:
+    type: string
+    description: The name of the Event Type.  Determined by Tenovos.
+    example: "asset.created"
+  description:
+    type: string
+    x-nullable: false
+    required: 
+      -  description
+    description: You must provide a description for the event type.
+    minLength: 5
+    maxLength: 100
+    example: Event when a new asset in Tenovos is created.
+  createdDate: 
+    type: string
+    format: date
+    description: The Date and time the Event Type was created.

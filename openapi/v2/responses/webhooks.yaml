@@ -1,46 +1,44 @@
 type: object
 properties: 
-  webhooks:
+  id:
+    type: string
+    format: uuid
+    x-nullable: false
+    description: Identifer of the event
+  description:
+    type: string
+    x-nullable: false
+    required: 
+      -  description
+    description: You must provide a description for the subscription.
+    minLength: 5
+    maxLength: 100
+    example: Notify System X for All Assets Created
+  disabled: 
+    type: boolean
+    example: false
+    description: Indicates whether or not the endpoint subscription is disabled or not
+  url:
+    type: string
+    x-nullable: false
+    required: 
+      - url
+    format: url
+    description: A webhook target is usually an open and public url that listens for webhook notification messages.  Tenovos signs every webhook message to ensure the security and authenticity of all webhooks being sent.  In addition, Tenovos supports HTTP Basic Authentication and using an authentication token in headers.  Choose one of these authentication methods as part of your target payload.
+    example: 'https://yourendpoint.com'
+  eventTypes: 
     type: array
-    minItems: 1
-    maxItems: 50
-    items: 
-      type: object
-      properties:
-        subscriptionId:
-          type: string
-          format: uuid
-          minLength: 36
-          maxLength: 36
-          description: Unique Identifier for the webhook subscription
-        name:
-          type: string
-          x-nullable: false
-          required: 
-            -  name
-          description: You must provide a name for the subscription.
-          minLength: 5
-          maxLength: 100
-          example: Notify All Assets Created
-        event: 
-          type: string
-          x-nullable: false
-          required:
-            - event
-          description: One of the available [event types](https://api.tenovos.com/developer-portal/webhooks/event-types/) listed
-          example: asset.create
-        target: 
-          type: string
-          x-nullable: false
-          format: url
-          example: 'https://yourendpoint.com'
-        active: 
-          type: boolean
-          x-nullable: false 
-          example: true
-        signatureKey:
-          type: string
-          example: v1,g0hM9SsE+OTPJTGt/tmIKtSyZlE3uFJELVlNIOLJ1OE=
-  pagination:
-    $ref: pagination.yaml
-          
+    x-nullable: false
+    required:
+      - event
+    description: One of the available [event types](https://api.tenovos.com/developer-portal/webhooks/event-types/) listed
+    example: [ 
+      "asset.created",
+      "asset.updated",
+      "asset.downloaded",
+      "asset.deleted"
+    ]
+  rateLimit: 
+    type: integer
+    x-nullable: false 
+    example: 200

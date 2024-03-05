@@ -1,4 +1,4 @@
-name: "subscriptionId"
+name: "id"
 in: "path"
 required: true
 description: The Identifier of the subscription, active or not, that you wish to delete.
