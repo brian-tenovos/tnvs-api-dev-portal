@@ -32,7 +32,7 @@
     description: |-
       Invoke the Collection API to create, retrieve, edit, and delete Collections.  Collections are used to group and catalog related Assets for quick access and consumption.  Collections can be configured as:
         - private: Visible only to the user who created the Collection.
-        - public: Visible to all users.
+        - secured: Visible to shared users with permission.
   
       When retrieving the Assets within a Collection, the requesting user will only see the Assets that the user has access to view.  For example, a librarian may see all Assets within a Collection, but a general consumer user may only see a portion of those Assets, due to limited security access.
   - name: Customer Operations
@@ -2330,7 +2330,7 @@
         - Collection Operations
         summary: Get a single Collection and assigned Assets.
         description: |-
-          Retrieve a single Collection specified by Collection ID.  The retrieved Collection may be either a public Collection or a private Collection created by the User.  The Collection will include the list of Assets assigned to the Collection, referenced by Asset **File ID**.
+          Retrieve a single Collection specified by Collection ID.  The retrieved Collection may be either a secured Collection or a private Collection created by the User.  The Collection will include the list of Assets assigned to the Collection, referenced by Asset **File ID**.
   
           The User retrieving the Collection must have the **Collection** Security Role Privilege.
         parameters:
@@ -2411,7 +2411,7 @@
         description: |-
           User can delete the collection, but the Assets assigned to the Collection will remain and dissociate from this Collection.
   
-          The User submitting the request to delete a private Collection must have the **Collection** and **Delete** Security Role Privilege.  Public Collections may only be deleted by Users with the **Purge** Security Role Privilege.
+          The User submitting the request to delete a private Collection must have the **Collection** and **Delete** Security Role Privilege.  Secured Collections may only be deleted by Users with the **Purge** Security Role Privilege.
         parameters:
         - name: X-API-Key
           in: header
@@ -5371,9 +5371,9 @@
             example: 7d675ef0-f423-11e9-8071-89c0c4052141
           collectionType:
             type: string
-            description: Type of Collection (public | private)
+            description: Type of Collection (secured | private)
             enum:
-            - public
+            - secured
             - private
           collectionId:
             type: string
@@ -5489,7 +5489,7 @@
             type: string
             description: Type of the collection.
             enum:
-            - public
+            - secured
             - private
           name:
             type: string
@@ -5529,10 +5529,10 @@
             example: 1613773880176
           collectionType:
             type: string
-            description: Collection type either public or private
+            description: Collection type either secured or private
             enum:
             - private
-            - public
+            - secured
           name:
             type: string
             description: Name of the Collection
