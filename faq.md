@@ -32,3 +32,8 @@ REST is simple, lightweight, scalable, and maps very well to representing and ex
 
 You should check out our [Training Exercises](https://api.tenovos.com/developer-portal/#training-exercises) which cover step-by-step instructions for using the Tenovos REST API
 for common DAM integration use cases.
+
+
+### What is the expected speed increase of v2 over v1.
+
+On average, across all endpoints, the expected performance improvement of v2 is 600%+.
