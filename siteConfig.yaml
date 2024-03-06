@@ -17,7 +17,7 @@ enableToc: true
 tocMaxDepth: 3
 oasDefinitions:
   tenovos: ./openapi/tnvs.oas.yaml
-  hermes: ./openapi/hermes.oas.yaml
+#  hermes: ./openapi/hermes.oas.yaml
   tenovosV2: ./openapi/tnvsV2.oas.yaml
   webhooks: ./openapi/webhooks.oas.yaml
 stylesheets:
@@ -29,7 +29,7 @@ nav:
     href: https://tenovoshelp.zendesk.com
   - label: API Docs
     icon: ./images/code-24.png
-    page: developer-portal/v1/index.md
+    page: developer-portal/index.md
   - search: true
 
 footer:
