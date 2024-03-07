@@ -12,17 +12,17 @@ intro:
             label: Overview
           - page: developer-portal/training/authenticating.md
             label: Sample Code
-#      - group: API v1.5 Documentation
-#        expanded: false
-#        pages:
-#          - page: developer-portal/hermes/overview.md
-#            label: Overview
-#          - page: developer-portal/hermes/oauth.md
-#            label: OAuth 2.0 Authentication
-#          - page: developer-portal/hermes/changelog.md
-#            label: Changelog 
-#          - page: developer-portal/hermes/migration.md
-#            label: Upgrade from v1
+      - group: API v1.5 Documentation
+        expanded: false
+        pages:
+          - page: developer-portal/hermes/overview.md
+            label: Overview
+          - page: developer-portal/hermes/oauth.md
+            label: OAuth 2.0 Authentication
+          - page: developer-portal/hermes/changelog.md
+            label: Changelog 
+          - page: developer-portal/hermes/migration.md
+            label: Upgrade from v1
       - group: API v2 Documentation
         expanded: false
         pages:
