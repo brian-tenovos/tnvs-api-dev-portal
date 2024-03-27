@@ -21,8 +21,8 @@ intro:
             label: OAuth 2.0 Authentication
           - page: developer-portal/hermes/changelog.md
             label: Changelog 
-          - page: developer-portal/hermes/migration.md
-            label: Upgrade from v1
+#          - page: developer-portal/hermes/migration.md
+#            label: Upgrade from v1
       - group: API v2 Documentation
         expanded: false
         pages:
