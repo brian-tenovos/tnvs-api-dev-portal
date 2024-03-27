@@ -13,16 +13,16 @@ Tenovos REST API currently contains three versions, v1, v1.5, and v2.
 
 #### Version 1.0-1.4 (v1)
 
-- Is the current version of the Tenovos API that production customers are on, as of Feb. 2024.
-- Currently in Maintenace mode.  No additions will be made to v1 of the Tenovos API.
+- Is the current version of the Tenovos API that production customers are using.
+- Currently in Maintenace mode.  No additions will be made to v1 of the Tenovos API as of March 2024.
 - Scheduled for end of support July, 2025.
 
 #### Version 1.5 (v1.5)
 
 - **Provides a fast and easy upgrade path for v1 customers.**
 - Currently in a limited Beta and undergoing testing.
-- Scheduled for inclusion in a broader Beta early April, 2024.
-- Introduces OAuth2 as an additional authentication option.
+- Scheduled for inclusion in a broader Beta at the end of April, 2024.
+- Introduces OAuth 2.0 Authorization Code flow as an additional authentication option.
 - Provides some additional endpoints for Adaptive Templates customers, as well as alternative endpoints for getting assets and performing searches.
 - Eliminates high latency on initial requests
 - Improves overall performance on response latency
@@ -35,8 +35,8 @@ Contains breaking changes when migrating from v1 or v1.5.
 
 :::
 
-- Significant performance differences.
-- Support for OAuth2 Authentication.
+- Significant performance improvements.
+- Authentication supported with OAuth 2.0 or standard Tenovos Auth.
 - Much broader functional coverage.
 - Streamlined Response payloads resulting in much lighter Responses that are easier to implement.
 - Standardization across all data types.

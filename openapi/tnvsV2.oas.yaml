@@ -1644,12 +1644,8 @@ paths:
         - $ref: v2/parameters/content-type.yaml
         - $ref: v2/parameters/authorization.yaml
       responses: 
-        '200':
-          description: "Successful Request. Webhook Subscriptions Deleted Successfully."
-          content:
-            application/json:
-              schema:
-                $ref: v2/schemas/200.yaml
+        '204':
+          description: "Successful Request. Webhook Subscription Deleted Successfully."
         '400':
           $ref: v2/schemas/400.yaml
         '401':

@@ -5,6 +5,12 @@ showPrevButton: false
 
 ## v1.5 Overview
 
+:::info V1.5 Availability
+
+This documentation is in draft and provided for the intent of assisting early preview beta users.  This documentation will be updated once this new version is available for general customer usage. 
+
+:::
+
 #### Tenovos has introduced version 1.5 to provide non-breaking improvements over v1, so that v1 clients can easily and safely update to use v1.5.
 
 ### Key Changes:

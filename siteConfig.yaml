@@ -17,7 +17,7 @@ enableToc: true
 tocMaxDepth: 3
 oasDefinitions:
   tenovos: ./openapi/tnvs.oas.yaml
-#  hermes: ./openapi/hermes.oas.yaml
+  hermes: ./openapi/hermes.oas.yaml
   tenovosV2: ./openapi/tnvsV2.oas.yaml
   webhooks: ./openapi/webhooks.oas.yaml
 stylesheets:

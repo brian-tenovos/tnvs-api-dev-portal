@@ -6,7 +6,6 @@
       ### Version 1.5 of the Tenovos API
       
       #### Tenovos has introduced version 1.5 to provide non-breaking improvements over previous versions.
-      #### These non-breaking changes mean you can easily upgrade to v1.5 simply by changing the base url in your implementation. 
 
       ### Key Changes:
         * Authentication Standards now enclude OAuth2 code flow.  

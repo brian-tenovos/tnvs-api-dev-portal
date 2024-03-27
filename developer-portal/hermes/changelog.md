@@ -9,9 +9,9 @@ showPrevButton: false
 
 ---
 
-### 1.5.0-beta (2024-04-15)
+### 1.5.0-beta (2024-04-30)
 
-- Available for customers in Beta
+- Available for Tenovos customers as Beta
 
 ### 1.5.0-beta-24.3.20 (2024-03-20)
 
@@ -37,9 +37,3 @@ payload by removing technical metadata, normalized security, customer id, and ot
     - `/template/launch`: A POST call that returns the url for launching the template via a web browser
 
 ---
-
-### Previous Changes
-
-### 1.5.0-beta-0 (2023-10-12)
-
-v1.5 (Hermes) was born.

@@ -7,15 +7,9 @@ showPrevButton: false
 
 [OAuth 2.0](https://oauth.net/2/) is an authorization protocol that gives an API client limited access to user data on a web server. GitHub, Google, and Facebook APIs notably use it. OAuth relies on authentication scenarios called flows, which allow the resource owner (user) to share the protected content from the resource server without sharing their credentials. For that purpose, an OAuth 2.0 server issues access tokens that the client applications can use to access protected resources on behalf of the resource owner. For more information about OAuth 2.0, see oauth.net and [RFC 6749](https://tools.ietf.org/html/rfc6749).
 
-:::info Backwards Compatability
-
-Tenovos API v1.5 retains the same Authentication and Authorization flows from v1, and adds OAuth 2.0, making one or the either required, but not both.
-
-:::
-
 ### Flows
 
-Tenovos v1.5 and 2.x both implement the OAuth 2.0 authorization code flow.  The flows (also called grant types) are scenarios an API client performs to get an access token from the authorization server. OAuth 2.0 provides several flows suitable for different types of API clients:
+Tenovos v2 implements the OAuth 2.0 authorization code flow.  The flows (also called grant types) are scenarios an API client performs to get an access token from the authorization server. OAuth 2.0 provides several flows suitable for different types of API clients:
 
 - **Authorization code –** The most common flow, mostly used for server-side and mobile web applications. This flow is similar to how users sign up into a web application using their Facebook or Google account.
 - **Implicit –** This flow requires the client to retrieve an access token directly. It is useful in cases when the user’s credentials cannot be stored in the client code because they can be easily accessed by the third party. It is suitable for web, desktop, and mobile applications that do not include any server component.
