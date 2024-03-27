@@ -325,19 +325,26 @@ security:
   - OAuth2: []
 tags:
   - name: Assets
-    description: ''
+    description: |
+      ## Reference documentation for all available payload examples for Asset related events
   - name: Collections
-    description: ''
+    description: |
+      ## Reference documentation for all available payload examples for Collection related events
   - name: Users
-    description: ''
+    description: |
+      ## Reference documentation for all available payload examples for User related events
   - name: Relationships
-    description: ''
+    description: |
+      ## Reference documentation for all available payload examples for Asset Relationship related events.
   - name: Rights Management
-    description: ''
+    description: |
+      ## Reference documentation for all available payload examples for Tenovos Rights Management related events.  Only applicable to customers with entitlement to the Rights Management Add-on.
   - name: Story Boards
-    description: ''
+    description: |
+      ## Reference documentation for all available payload examples for Story Board related events
   - name: Versions
-    description: ''
+    description: |
+      ## Reference documentation for all available payload examples for Asset Versioning related events
 components:
   securitySchemes:
     BasicAuth:

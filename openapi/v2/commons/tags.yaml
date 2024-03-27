@@ -23,12 +23,12 @@
     #### Use these endpoints to get proof information.
 - name: RELATIONSHIPS
   description: |
-  ### Fully manage asset relationships and they types of relationships that are available.  
-  #### Asset Relationships are important for understanding how content is applied across use cases.  Common relationship are Child, Derivative, and Placed Graphic, however, Tenovos allows you to create your own relationship types, and fully manage relationship types.
+    ### Fully manage asset relationships and they types of relationships that are available.  
+    #### Asset Relationships are important for understanding how content is applied across use cases.  Common relationship are Child, Derivative, and Placed Graphic, however, Tenovos allows you to create your own relationship types, and fully manage relationship types.
 - name: RIGHTS MANAGEMENT
   description: |
-  ### Tenovos Rights Management (RM)
-  #### Tenovos Rights Management is organized into Agreements, Rights, Entities, and Projects.  
+    ### Tenovos Rights Management (RM)
+    #### Tenovos Rights Management is organized into Agreements, Rights, Entities, and Projects.  
 
   #### **Agreements**: are the starting point for all rights.  An Agreement must have one or more parties that grant the rights (grantors).  Agreements must have a name and are comprised of individual rights which must have a term (start and end date), territories (allowed or denied), and media channels or other distributions.
   #### **Rights**: are defined within an Agreement.  Each right defines a specific set of terms and permitted uses - the most common being 'exhibition' rights across a variety of media and distribution channels.  Another common right is 'identification', which clears talent, 3rd party IP, such as brands, and other items to appear in the works being distributed or used.
@@ -54,12 +54,12 @@
     #### Use this endpoint to check on the status of long running tasks.  Task ID's are returned from asynchronous tasks running over a period of time that is longer than API's can properly handle, such as completing the process of deleting a user account.
 - name: TRANSFORMS
   description: |
-  ### Transformations
-  #### Use our Transformation endpoints to perform content transformations against original content in Tenovos.
+    ### Transformations
+    #### Use our Transformation endpoints to perform content transformations against original content in Tenovos.
 - name: TRIGGERS
   description:  |
-  ### Triggers allow you to run automated workflows on your assets based on metadata that is on your assets.
-  #### Some examples may include things like automatically applying security templates when a date in one of your metadata fields is reached.
+    ### Triggers allow you to run automated workflows on your assets based on metadata that is on your assets.
+    #### Some examples may include things like automatically applying security templates when a date in one of your metadata fields is reached.
 - name: WEBHOOKS
   description: |
     ### Tenovos Webhook Subscriptions

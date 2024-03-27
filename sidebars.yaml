@@ -21,19 +21,17 @@ intro:
             label: OAuth 2.0 Authentication
           - page: developer-portal/hermes/changelog.md
             label: Changelog 
-#          - page: developer-portal/hermes/migration.md
-#            label: Upgrade from v1
+          - page: developer-portal/hermes/migration.md
+            label: Upgrade from v1
       - group: API v2 Documentation
         expanded: false
         pages:
           - page: developer-portal/v2/overview.md
             label: Overview
-          - page: developer-portal/v2/oauth.md
-            label: Authentication
-#          - page: developer-portal/v2/pagination.md
-#            label: Response Pagination
-#          - page: developer-portal/v2/migration.md
-#            label: How to Migrate to v2
+          - page: developer-portal/v2/pagination.md
+            label: Response Pagination
+          - page: developer-portal/v2/migration.md
+            label: How to Migrate to v2
       - group: Webhooks
         expanded: false
         pages:
@@ -81,4 +79,3 @@ intro:
 #    expanded: true
 #    pages:
 #      - page: openapi/tnvsV2.oas.yaml/*
-
