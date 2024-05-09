@@ -3,7 +3,7 @@ info:
   version: v1.0
   title: Webhooks Introduction
   description: |
-    ### **Tenovos Webhooks are currently in development and expected soon.**
+    ### **Tenovos Webhooks are currently in Beta and are expected to be generally available to Tenovos customers soon.**
   termsOfService: https://tenovos.com/terms-of-service
   contact:
     email: product@tenovos.com
