@@ -5,11 +5,11 @@ properties:
     format: uuid
     description: Unique identifier of the Storyboard in Tenovos
     example: 915a9827-2cb9-4e79-b9bc-1fdc80f6336a
-  title:
-    type: string
-    description: The title of the Story Board
-    example: TechCrunch
-  description:
-    type: string
-    description: The description written of the Story Board
-    example: TechCrunch Story Board Descriptive Text
+  # title:
+  #   type: string
+  #   description: The title of the Story Board
+  #   example: TechCrunch
+  # description:
+  #   type: string
+  #   description: The description written of the Story Board
+  #   example: TechCrunch Story Board Descriptive Text

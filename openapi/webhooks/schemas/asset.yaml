@@ -5,44 +5,44 @@ properties:
     format: uuid
     description: Unique asset identifier from Tenovos
     example: cdff2214-3873-4cc4-8e2e-94fcec784343
-  fileName:
-    type: string
-    description: The filename of the content uploaded for the asset
-    example: pied-piper-grandopening.tif
-  metadataTemplate:
-    type: object
-    properties:
-      id: 
-        type: string
-        format: uuid
-        description: The unique identifier for the metadata template
-        example: ea6eb24d-adef-4380-bd02-f64f567c437f
-      name: 
-        type: string
-        description: The name of the Metadata Template
-        example: Corporate Images
-  createdBy:
-    type: object
-    properties: 
-      userId:
-        type: string
-        format: uuid
-        description: Unique user identifier from Tenovos
-        example: 7d675ef0-f423-11e9-8071-89c0c405214e
-      firstName:
-        type: string
-        description: First Name of the User
-        example: Erlich
-      lastName:
-        type: string
-        description: Last Name of the User
-        example: Bachman
-      time:
-        type: string
-        format: date-time
-        description: Date/Time that the asset was originally created
-  lastUpdated:
-    type: string
-    format: date-time
-    description: Date and Time that the asset was last updated.  May not be the same as the event time.
-    example: 2024-02-12T13:12:25
+#  fileName:
+#    type: string
+ #   description: The filename of the content uploaded for the asset
+ #   example: pied-piper-grandopening.tif
+ # metadataTemplate:
+ #   type: object
+ #   properties:
+ #     id: 
+ #       type: string
+ #       format: uuid
+ #       description: The unique identifier for the metadata template
+ #       example: ea6eb24d-adef-4380-bd02-f64f567c437f
+ #     name: 
+ #       type: string
+ #       description: The name of the Metadata Template
+ #       example: Corporate Images
+ # createdBy:
+ #   type: object
+ #   properties: 
+ #     userId:
+ #       type: string
+ #       format: uuid
+ #       description: Unique user identifier from Tenovos
+ #       example: 7d675ef0-f423-11e9-8071-89c0c405214e
+ #     firstName:
+ #       type: string
+ #       description: First Name of the User
+ #       example: Erlich
+ #     lastName:
+ #       type: string
+ #       description: Last Name of the User
+ #       example: Bachman
+ #     time:
+ #       type: string
+ #       format: date-time
+ #       description: Date/Time that the asset was originally created
+ # lastUpdated:
+ #   type: string
+ #   format: date-time
+ #   description: Date and Time that the asset was last updated.  May not be the same as the event time.
+ #   example: 2024-02-12T13:12:25

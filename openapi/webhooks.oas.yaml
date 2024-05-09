@@ -12,6 +12,7 @@ info:
 
     Webhooks are automated, in other words they are automatically sent out when their coresponding event occurs in Tenovos.  These events occur whether 
     you are using the Tenovos UI, or your own custom UI on top of the Tenovos platform.
+
   termsOfService: https://tenovos.com/terms-of-service
   contact:
     email: product@tenovos.com
@@ -51,22 +52,22 @@ webhooks:
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
-  assetDownloaded:
-    post:
-      summary: Asset Downloaded
-      operationId: assetDownloaded
-      description: Recieve a notification when an Asset in Tenovos is downloaded.
-      tags:
-        - Assets
-      requestBody:
-        description: Information about an asset when the download process for this asset has started
-        content:
-          application/json:
-            schema:
-              $ref: webhooks/requests/assets/asset.downloaded.yaml
-      responses:
-        '200':
-          description: Return a 200 status to Tenovos to indicate that the data was received successfully
+  # assetDownloaded:
+  #   post:
+  #     summary: Asset Downloaded
+  #     operationId: assetDownloaded
+  #     description: Recieve a notification when an Asset in Tenovos is downloaded.
+  #     tags:
+  #       - Assets
+  #     requestBody:
+  #       description: Information about an asset when the download process for this asset has started
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: webhooks/requests/assets/asset.downloaded.yaml
+  #     responses:
+  #       '200':
+  #         description: Return a 200 status to Tenovos to indicate that the data was received successfully
   assetPurged:
     post:
       summary: Asset Purged
@@ -99,22 +100,22 @@ webhooks:
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
-  assetShared:
-    post:
-      summary: Asset Shared
-      operationId: assetShared
-      description: Recieve a notification when an Asset in Tenovos is shared with other users or external contacts.
-      tags:
-        - Assets
-      requestBody:
-        description: Information about an asset when it's Shared in Tenovos
-        content:
-          application/json:
-            schema:
-              $ref: webhooks/requests/assets/asset.shared.yaml
-      responses:
-        '200':
-          description: Return a 200 status to Tenovos to indicate that the data was received successfully
+  # assetShared:
+  #   post:
+  #     summary: Asset Shared
+  #     operationId: assetShared
+  #     description: Recieve a notification when an Asset in Tenovos is shared with other users or external contacts.
+  #     tags:
+  #       - Assets
+  #     requestBody:
+  #       description: Information about an asset when it's Shared in Tenovos
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: webhooks/requests/assets/asset.shared.yaml
+  #     responses:
+  #       '200':
+  #         description: Return a 200 status to Tenovos to indicate that the data was received successfully
   assetSecurityUpdated:
     post:
       summary: Security Updated
@@ -131,54 +132,54 @@ webhooks:
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
-  collectionCreated:
-    post:
-      summary: Collection Created
-      operationId: collectionCreated
-      description: Recieve a notification when an Collection in Tenovos is created.
-      tags:
-        - Collections
-      requestBody:
-        description: Information about a Collection when it is created in Tenovos.
-        content:
-          application/json:
-            schema:
-              $ref: webhooks/requests/collections/collection.created.yaml
-      responses:
-        '200':
-          description: Return a 200 status to Tenovos to indicate that the data was received successfully
-  collectionDeleted:
-    post:
-      summary: Collection Deleted
-      operationId: collectionDeleted
-      description: Recieve a notification when a Collection in Tenovos is deleted.
-      tags:
-        - Collections
-      requestBody:
-        description: Information about a Collection when it is deleted from Tenovos.
-        content:
-          application/json:
-            schema:
-              $ref: webhooks/requests/collections/collection.deleted.yaml
-      responses:
-        '200':
-          description: Return a 200 status to Tenovos to indicate that the data was received successfully
-  collectionDownloaded:
-    post:
-      summary: Collection Downloaded
-      operationId: collectionDownloaded
-      description: Recieve a notification when an Collection in Tenovos is downloaded.
-      tags:
-        - Collections
-      requestBody:
-        description: Information about a Collection when it is downloaded from Tenovos.
-        content:
-          application/json:
-            schema:
-              $ref: webhooks/requests/collections/collection.downloaded.yaml
-      responses:
-        '200':
-          description: Return a 200 status to Tenovos to indicate that the data was received successfully
+  # collectionCreated:
+  #   post:
+  #     summary: Collection Created
+  #     operationId: collectionCreated
+  #     description: Recieve a notification when an Collection in Tenovos is created.
+  #     tags:
+  #       - Collections
+  #     requestBody:
+  #       description: Information about a Collection when it is created in Tenovos.
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: webhooks/requests/collections/collection.created.yaml
+  #     responses:
+  #       '200':
+  #         description: Return a 200 status to Tenovos to indicate that the data was received successfully
+  # collectionDeleted:
+  #   post:
+  #     summary: Collection Deleted
+  #     operationId: collectionDeleted
+  #     description: Recieve a notification when a Collection in Tenovos is deleted.
+  #     tags:
+  #       - Collections
+  #     requestBody:
+  #       description: Information about a Collection when it is deleted from Tenovos.
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: webhooks/requests/collections/collection.deleted.yaml
+  #     responses:
+  #       '200':
+  #         description: Return a 200 status to Tenovos to indicate that the data was received successfully
+  # collectionDownloaded:
+  #   post:
+  #     summary: Collection Downloaded
+  #     operationId: collectionDownloaded
+  #     description: Recieve a notification when an Collection in Tenovos is downloaded.
+  #     tags:
+  #       - Collections
+  #     requestBody:
+  #       description: Information about a Collection when it is downloaded from Tenovos.
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: webhooks/requests/collections/collection.downloaded.yaml
+  #     responses:
+  #       '200':
+  #         description: Return a 200 status to Tenovos to indicate that the data was received successfully
   userCreated:
     post:
       summary: User Created
@@ -307,22 +308,22 @@ webhooks:
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
-  versionCreated:
-    post:
-      summary: Version Created
-      operationId: versionCreated
-      description: Recieve a notification when an Asset in Tenovos is versioned.
-      tags:
-        - Versions
-      requestBody:
-        description: Information about an Asset when it is versioned.  Initial ingest of an asset creates the first version, and is not covered by this event.
-        content:
-          application/json:
-            schema:
-              $ref: webhooks/requests/versions/version.created.yaml
-      responses:
-        '200':
-          description: Return a 200 status to Tenovos to indicate that the data was received successfully
+  # versionCreated:
+  #   post:
+  #     summary: Version Created
+  #     operationId: versionCreated
+  #     description: Recieve a notification when an Asset in Tenovos is versioned.
+  #     tags:
+  #       - Versions
+  #     requestBody:
+  #       description: Information about an Asset when it is versioned.  Initial ingest of an asset creates the first version, and is not covered by this event.
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: webhooks/requests/versions/version.created.yaml
+  #     responses:
+  #       '200':
+  #         description: Return a 200 status to Tenovos to indicate that the data was received successfully
 externalDocs:
   description: Find out more about Tenovos
   url: https://tenovos.com
@@ -335,9 +336,9 @@ tags:
   - name: Assets
     description: |
       ## Reference documentation for all available payload examples for Asset related events
-  - name: Collections
-    description: |
-      ## Reference documentation for all available payload examples for Collection related events
+  # - name: Collections
+  #   description: |
+  #     ## Reference documentation for all available payload examples for Collection related events
   - name: Users
     description: |
       ## Reference documentation for all available payload examples for User related events
@@ -350,9 +351,9 @@ tags:
   - name: Story Boards
     description: |
       ## Reference documentation for all available payload examples for Story Board related events
-  - name: Versions
-    description: |
-      ## Reference documentation for all available payload examples for Asset Versioning related events
+  # - name: Versions
+  #   description: |
+  #     ## Reference documentation for all available payload examples for Asset Versioning related events
 components:
   securitySchemes:
     BasicAuth:
