@@ -36,6 +36,20 @@ webhooks:
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
+
   assetDeleted:
     post:
       summary: Asset Deleted
@@ -52,6 +66,19 @@ webhooks:
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
   # assetDownloaded:
   #   post:
   #     summary: Asset Downloaded
@@ -84,6 +111,19 @@ webhooks:
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
   assetRenditionCreated:
     post:
       summary: Renditions Created
@@ -100,6 +140,19 @@ webhooks:
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
   # assetShared:
   #   post:
   #     summary: Asset Shared
@@ -132,6 +185,19 @@ webhooks:
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
   # collectionCreated:
   #   post:
   #     summary: Collection Created
@@ -196,6 +262,19 @@ webhooks:
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
   relationshipCreated:
     post:
       summary: Relationship Created
@@ -212,6 +291,19 @@ webhooks:
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
   relationshipDeleted:
     post:
       summary: Relationship Deleted
@@ -228,6 +320,19 @@ webhooks:
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
   projectCreated:
     post:
       summary: Project Created
@@ -244,6 +349,19 @@ webhooks:
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
   entityCreated:
     post:
       summary: Entity Created
@@ -260,6 +378,19 @@ webhooks:
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
   agreementCreated:
     post:
       summary: Agreement Created
@@ -276,6 +407,19 @@ webhooks:
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
   storyboardCreated:
     post:
       summary: Story Board Created
@@ -292,6 +436,19 @@ webhooks:
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
   storyboardDeleted:
     post:
       summary: Story Board Deleted
@@ -308,6 +465,19 @@ webhooks:
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
   # versionCreated:
   #   post:
   #     summary: Version Created
