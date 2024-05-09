@@ -2,18 +2,17 @@ type: object
 properties:
   id: 
     type: string
-    format: uuid
     description: Unique identifier of the webhook event itself
-    example: 7f81c80f-200e-4d45-96d1-f041bbc350ff
-  signature:
-    type: string
-    description: HMAC with SHA-256 signature to verify message authenticity
-    example: v2,g0hM9SsE+OTPJTGt/tmIKtSyZlE3uFJELVlNIOLJ1OE=
+    example: asset-metadata-updated-d231cf1d-86b2-436e-95de-b745c39d2ed5
+  # signature:
+  #   type: string
+  #   description: HMAC with SHA-256 signature to verify message authenticity
+  #   example: v2,g0hM9SsE+OTPJTGt/tmIKtSyZlE3uFJELVlNIOLJ1OE=
   time: 
     type: string
     format: date-time
     description: Date/Time that the webhook event occurred.
-    example: 2024-02-12T13:17:25
+    example: 2024-05-09T17:55:28.462Z
   user:
     type: object
     properties:
@@ -22,12 +21,12 @@ properties:
         format: uuid
         description: The Tenovos User ID for the user who caused the event
         example: 7d675ef0-f423-11e9-8071-89c0c405214e
-      firstName:
-        type: string
-        description: First Name of the User
-        example: Erlich
-      lastName:
-        type: string
-        description: Last Name of the User
-        example: Bachman
+      # firstName:
+      #   type: string
+      #   description: First Name of the User
+      #   example: Erlich
+      # lastName:
+      #   type: string
+      #   description: Last Name of the User
+      #   example: Bachman
       

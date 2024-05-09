@@ -17,7 +17,7 @@ such as **Create, Update, Download, Share, and Delete**.  When one of these even
 
 Using the Webhooks API requires the following:
 
-- You must deploy a publicly available and secure (HTTPS) endpoint that can handle webhook payloads specified in this documentation.  
+- You must deploy a publicly available and secure (HTTPS) endpoint that can handle webhook payloads specified in this documentation.  **If you do not have the ability to create and maintain a highly available service to listen for and process webhook messages, please ask the Tenovos Customer Success team about Tenovos Connect.** 
 - Webhooks only support anonymous authentication, basic authentication (username and password), or header authentication.
 - You must load test your endpoints to understand your rate limits and provide this information to Tenovos.
 
