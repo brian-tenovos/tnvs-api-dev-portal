@@ -4,6 +4,14 @@ info:
   title: Webhooks Introduction
   description: |
     ### **Tenovos Webhooks are currently in Beta and are expected to be generally available to Tenovos customers soon.**
+
+    What is a webhook?  A webhook is an HTTP request, triggered by an event in a source system (Tenovos) and sent to a destination system.
+
+    The destination system is managed by the reciever (customer) of the webhook, or for faster and easier implementation, Tenovos Connect can 
+    automatically generate endpoints for recieving webhooks from Tenovos, or any other system.
+
+    Webhooks are automated, in other words they are automatically sent out when their coresponding event occurs in Tenovos.  These events occur whether 
+    you are using the Tenovos UI, or your own custom UI on top of the Tenovos platform.
   termsOfService: https://tenovos.com/terms-of-service
   contact:
     email: product@tenovos.com
