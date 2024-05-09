@@ -37,6 +37,8 @@ intro:
         pages:
           - page: developer-portal/webhooks/index.md
             label: Overview
+          - page: developer-portal/webhooks/administration.md
+            label: Administration (UI)
           - page: developer-portal/webhooks/event-types.md
             label: Event Types
           - page: developer-portal/webhooks/retry-schedule.md

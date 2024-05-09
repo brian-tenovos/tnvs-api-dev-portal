@@ -3,8 +3,6 @@
   group: Webhooks Group
   expanded: true
   pages:
-    - page: administration.md
-      label: Administration
     - page: event-types.md
       label: Event Types
     - page: retry-schedule.md
