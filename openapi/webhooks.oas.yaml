@@ -124,35 +124,35 @@ webhooks:
               schema: 
                 type: string
               description: The Base64 encoded list of signatures (space deliminated)
-  assetRenditionCreated:
-    post:
-      summary: Renditions Created
-      operationId: assetRenditionsCreated
-      description: Recieve a notification when system generated renditions for an Asset in Tenovos have completed processing.
-      tags:
-        - Assets
-      requestBody:
-        description: Information about an asset and its renditions when the asset is created in Tenovos.  This event only occurs once the renditions have completed processing.
-        content:
-          application/json:
-            schema:
-              $ref: webhooks/requests/assets/asset.renditions.created.yaml
-      responses:
-        '200':
-          description: Return a 200 status to Tenovos to indicate that the data was received successfully
-          headers:
-            webhook-id: 
-              schema: 
-                type: string
-              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
-            webhook-timestamp:
-              schema: 
-                type: string
-              description: Timestamp in seconds since epoch.
-            webhook-signature:
-              schema: 
-                type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+  # assetRenditionCreated:
+  #   post:
+  #     summary: Renditions Created
+  #     operationId: assetRenditionsCreated
+  #     description: Recieve a notification when system generated renditions for an Asset in Tenovos have completed processing.
+  #     tags:
+  #       - Assets
+  #     requestBody:
+  #       description: Information about an asset and its renditions when the asset is created in Tenovos.  This event only occurs once the renditions have completed processing.
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: webhooks/requests/assets/asset.renditions.created.yaml
+  #     responses:
+  #       '200':
+  #         description: Return a 200 status to Tenovos to indicate that the data was received successfully
+  #         headers:
+  #           webhook-id: 
+  #             schema: 
+  #               type: string
+  #             description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+  #           webhook-timestamp:
+  #             schema: 
+  #               type: string
+  #             description: Timestamp in seconds since epoch.
+  #           webhook-signature:
+  #             schema: 
+  #               type: string
+  #             description: The Base64 encoded list of signatures (space deliminated)
   # assetShared:
   #   post:
   #     summary: Asset Shared
@@ -198,38 +198,38 @@ webhooks:
               schema: 
                 type: string
               description: The Base64 encoded list of signatures (space deliminated)
-  # collectionCreated:
-  #   post:
-  #     summary: Collection Created
-  #     operationId: collectionCreated
-  #     description: Recieve a notification when an Collection in Tenovos is created.
-  #     tags:
-  #       - Collections
-  #     requestBody:
-  #       description: Information about a Collection when it is created in Tenovos.
-  #       content:
-  #         application/json:
-  #           schema:
-  #             $ref: webhooks/requests/collections/collection.created.yaml
-  #     responses:
-  #       '200':
-  #         description: Return a 200 status to Tenovos to indicate that the data was received successfully
-  # collectionDeleted:
-  #   post:
-  #     summary: Collection Deleted
-  #     operationId: collectionDeleted
-  #     description: Recieve a notification when a Collection in Tenovos is deleted.
-  #     tags:
-  #       - Collections
-  #     requestBody:
-  #       description: Information about a Collection when it is deleted from Tenovos.
-  #       content:
-  #         application/json:
-  #           schema:
-  #             $ref: webhooks/requests/collections/collection.deleted.yaml
-  #     responses:
-  #       '200':
-  #         description: Return a 200 status to Tenovos to indicate that the data was received successfully
+  collectionCreated:
+    post:
+      summary: Collection Created
+      operationId: collectionCreated
+      description: Recieve a notification when an Collection in Tenovos is created.
+      tags:
+        - Collections
+      requestBody:
+        description: Information about a Collection when it is created in Tenovos.
+        content:
+          application/json:
+            schema:
+              $ref: webhooks/requests/collections/collection.created.yaml
+      responses:
+        '200':
+          description: Return a 200 status to Tenovos to indicate that the data was received successfully
+  collectionDeleted:
+    post:
+      summary: Collection Deleted
+      operationId: collectionDeleted
+      description: Recieve a notification when a Collection in Tenovos is deleted.
+      tags:
+        - Collections
+      requestBody:
+        description: Information about a Collection when it is deleted from Tenovos.
+        content:
+          application/json:
+            schema:
+              $ref: webhooks/requests/collections/collection.deleted.yaml
+      responses:
+        '200':
+          description: Return a 200 status to Tenovos to indicate that the data was received successfully
   # collectionDownloaded:
   #   post:
   #     summary: Collection Downloaded
@@ -506,9 +506,9 @@ tags:
   - name: Assets
     description: |
       ## Reference documentation for all available payload examples for Asset related events
-  # - name: Collections
-  #   description: |
-  #     ## Reference documentation for all available payload examples for Collection related events
+  - name: Collections
+    description: |
+      ## Reference documentation for all available payload examples for Collection related events
   - name: Users
     description: |
       ## Reference documentation for all available payload examples for User related events
