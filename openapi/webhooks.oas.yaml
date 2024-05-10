@@ -198,6 +198,35 @@ webhooks:
               schema: 
                 type: string
               description: The Base64 encoded list of signatures (space deliminated)
+  assetMetadataUpdated:
+    post:
+      summary: Metadata Updated
+      operationId: assetMetadataUpdated
+      description: Recieve a notification when the Metadata applied to an Asset in Tenovos is updated.
+      tags:
+        - Assets
+      requestBody:
+        description: Information about an Asset's when the metadata is updated
+        content:
+          application/json:
+            schema:
+              $ref: webhooks/requests/assets/asset.metadata.updated.yaml
+      responses:
+        '200':
+          description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
   collectionCreated:
     post:
       summary: Collection Created
@@ -214,22 +243,64 @@ webhooks:
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
-  collectionDeleted:
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
+  collectionUpdated:
     post:
-      summary: Collection Deleted
-      operationId: collectionDeleted
-      description: Recieve a notification when a Collection in Tenovos is deleted.
+      summary: Collection Updated
+      operationId: collectionUpdated
+      description: Recieve a notification when an asset is added to or removed from a Collection.
       tags:
         - Collections
       requestBody:
-        description: Information about a Collection when it is deleted from Tenovos.
+        description: Information about assets are added to or removed from a Collection.
         content:
           application/json:
             schema:
-              $ref: webhooks/requests/collections/collection.deleted.yaml
+              $ref: webhooks/requests/collections/collection.created.yaml
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
+  # collectionDeleted:
+  #   post:
+  #     summary: Collection Deleted
+  #     operationId: collectionDeleted
+  #     description: Recieve a notification when a Collection in Tenovos is deleted.
+  #     tags:
+  #       - Collections
+  #     requestBody:
+  #       description: Information about a Collection when it is deleted from Tenovos.
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: webhooks/requests/collections/collection.deleted.yaml
+  #     responses:
+  #       '200':
+  #         description: Return a 200 status to Tenovos to indicate that the data was received successfully
   # collectionDownloaded:
   #   post:
   #     summary: Collection Downloaded
@@ -275,19 +346,19 @@ webhooks:
               schema: 
                 type: string
               description: The Base64 encoded list of signatures (space deliminated)
-  relationshipCreated:
+  userUpdated:
     post:
-      summary: Relationship Created
-      operationId: relationshipCreated
-      description: Recieve a notification when an asset relationship in Tenovos is created.
+      summary: User Updated
+      operationId: userUpdated
+      description: Recieve a notification when a user account in Tenovos is updated.
       tags:
-        - Relationships
+        - Users
       requestBody:
-        description: Information about an Asset when a new relationship to it is created.
+        description: Information about a User when a user account is updated in Tenovos.
         content:
           application/json:
             schema:
-              $ref: webhooks/requests/relationships/relationship.created.yaml
+              $ref: webhooks/requests/users/user.created.yaml
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
@@ -304,35 +375,64 @@ webhooks:
               schema: 
                 type: string
               description: The Base64 encoded list of signatures (space deliminated)
-  relationshipDeleted:
-    post:
-      summary: Relationship Deleted
-      operationId: relationshipDeleted
-      description: Recieve a notification when an asset relationship in Tenovos is deleted.
-      tags:
-        - Relationships
-      requestBody:
-        description: Information about an Asset when it's relationship to another assets is deleted/removed.
-        content:
-          application/json:
-            schema:
-              $ref: webhooks/requests/relationships/relationship.deleted.yaml
-      responses:
-        '200':
-          description: Return a 200 status to Tenovos to indicate that the data was received successfully
-          headers:
-            webhook-id: 
-              schema: 
-                type: string
-              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
-            webhook-timestamp:
-              schema: 
-                type: string
-              description: Timestamp in seconds since epoch.
-            webhook-signature:
-              schema: 
-                type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+  # relationshipCreated:
+  #   post:
+  #     summary: Relationship Created
+  #     operationId: relationshipCreated
+  #     description: Recieve a notification when an asset relationship in Tenovos is created.
+  #     tags:
+  #       - Relationships
+  #     requestBody:
+  #       description: Information about an Asset when a new relationship to it is created.
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: webhooks/requests/relationships/relationship.created.yaml
+  #     responses:
+  #       '200':
+  #         description: Return a 200 status to Tenovos to indicate that the data was received successfully
+  #         headers:
+  #           webhook-id: 
+  #             schema: 
+  #               type: string
+  #             description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+  #           webhook-timestamp:
+  #             schema: 
+  #               type: string
+  #             description: Timestamp in seconds since epoch.
+  #           webhook-signature:
+  #             schema: 
+  #               type: string
+  #             description: The Base64 encoded list of signatures (space deliminated)
+  # relationshipDeleted:
+  #   post:
+  #     summary: Relationship Deleted
+  #     operationId: relationshipDeleted
+  #     description: Recieve a notification when an asset relationship in Tenovos is deleted.
+  #     tags:
+  #       - Relationships
+  #     requestBody:
+  #       description: Information about an Asset when it's relationship to another assets is deleted/removed.
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: webhooks/requests/relationships/relationship.deleted.yaml
+  #     responses:
+  #       '200':
+  #         description: Return a 200 status to Tenovos to indicate that the data was received successfully
+  #         headers:
+  #           webhook-id: 
+  #             schema: 
+  #               type: string
+  #             description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+  #           webhook-timestamp:
+  #             schema: 
+  #               type: string
+  #             description: Timestamp in seconds since epoch.
+  #           webhook-signature:
+  #             schema: 
+  #               type: string
+  #             description: The Base64 encoded list of signatures (space deliminated)
   projectCreated:
     post:
       summary: Project Created
@@ -342,6 +442,64 @@ webhooks:
         - Rights Management
       requestBody:
         description: Information about a RM Project when it is created.
+        content:
+          application/json:
+            schema:
+              $ref: webhooks/requests/projects/rm.project.created.yaml
+      responses:
+        '200':
+          description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
+  projectUpdated:
+    post:
+      summary: Project Updated
+      operationId: projectUpdated
+      description: Recieve a notification when a Rights Management Project in Tenovos is updated.
+      tags:
+        - Rights Management
+      requestBody:
+        description: Information about a RM Project when it is updated.
+        content:
+          application/json:
+            schema:
+              $ref: webhooks/requests/projects/rm.project.created.yaml
+      responses:
+        '200':
+          description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
+  projectDeleted:
+    post:
+      summary: Project Deleted
+      operationId: projectDeleted
+      description: Recieve a notification when a Rights Management Project in Tenovos is deleted.
+      tags:
+        - Rights Management
+      requestBody:
+        description: Information about a RM Project when it is deleted.
         content:
           application/json:
             schema:
@@ -391,6 +549,64 @@ webhooks:
               schema: 
                 type: string
               description: The Base64 encoded list of signatures (space deliminated)
+  entityUpdated:
+    post:
+      summary: Entity Updated
+      operationId: entityUpdated
+      description: Recieve a notification when a Rights Management entity in Tenovos is updated.
+      tags:
+        - Rights Management
+      requestBody:
+        description: Information about a RM Entity when it is updated.
+        content:
+          application/json:
+            schema:
+              $ref: webhooks/requests/entities/rm.entity.created.yaml
+      responses:
+        '200':
+          description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
+  entityDeleted:
+    post:
+      summary: Entity Deleted
+      operationId: entityDeleted
+      description: Recieve a notification when a Rights Management entity in Tenovos is deleted.
+      tags:
+        - Rights Management
+      requestBody:
+        description: Information about a RM Entity when it is deleted.
+        content:
+          application/json:
+            schema:
+              $ref: webhooks/requests/entities/rm.entity.created.yaml
+      responses:
+        '200':
+          description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
   agreementCreated:
     post:
       summary: Agreement Created
@@ -400,6 +616,64 @@ webhooks:
         - Rights Management
       requestBody:
         description: Information about a RM Agreement when it is created.
+        content:
+          application/json:
+            schema:
+              $ref: webhooks/requests/agreements/rm.agreement.created.yaml
+      responses:
+        '200':
+          description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
+  agreementUpdated:
+    post:
+      summary: Agreement Updated
+      operationId: agreementUpdated
+      description: Recieve a notification when a Rights Management agreement in Tenovos is updated.
+      tags:
+        - Rights Management
+      requestBody:
+        description: Information about a RM Agreement when it is updated.
+        content:
+          application/json:
+            schema:
+              $ref: webhooks/requests/agreements/rm.agreement.created.yaml
+      responses:
+        '200':
+          description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
+  agreementDeleted:
+    post:
+      summary: Agreement Deleted
+      operationId: agreementCDeleted
+      description: Recieve a notification when a Rights Management agreement in Tenovos is deleted.
+      tags:
+        - Rights Management
+      requestBody:
+        description: Information about a RM Agreement when it is deleted.
         content:
           application/json:
             schema:
@@ -433,6 +707,35 @@ webhooks:
           application/json:
             schema:
               $ref: webhooks/requests/storyboards/storyboard.created.yaml
+      responses:
+        '200':
+          description: Return a 200 status to Tenovos to indicate that the data was received successfully
+          headers:
+            webhook-id: 
+              schema: 
+                type: string
+              description: The unique message identifier for the webhook message. This identifier is unique across all messages, but will be the same when the same webhook is being resent (e.g. due to a previous failure).
+            webhook-timestamp:
+              schema: 
+                type: string
+              description: Timestamp in seconds since epoch.
+            webhook-signature:
+              schema: 
+                type: string
+              description: The Base64 encoded list of signatures (space deliminated)
+  storyboardUpdated:
+    post:
+      summary: Story Board Updated
+      operationId: storyboardUpdated
+      description: Recieve a notification when a Story Board in Tenovos is updated.
+      tags:
+        - Story Boards
+      requestBody:
+        description: Information about a Story Board when it is updated.
+        content:
+          application/json:
+            schema:
+              $ref: webhooks/requests/storyboards/storyboard.deleted.yaml
       responses:
         '200':
           description: Return a 200 status to Tenovos to indicate that the data was received successfully
@@ -509,8 +812,8 @@ tags:
     description: Collection related events
   - name: Users
     description: User related events
-  - name: Relationships
-    description: Relationship related events.
+  # - name: Relationships
+  #   description: Relationship related events.
   - name: Rights Management
     description: Rights Management related events.
   - name: Story Boards
