@@ -7,6 +7,8 @@
       label: Event Types
     - page: retry-schedule.md
       label: Retries and Errors
+    - page: validation.md
+      label: Validating Messages
     - group: Payload Examples
       expanded: true
       pages:
