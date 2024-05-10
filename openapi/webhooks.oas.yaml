@@ -504,23 +504,17 @@ security:
   - OAuth2: []
 tags:
   - name: Assets
-    description: |
-      ## Reference documentation for all available payload examples for Asset related events
+    description: Asset related events
   - name: Collections
-    description: |
-      ## Reference documentation for all available payload examples for Collection related events
+    description: Collection related events
   - name: Users
-    description: |
-      ## Reference documentation for all available payload examples for User related events
+    description: User related events
   - name: Relationships
-    description: |
-      ## Reference documentation for all available payload examples for Asset Relationship related events.
+    description: Relationship related events.
   - name: Rights Management
-    description: |
-      ## Reference documentation for all available payload examples for Tenovos Rights Management related events.  Only applicable to customers with entitlement to the Rights Management Add-on.
+    description: Rights Management related events.
   - name: Story Boards
-    description: |
-      ## Reference documentation for all available payload examples for Story Board related events
+    description: Story Board related events
   # - name: Versions
   #   description: |
   #     ## Reference documentation for all available payload examples for Asset Versioning related events
