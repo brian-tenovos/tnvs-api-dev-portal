@@ -4662,15 +4662,15 @@
             type: string
             description: Presigned URL to upload the Asset file
             format: url
-            example: https://contentstore3.amazonaws.com/masters/919f33e2-dc03-4627-ab7b-642a5f1d11ae/apples.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAYNV%2F20210221%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210221T023210Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIFz62IeetD0q9EPtTeRxCSZEcNMqsuGVqK9UmK&X-Amz-Signature=e03d60e8299af92664a0ea8f9be78c50c8dd28f88520b0c2b7d0073b36511ce5&X-Amz-SignedHeaders=host%3Bx-amz-meta-objectid&x-amz-meta-objectid=2c1d0732-31a7-4800-bbd7-3fb05c222549
+            example: https://contentstore3.amazonaws.com/masters/919f33e2-dc03-4627-ab7b-642a5f1d11ae/apples.jpg?...
       AssetContent:
         type: object
         properties:
           presignedURL:
             type: string
-            description: RL to download an Asset content
+            description: URL to download an Asset content
             format: url
-            example: https://contentstore.example.com/masters/055f4b24-0218-45ce-8d8f-2d39be0b676d/aerial-shot-1612461.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAYKPOCFJYXPN3EMXM%2F20210222%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210222T222207Z&X-Amz-Expires=20&X-Amz-Signature=444a0d4fd145a6c33a51494c914a878f44555c289f5ac70ee354e98bd1dd0ac&X-Amz-SignedHeaders=host
+            example: https://contentstore.example.com/masters/055f4b24-0218-45ce-8d8f-2d39be0b676d/aerial-shot-1612461.jpg?...
       AssetExposeRefRendition:
         type: object
         properties:
