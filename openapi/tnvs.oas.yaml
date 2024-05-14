@@ -4662,7 +4662,7 @@
             type: string
             description: Presigned URL to upload the Asset file
             format: url
-            example: https://contentstore3.amazonaws.com/masters/919f33e2-dc03-4627-ab7b-642a5f1d11ae/apples.jpg?...
+            example: https://contentstore3.com/masters/919f33e2-dc03-4627-ab7b-642a5f1d11ae/apples.jpg?...
       AssetContent:
         type: object
         properties:
@@ -4720,7 +4720,7 @@
             example: 3000
           url:
             type: string
-            example: https://contentstore.s3.amazonaws.com/1566292944864/67f23946-24d9-455d-9029-fe3012904564/4c3e98f2-03d9-41b4-8970-63a1528bb33d-200x200.jpg?...
+            example: https://contentstore.com/1566292944864/67f23946-24d9-455d-9029-fe3012904564/4c3e98f2-03d9-41b4-8970-63a1528bb33d-200x200.jpg?...
       AssetExposeObjectResponse:
         type: object
         properties:
@@ -4735,7 +4735,7 @@
             example: 3000
           url:
             type: string
-            example: https://contentstore.s3.amazonaws.com/masters/67f23946-24d9-455d-9029-fe3012903454/Example%20Document%20PowerPoint%20Presentation.ppt?...
+            example: https://contentstore.com/masters/67f23946-24d9-455d-9029-fe3012903454/Example%20Document%20PowerPoint%20Presentation.ppt?...
       AssetDeleteRequest:
         type: object
         properties:
@@ -6942,7 +6942,7 @@
           objectId: e55bdb0c-022b-475d-9e26-9d74552e1e81
           fileId: ecc0d79a-e5cc-41aa-852d-1d9e0da62739
           originalFileId: ecc0d79a-e5cc-41aa-852d-1d9e0da62739
-          url: https://contentstore3.amazonaws.com/masters/919f33e2-dc03-4627-ab7b-642a5f1d11ae/apples.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAYNV%2F20210221%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210221T023210Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIFz62IeetD0q9EPtTeRxCSZEcNMqsuGVqK9UmK&X-Amz-Signature=e03d60e8299af92664a0ea8f9be78c50c8dd28f88520b0c2b7d0073b36511ce5&X-Amz-SignedHeaders=host%3Bx-amz-meta-objectid&x-amz-meta-objectid=2c1d0732-31a7-4800-bbd7-3fb05c222549
+          url: https://contentstore3.com/masters/919f33e2-dc03-4627-ab7b-642a5f1d11ae/apples.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAYNV%2F20210221%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210221T023210Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIFz62IeetD0q9EPtTeRxCSZEcNMqsuGVqK9UmK&X-Amz-Signature=e03d60e8299af92664a0ea8f9be78c50c8dd28f88520b0c2b7d0073b36511ce5&X-Amz-SignedHeaders=host%3Bx-amz-meta-objectid&x-amz-meta-objectid=2c1d0732-31a7-4800-bbd7-3fb05c222549
       MultipartUploadResponse:
         value:
           filename: apples.jpg
@@ -6952,9 +6952,9 @@
           uploadId: gR5XHJZpuDv8UizdpSGuwONje0GbMHnCWXS5zTTVkyVINURV6iraWLhpM7Sy7oy65utAgPcm2FfM4fRp4oVga4ggEzD811aS1tke_F0iIIXX1kV7m6UouytsNE0oL8fzo2Zr2JCqwRyhFTXp98zjdQ
           urls:
           - partNumber: 1
-            url: https://contentstore3.amazonaws.com/masters/919f33e2-dc03-4627-ab7b-642a5f1d11ae/apples.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAYNV%2F20210221%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210221T023210Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIFz62IeetD0q9EPtTeRxCSZEcNMqsuGVqK9UmK&X-Amz-Signature=e03d60e8299af92664a0ea8f9be78c50c8dd28f88520b0c2b7d0073b36511ce5&X-Amz-SignedHeaders=host%3Bx-amz-meta-objectid&x-amz-meta-objectid=2c1d0732-31a7-4800-bbd7-3fb05c222549
+            url: https://contentstore3.com/masters/919f33e2-dc03-4627-ab7b-642a5f1d11ae/apples.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAYNV%2F20210221%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210221T023210Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIFz62IeetD0q9EPtTeRxCSZEcNMqsuGVqK9UmK&X-Amz-Signature=e03d60e8299af92664a0ea8f9be78c50c8dd28f88520b0c2b7d0073b36511ce5&X-Amz-SignedHeaders=host%3Bx-amz-meta-objectid&x-amz-meta-objectid=2c1d0732-31a7-4800-bbd7-3fb05c222549
           - partNumber: 2
-            url: https://contentstore3.amazonaws.com/masters/919f33e2-dc03-4627-ab7b-642a5f1d11ae/apples.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAYNV%2F20210221%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210221T023210Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIFz62IeetD0q9EPtTeRxCSZEcNMqsuGVqK9UmK&X-Amz-Signature=e03d60e8299af92664a0ea8f9be78c50c8dd28f88520b0c2b7d0073b36511ce5&X-Amz-SignedHeaders=host%3Bx-amz-meta-objectid&x-amz-meta-objectid=2c1d0732-31a7-4800-bbd7-3fb05c222549
+            url: https://contentstore3.com/masters/919f33e2-dc03-4627-ab7b-642a5f1d11ae/apples.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAYNV%2F20210221%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210221T023210Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIFz62IeetD0q9EPtTeRxCSZEcNMqsuGVqK9UmK&X-Amz-Signature=e03d60e8299af92664a0ea8f9be78c50c8dd28f88520b0c2b7d0073b36511ce5&X-Amz-SignedHeaders=host%3Bx-amz-meta-objectid&x-amz-meta-objectid=2c1d0732-31a7-4800-bbd7-3fb05c222549
       FederatedAssetCreateResponse:
         value:
           filename: apples.jpg
