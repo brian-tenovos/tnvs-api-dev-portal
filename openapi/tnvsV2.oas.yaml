@@ -1617,12 +1617,8 @@ paths:
             schema:
               $ref: v2/requests/webhook.yaml
       responses: 
-        '200':
+        '204':
           description: "Successful Request. Endpoint Updated Successfully."
-          content:
-            application/json:
-              schema: 
-                $ref: v2/responses/webhooks.yaml
         '400':
           $ref: v2/schemas/400.yaml
         '401':
@@ -1644,6 +1640,54 @@ paths:
         - $ref: v2/parameters/content-type.yaml
         - $ref: v2/parameters/authorization.yaml
       responses: 
+        '204':
+          description: "Successful Request. Webhook Subscription Deleted Successfully."
+        '400':
+          $ref: v2/schemas/400.yaml
+        '401':
+          $ref: v2/schemas/401.yaml
+        '403':
+          $ref: v2/schemas/403.yaml
+        '503':
+          $ref: v2/schemas/503.yaml
+  /webhooks/endpoint/oauth/{endpointId}:
+    put:
+      operationId: CreateOauth
+      tags:
+        - WEBHOOKS
+      summary: Add OAuth
+      security: 
+        -  OAuth2: [admin]
+      description: Add an authorized OAuth client to an existing endpoint.
+      parameters: 
+        - $ref: v2/parameters/endpointId.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: v2/requests/webhook-oauthCreate.yaml
+      responses:
+        '204':
+          description: "Successful Request. OAuth Added Successfully."
+        '400':
+          $ref: v2/schemas/400.yaml
+        '401':
+          $ref: v2/schemas/401.yaml
+        '403':
+          $ref: v2/schemas/403.yaml
+        '503':
+          $ref: v2/schemas/503.yaml
+    delete:
+      operationId: DeleteOauth
+      tags:
+        - WEBHOOKS
+      summary: Remove OAuth
+      security: 
+        -  OAuth2: [admin]
+      description: Remove an authorized OAuth client from an existing endpoint.
+      parameters: 
+        - $ref: v2/parameters/endpointId.yaml
+      responses:
         '204':
           description: "Successful Request. Webhook Subscription Deleted Successfully."
         '400':

@@ -1,0 +1,29 @@
+type: object
+properties:
+  clientId:
+    type: string
+    required: 
+      -  clientId
+    description: Customer generated clientId from OAuth server/provider
+    example: "FbhKdCwuiItoSSRJpKXc6cjhpJFVy7JbB"
+  clientSecret:
+    type: string
+    required: 
+      -  clientSecret
+    description: Customer generated client secret from OAuth server/provider
+    example: "ZtjtpXP7p5SdUwNYu1JT9xfQobecM0i5UGOu_F5BU6DdAOPFLZDz7r0xObogttPG"
+  tokenUrl:
+    type: string
+    format: url
+    required: 
+      -  tokenUrl
+    description: Customer provided https url for obtaining access tokens from the customers OAuth server/provider
+    example: "https://yourdomain.provider/oauth/token"
+  extraParams:
+    type: object
+    description: Optional collection of key value pair parameters which may be required depending on OAuth provider.
+    example: {"audience": "https://api.tenovos.io/v1"}
+  scope:
+    type: array
+    description: Optional array of strings for included scopes if configured by the customer on their OAuth server/provider for the generated client
+    example: ["Assets, Users"]

@@ -26,21 +26,21 @@ sequenceDiagram
     Customer->>Tenovos: Create Webhook Subscription (API or Admin UI)
     Tenovos->>Customer: Return ID of the subscription (endpoint specific)
     Customer->>Tenovos: Send PUT Request to add authentication to the specified endpoint ID
-    Tenovos->>Customer: 200 Response for success, or HTTP Error Status Code
+    Tenovos->>Customer: 204 Response for success, or HTTP Error Status Code
 ```
 
 ### How to provide OAuth Client Credentials to Tenovos
 
 After completion of the prerequisites and creation of the subscription endpoint (via API or Admin UI), when generating the PUT request to add OAuth authentication, the JSON body of the PUT will look like the example below.
 
-- clientId:  This is the ID generated from your OAuth provider that you will add to Tenovos
-- tokenUrl:  This is the url of your OAuth provider that Tenovos will pass the clientId and clientSecret to in order to obtain and access token
-- clientSecret: This is the secret generated from your OAuth provider that Tenovos will use for Authenticating
-- extraParams: This is an optional object field that can be used to provide audience and other parameters that your OAuth provider may require
-- scope: Many OAuth providers require scope.  Scope is configured on your OAuth provider at the time of creating the client.  
+- `clientId`:  This is the ID generated from your OAuth provider that you will add to Tenovos
+- `tokenUrl`:  This is the url of your OAuth provider that Tenovos will pass the clientId and clientSecret to in order to obtain and access token
+- `clientSecret`: This is the secret generated from your OAuth provider that Tenovos will use for Authenticating
+- `extraParams`: This is an optional object field that can be used to provide audience and other parameters that your OAuth provider may require
+- `scope`: Many OAuth providers require scope.  Scope is configured on your OAuth provider at the time of creating the client.  
 
 ```
-PUT: https://enterprise.services.tenovos.io/content-store-v1/webhooks/endpoint/oauth/{webhookId}
+PUT: https://enterprise.services.tenovos.io/content-store-v1/webhooks/endpoint/oauth/{endpointId}
 
 ```
 

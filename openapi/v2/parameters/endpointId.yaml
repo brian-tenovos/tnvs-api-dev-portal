@@ -1,0 +1,8 @@
+name: "endpointId"
+in: "path"
+required: false
+description: The Id of the endpoint configured for subscription to specified events.
+schema: 
+  type: "string"
+  x-nullable: false
+  example: ep_2gEymWwsWu5H5EpwbwoOwBnRQBi
