@@ -11,25 +11,22 @@ For example, you may only want to subscribe to one event(asset.created), or mult
 
 ```mermaid
 sequenceDiagram
-    participant Tenovos
     participant Customer
+    participant Tenovos
     Customer->>Tenovos: Create Webhook Subscription
-    Tenovos-->>Customer: Return ID of the subscription (endpoint specific)
+    Tenovos->>Customer: Return ID of the subscription (endpoint specific)
     Customer->>Tenovos: PUT Request to add authentication to the specified endpoint ID
-    Tenovos->>Cusotmer: Send Webhook Request
-    Customer->>Tenovos: Response (200)
+    Tenovos->>Customer: 200 Response for success, or HTTP Error Status Code
 ```
 
 
 
 ```json
 {
-    "grantType": "client_credentials",
-    "clientId":  "nbhKdCwuiIotssPjKXc6cjhpJFVy7JbF",
+    "clientId":  "FbhKdCwuiItoIssJpKXc6cjhpJFVy7JbB",
     "tokenUrl": "https://auth.tenovos.io/oauth/token",
-    "authMethod": "clientSecretBasic",
-    "clientSecret":"ZtjtpXP7p5SdUwNYu1JT9xfQobecM0i5UGOu_F5BU6DdAOPFLZDz7r0xObogttPG",
-    "extraParams": {"audience": "http://your.auth.server...."},
+    "clientSecret":"458Gfd7p5SdUwNYu1JT9xfQobecM0i5UGOp_F5BU6DdAOPFLZDz7r0xObfdf67Ki3",
+    "extraParams": {"audience": "http://yourdomain.tenovos.io"},
     "scope": [""]
 }
 ``````
@@ -39,10 +36,10 @@ sequenceDiagram
 sequenceDiagram
     participant Tenovos
     participant Customer
-    Tenovos->>Cusotmer: Authenticate with Application Credentials
+    Tenovos->>Customer: Authenticate with Application Credentials
     Customer-->>Customer: Validate Credentials
     Customer->>Tenovos: Access Token
-    Tenovos->>Cusotmer: Send Webhook Request
+    Tenovos-->>Customer: Send Webhook Request
     Customer->>Tenovos: Response (200)
 ```
 
