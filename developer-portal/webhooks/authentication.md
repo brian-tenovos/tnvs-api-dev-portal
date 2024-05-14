@@ -41,6 +41,7 @@ After completion of the prerequisites and creation of the subscription endpoint 
 
 ```
 PUT: /webhooks/endpoint/oauth/{webhookId}
+
 ```
 
 ```json
@@ -51,6 +52,20 @@ PUT: /webhooks/endpoint/oauth/{webhookId}
     "extraParams": {"audience": "http://yourdomain.tenovos.io"},
     "scope": [""]
 }
-``````
----
+
+```
+
+
+## Basic OAuth Flow Example
+
+```mermaid
+sequenceDiagram
+    participant Tenovos
+    participant Customer
+    Tenovos->>Customer: Authenticate with Application Credentials
+    Customer-->>Customer: Validate Credentials
+    Customer->>Tenovos: Access Token
+    Tenovos-->>Customer: Send Webhook Request
+    Customer->>Tenovos: Response (200)
+```
 
