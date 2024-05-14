@@ -40,7 +40,7 @@ After completion of the prerequisites and creation of the subscription endpoint 
 - scope: Many OAuth providers require scope.  Scope is configured on your OAuth provider at the time of creating the client.  
 
 ```
-PUT: /webhooks/endpoint/oauth/{webhookId}
+PUT: https://enterprise.services.tenovos.io/content-store-v1/webhooks/endpoint/oauth/{webhookId}
 
 ```
 

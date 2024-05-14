@@ -9,8 +9,8 @@
       label: Validating Signatures
     - page: retry-schedule.md
       label: Retries and Errors
-    - page: developer-portal/webhooks/authentication.md
-      label: Authentication
+    # - page: developer-portal/webhooks/authentication.md
+    #   label: Authentication
     - group: Payload Examples
       expanded: true
       pages:

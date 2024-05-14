@@ -39,8 +39,6 @@ intro:
             label: Overview
           - page: developer-portal/webhooks/event-types.md
             label: Event Types
-          - page: developer-portal/webhooks/validation.md
-            label: Validating Signatures
           - page: developer-portal/webhooks/authentication.md
             label: Authentication
           - page: developer-portal/webhooks/retry-schedule.md
