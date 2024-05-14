@@ -16,7 +16,7 @@ Regardless of authentication type used, Tenovos signs each message, and validati
 
 Tenovos supports autenticating Webhook requests using OAuth 2.0 `clientCredentials` grant type.  Tenovos requires a valid `clientId`, which is required for all authenication types.
 
-Customers will need to provide the URL of their authorization server.  This is the URL from which Tenovos will get authorization tokens from the authenitcation service.
+Customers will need to provide the URL of their authorization server.  This is the URL from which Tenovos will get access tokens from the authenitcation server.
 
 ## Using clientSecretBasic
 
