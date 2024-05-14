@@ -40,7 +40,7 @@ intro:
           - page: developer-portal/webhooks/event-types.md
             label: Event Types
           - page: developer-portal/webhooks/authentication.md
-            label: Authenitcation
+            label: Authentication
           - page: developer-portal/webhooks/retry-schedule.md
             label: Retries and Error Handling
           - group: Payload Reference
