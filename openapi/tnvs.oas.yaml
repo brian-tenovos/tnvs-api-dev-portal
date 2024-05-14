@@ -4720,7 +4720,7 @@
             example: 3000
           url:
             type: string
-            example: https://contentstore.com/1566292944864/67f23946-24d9-455d-9029-fe3012904564/4c3e98f2-03d9-41b4-8970-63a1528bb33d-200x200.jpg?...
+            example: https://example.com/4c3e98f2-03d9-41b4-8970-63a1528bb33d-200x200.jpg?...
       AssetExposeObjectResponse:
         type: object
         properties:
@@ -4735,7 +4735,7 @@
             example: 3000
           url:
             type: string
-            example: https://contentstore.com/masters/67f23946-24d9-455d-9029-fe3012903454/Example%20Document%20PowerPoint%20Presentation.ppt?...
+            example: https://example.com/masters/Example%20Document%20PowerPoint%20Presentation.ppt?...
       AssetDeleteRequest:
         type: object
         properties:
