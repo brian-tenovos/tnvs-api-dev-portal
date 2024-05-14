@@ -50,7 +50,7 @@ This method may not be supported by all OAuth providers, and in general `clientS
 
 ``````
 
-sequenceDiagram
+```mermaid
     participant Tenovos
     participant Customer
     Tenovos->>Cusotmer: Authenticate with Application Credentials
@@ -58,5 +58,5 @@ sequenceDiagram
     Customer->>Tenovos: Access Token
     Tenovos->>Cusotmer: Send Webhook Request
     Customer->>Tenovos: Response (200)
-
+```
 
