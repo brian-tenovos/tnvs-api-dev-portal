@@ -4720,7 +4720,7 @@
             example: 3000
           url:
             type: string
-            example: https://contentstore.s3.amazonaws.com/1566292944864/67f23946-24d9-455d-9029-fe3012904564/4c3e98f2-03d9-41b4-8970-63a1528bb33d-200x200.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA2HGSK63JE6U37KZD%2F20210222%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210222T221841Z&X-Amz-Expires=300&X-Amz-Signature=a078326023b77caff6e3c589d5572506edcc999a81e97c09766d096493e9c515&X-Amz-SignedHeaders=host
+            example: https://contentstore.s3.amazonaws.com/1566292944864/67f23946-24d9-455d-9029-fe3012904564/4c3e98f2-03d9-41b4-8970-63a1528bb33d-200x200.jpg?...
       AssetExposeObjectResponse:
         type: object
         properties:
@@ -4735,7 +4735,7 @@
             example: 3000
           url:
             type: string
-            example: https://contentstore.s3.amazonaws.com/masters/67f23946-24d9-455d-9029-fe3012903454/Example%20Document%20PowerPoint%20Presentation.ppt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA2HGSK63JE6U37KZD%2F20210222%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210222T221842Z&X-Amz-Expires=300&X-Amz-Signature=abf7fffbd63215614a0f566ff1f31d36d102d5726e56ab916812bf5678f756b0&X-Amz-SignedHeaders=host
+            example: https://contentstore.s3.amazonaws.com/masters/67f23946-24d9-455d-9029-fe3012903454/Example%20Document%20PowerPoint%20Presentation.ppt?...
       AssetDeleteRequest:
         type: object
         properties:
