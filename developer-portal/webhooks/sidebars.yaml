@@ -5,10 +5,12 @@
   pages:
     - page: event-types.md
       label: Event Types
+    - page: validation.md
+      label: Validating Signatures
     - page: retry-schedule.md
       label: Retries and Errors
-    - page: validation.md
-      label: Validating Messages
+    - page: developer-portal/webhooks/authentication.md
+      label: Authentication
     - group: Payload Examples
       expanded: true
       pages:
