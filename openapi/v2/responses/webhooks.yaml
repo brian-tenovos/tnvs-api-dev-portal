@@ -4,41 +4,41 @@ properties:
     type: string
     format: uuid
     x-nullable: false
-    description: Identifer of the event
-  description:
-    type: string
-    x-nullable: false
-    required: 
-      -  description
-    description: You must provide a description for the subscription.
-    minLength: 5
-    maxLength: 100
-    example: Notify System X for All Assets Created
-  disabled: 
-    type: boolean
-    example: false
-    description: Indicates whether or not the endpoint subscription is disabled or not
-  url:
-    type: string
-    x-nullable: false
-    required: 
-      - url
-    format: url
-    description: A webhook target is usually an open and public url that listens for webhook notification messages.  Tenovos signs every webhook message to ensure the security and authenticity of all webhooks being sent.  In addition, Tenovos supports HTTP Basic Authentication and using an authentication token in headers.  Choose one of these authentication methods as part of your target payload.
-    example: 'https://yourendpoint.com'
-  eventTypes: 
-    type: array
-    x-nullable: false
-    required:
-      - event
-    description: One of the available [event types](https://api.tenovos.com/developer-portal/webhooks/event-types/) listed
-    example: [ 
-      "asset.created",
-      "asset.updated",
-      "asset.downloaded",
-      "asset.deleted"
-    ]
-  rateLimit: 
-    type: integer
-    x-nullable: false 
-    example: 200
+    description: Identifier of the event
+  # description:
+  #   type: string
+  #   x-nullable: false
+  #   required: 
+  #     -  description
+  #   description: You must provide a description for the subscription.
+  #   minLength: 5
+  #   maxLength: 100
+  #   example: Notify System X for All Assets Created
+  # disabled: 
+  #   type: boolean
+  #   example: false
+  #   description: Indicates whether or not the endpoint subscription is disabled or not
+  # url:
+  #   type: string
+  #   x-nullable: false
+  #   required: 
+  #     - url
+  #   format: url
+  #   description: A webhook target is usually an open and public url that listens for webhook notification messages.  Tenovos signs every webhook message to ensure the security and authenticity of all webhooks being sent.  In addition, Tenovos supports HTTP Basic Authentication and using an authentication token in headers.  Choose one of these authentication methods as part of your target payload.
+  #   example: 'https://yourendpoint.com'
+  # eventTypes: 
+  #   type: array
+  #   x-nullable: false
+  #   required:
+  #     - event
+  #   description: One of the available [event types](https://api.tenovos.com/developer-portal/webhooks/event-types/) listed
+  #   example: [ 
+  #     "asset.created",
+  #     "asset.updated",
+  #     "asset.downloaded",
+  #     "asset.deleted"
+  #   ]
+  # rateLimit: 
+  #   type: integer
+  #   x-nullable: false 
+  #   example: 200

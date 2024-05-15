@@ -1,7 +1,7 @@
 name: "endpointId"
 in: "path"
 required: false
-description: The Id of the endpoint configured for subscription to specified events.
+description: The Id of the endpoint configured for subscription to specified events.  Required only for DELETE operations.
 schema: 
   type: "string"
   x-nullable: false
