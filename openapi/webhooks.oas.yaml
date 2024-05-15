@@ -7,10 +7,10 @@ info:
 
     What is a webhook?  A webhook is an HTTP request, triggered by an event in a source system (Tenovos) and sent to a destination system.
 
-    The destination system is managed by the reciever (customer) of the webhook, or for faster and easier implementation, Tenovos Connect can 
-    automatically generate endpoints for recieving webhooks from Tenovos, or any other system.
+    The destination system is managed by the receiver (customer) of the webhook, or for faster and easier implementation, Tenovos Connect can 
+    automatically generate endpoints for receiving webhooks from Tenovos, or any other system.
 
-    Webhooks are automated, in other words they are automatically sent out when their coresponding event occurs in Tenovos.  These events occur whether 
+    Webhooks are automated, in other words they are automatically sent out when their corresponding event occurs in Tenovos.  These events occur whether 
     you are using the Tenovos UI, or your own custom UI on top of the Tenovos platform.
 
   termsOfService: https://tenovos.com/terms-of-service
@@ -24,7 +24,7 @@ webhooks:
     post:
       summary: Asset Created
       operationId: assetCreated
-      description: Recieve a notification when an Asset in Tenovos is created.
+      description: Receive a notification when an Asset in Tenovos is created.
       tags:
         - Assets
       requestBody:
@@ -48,13 +48,13 @@ webhooks:
             webhook-signature:
               schema: 
                 type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+              description: The Base64 encoded list of signatures (space delimitated)
 
   assetDeleted:
     post:
       summary: Asset Deleted
       operationId: assetDeleted
-      description: Recieve a notification when an Asset in Tenovos is deleted.
+      description: Receive a notification when an Asset in Tenovos is deleted.
       tags:
         - Assets
       requestBody:
@@ -78,12 +78,12 @@ webhooks:
             webhook-signature:
               schema: 
                 type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+              description: The Base64 encoded list of signatures (space delimitated)
   # assetDownloaded:
   #   post:
   #     summary: Asset Downloaded
   #     operationId: assetDownloaded
-  #     description: Recieve a notification when an Asset in Tenovos is downloaded.
+  #     description: Receive a notification when an Asset in Tenovos is downloaded.
   #     tags:
   #       - Assets
   #     requestBody:
@@ -99,7 +99,7 @@ webhooks:
     post:
       summary: Asset Purged
       operationId: assetPurged
-      description: Recieve a notification when an Asset in Tenovos is purged from the Recycle Bin.
+      description: Receive a notification when an Asset in Tenovos is purged from the Recycle Bin.
       tags:
         - Assets
       requestBody:
@@ -123,12 +123,12 @@ webhooks:
             webhook-signature:
               schema: 
                 type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+              description: The Base64 encoded list of signatures (space delimitated)
   # assetRenditionCreated:
   #   post:
   #     summary: Renditions Created
   #     operationId: assetRenditionsCreated
-  #     description: Recieve a notification when system generated renditions for an Asset in Tenovos have completed processing.
+  #     description: Receive a notification when system generated renditions for an Asset in Tenovos have completed processing.
   #     tags:
   #       - Assets
   #     requestBody:
@@ -202,7 +202,7 @@ webhooks:
     post:
       summary: Metadata Updated
       operationId: assetMetadataUpdated
-      description: Recieve a notification when the Metadata applied to an Asset in Tenovos is updated.
+      description: Receive a notification when the Metadata applied to an Asset in Tenovos is updated.
       tags:
         - Assets
       requestBody:
@@ -226,12 +226,12 @@ webhooks:
             webhook-signature:
               schema: 
                 type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+              description: The Base64 encoded list of signatures (space delimitated)
   collectionCreated:
     post:
       summary: Collection Created
       operationId: collectionCreated
-      description: Recieve a notification when an Collection in Tenovos is created.
+      description: Receive a notification when an Collection in Tenovos is created.
       tags:
         - Collections
       requestBody:
@@ -255,12 +255,12 @@ webhooks:
             webhook-signature:
               schema: 
                 type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+              description: The Base64 encoded list of signatures (space delimitated)
   collectionUpdated:
     post:
       summary: Collection Updated
       operationId: collectionUpdated
-      description: Recieve a notification when an asset is added to or removed from a Collection.
+      description: Receive a notification when an asset is added to or removed from a Collection.
       tags:
         - Collections
       requestBody:
@@ -284,12 +284,12 @@ webhooks:
             webhook-signature:
               schema: 
                 type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+              description: The Base64 encoded list of signatures (space delimitated)
   # collectionDeleted:
   #   post:
   #     summary: Collection Deleted
   #     operationId: collectionDeleted
-  #     description: Recieve a notification when a Collection in Tenovos is deleted.
+  #     description: Receive a notification when a Collection in Tenovos is deleted.
   #     tags:
   #       - Collections
   #     requestBody:
@@ -305,7 +305,7 @@ webhooks:
   #   post:
   #     summary: Collection Downloaded
   #     operationId: collectionDownloaded
-  #     description: Recieve a notification when an Collection in Tenovos is downloaded.
+  #     description: Receive a notification when an Collection in Tenovos is downloaded.
   #     tags:
   #       - Collections
   #     requestBody:
@@ -321,7 +321,7 @@ webhooks:
     post:
       summary: User Created
       operationId: userCreated
-      description: Recieve a notification when a user account in Tenovos is created.
+      description: Receive a notification when a user account in Tenovos is created.
       tags:
         - Users
       requestBody:
@@ -345,12 +345,12 @@ webhooks:
             webhook-signature:
               schema: 
                 type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+              description: The Base64 encoded list of signatures (space delimitated)
   userUpdated:
     post:
       summary: User Updated
       operationId: userUpdated
-      description: Recieve a notification when a user account in Tenovos is updated.
+      description: Receive a notification when a user account in Tenovos is updated.
       tags:
         - Users
       requestBody:
@@ -374,12 +374,12 @@ webhooks:
             webhook-signature:
               schema: 
                 type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+              description: The Base64 encoded list of signatures (space delimitated)
   # relationshipCreated:
   #   post:
   #     summary: Relationship Created
   #     operationId: relationshipCreated
-  #     description: Recieve a notification when an asset relationship in Tenovos is created.
+  #     description: Receive a notification when an asset relationship in Tenovos is created.
   #     tags:
   #       - Relationships
   #     requestBody:
@@ -403,12 +403,12 @@ webhooks:
   #           webhook-signature:
   #             schema: 
   #               type: string
-  #             description: The Base64 encoded list of signatures (space deliminated)
+  #             description: The Base64 encoded list of signatures (space delimitated)
   # relationshipDeleted:
   #   post:
   #     summary: Relationship Deleted
   #     operationId: relationshipDeleted
-  #     description: Recieve a notification when an asset relationship in Tenovos is deleted.
+  #     description: Receive a notification when an asset relationship in Tenovos is deleted.
   #     tags:
   #       - Relationships
   #     requestBody:
@@ -432,12 +432,12 @@ webhooks:
   #           webhook-signature:
   #             schema: 
   #               type: string
-  #             description: The Base64 encoded list of signatures (space deliminated)
+  #             description: The Base64 encoded list of signatures (space delimitated)
   projectCreated:
     post:
       summary: Project Created
       operationId: projectCreated
-      description: Recieve a notification when a Rights Management project in Tenovos is created.
+      description: Receive a notification when a Rights Management project in Tenovos is created.
       tags:
         - Rights Management
       requestBody:
@@ -461,12 +461,12 @@ webhooks:
             webhook-signature:
               schema: 
                 type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+              description: The Base64 encoded list of signatures (space delimitated)
   projectUpdated:
     post:
       summary: Project Updated
       operationId: projectUpdated
-      description: Recieve a notification when a Rights Management Project in Tenovos is updated.
+      description: Receive a notification when a Rights Management Project in Tenovos is updated.
       tags:
         - Rights Management
       requestBody:
@@ -490,12 +490,12 @@ webhooks:
             webhook-signature:
               schema: 
                 type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+              description: The Base64 encoded list of signatures (space delimitated)
   projectDeleted:
     post:
       summary: Project Deleted
       operationId: projectDeleted
-      description: Recieve a notification when a Rights Management Project in Tenovos is deleted.
+      description: Receive a notification when a Rights Management Project in Tenovos is deleted.
       tags:
         - Rights Management
       requestBody:
@@ -519,12 +519,12 @@ webhooks:
             webhook-signature:
               schema: 
                 type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+              description: The Base64 encoded list of signatures (space delimitated)
   entityCreated:
     post:
       summary: Entity Created
       operationId: entityCreated
-      description: Recieve a notification when a Rights Management entity in Tenovos is created.
+      description: Receive a notification when a Rights Management entity in Tenovos is created.
       tags:
         - Rights Management
       requestBody:
@@ -548,12 +548,12 @@ webhooks:
             webhook-signature:
               schema: 
                 type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+              description: The Base64 encoded list of signatures (space delimitated)
   entityUpdated:
     post:
       summary: Entity Updated
       operationId: entityUpdated
-      description: Recieve a notification when a Rights Management entity in Tenovos is updated.
+      description: Receive a notification when a Rights Management entity in Tenovos is updated.
       tags:
         - Rights Management
       requestBody:
@@ -577,12 +577,12 @@ webhooks:
             webhook-signature:
               schema: 
                 type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+              description: The Base64 encoded list of signatures (space delimitated)
   entityDeleted:
     post:
       summary: Entity Deleted
       operationId: entityDeleted
-      description: Recieve a notification when a Rights Management entity in Tenovos is deleted.
+      description: Receive a notification when a Rights Management entity in Tenovos is deleted.
       tags:
         - Rights Management
       requestBody:
@@ -606,12 +606,12 @@ webhooks:
             webhook-signature:
               schema: 
                 type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+              description: The Base64 encoded list of signatures (space delimitated)
   agreementCreated:
     post:
       summary: Agreement Created
       operationId: agreementCreated
-      description: Recieve a notification when a Rights Management agreement in Tenovos is created.
+      description: Receive a notification when a Rights Management agreement in Tenovos is created.
       tags:
         - Rights Management
       requestBody:
@@ -635,12 +635,12 @@ webhooks:
             webhook-signature:
               schema: 
                 type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+              description: The Base64 encoded list of signatures (space delimitated)
   agreementUpdated:
     post:
       summary: Agreement Updated
       operationId: agreementUpdated
-      description: Recieve a notification when a Rights Management agreement in Tenovos is updated.
+      description: Receive a notification when a Rights Management agreement in Tenovos is updated.
       tags:
         - Rights Management
       requestBody:
@@ -664,12 +664,12 @@ webhooks:
             webhook-signature:
               schema: 
                 type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+              description: The Base64 encoded list of signatures (space delimitated)
   agreementDeleted:
     post:
       summary: Agreement Deleted
       operationId: agreementCDeleted
-      description: Recieve a notification when a Rights Management agreement in Tenovos is deleted.
+      description: Receive a notification when a Rights Management agreement in Tenovos is deleted.
       tags:
         - Rights Management
       requestBody:
@@ -693,12 +693,12 @@ webhooks:
             webhook-signature:
               schema: 
                 type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+              description: The Base64 encoded list of signatures (space delimitated)
   storyboardCreated:
     post:
       summary: Story Board Created
       operationId: storyboardCreated
-      description: Recieve a notification when a Story Board in Tenovos is created.
+      description: Receive a notification when a Story Board in Tenovos is created.
       tags:
         - Story Boards
       requestBody:
@@ -722,12 +722,12 @@ webhooks:
             webhook-signature:
               schema: 
                 type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+              description: The Base64 encoded list of signatures (space delimitated)
   storyboardUpdated:
     post:
       summary: Story Board Updated
       operationId: storyboardUpdated
-      description: Recieve a notification when a Story Board in Tenovos is updated.
+      description: Receive a notification when a Story Board in Tenovos is updated.
       tags:
         - Story Boards
       requestBody:
@@ -751,12 +751,12 @@ webhooks:
             webhook-signature:
               schema: 
                 type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+              description: The Base64 encoded list of signatures (space delimitated)
   storyboardDeleted:
     post:
       summary: Story Board Deleted
       operationId: storyboardDeleted
-      description: Recieve a notification when a Story Board in Tenovos is deleted.
+      description: Receive a notification when a Story Board in Tenovos is deleted.
       tags:
         - Story Boards
       requestBody:
@@ -780,12 +780,12 @@ webhooks:
             webhook-signature:
               schema: 
                 type: string
-              description: The Base64 encoded list of signatures (space deliminated)
+              description: The Base64 encoded list of signatures (space delimitated)
   # versionCreated:
   #   post:
   #     summary: Version Created
   #     operationId: versionCreated
-  #     description: Recieve a notification when an Asset in Tenovos is versioned.
+  #     description: Receive a notification when an Asset in Tenovos is versioned.
   #     tags:
   #       - Versions
   #     requestBody:
