@@ -1590,7 +1590,7 @@ paths:
           content:
             application/json:
               schema: 
-                $ref: v2/responses/webhooks.yaml
+                $ref: v2/responses/endpoint.yaml
         '400':
           $ref: v2/schemas/400.yaml
         '401':
