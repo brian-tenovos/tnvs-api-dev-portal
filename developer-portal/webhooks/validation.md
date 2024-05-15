@@ -12,7 +12,7 @@ Each webhook call includes three headers with additional information that are us
 The content to sign is composed by concatenating the id, timestamp and payload, seperated by the full-stop character `(.)`.  In code, it would look something like:
 
 ```js
-signedContent = "${svix_id}.${svix_timestamp}.${body}"
+signedContent = "${webhook_id}.${webhook_timestamp}.${body}"
 ```
 
 Where `body` is the raw body of the request.  The signature is sensitive to any changes, so even a small change in the body will cause the signature to be completly different.  This means that you should *not* change the body in any way before verifying.
