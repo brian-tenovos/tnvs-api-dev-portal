@@ -3,7 +3,7 @@ properties:
   eventType:
     type: string
     description: Combination of the Topic and the Event
-    example: asset.created
+    example: asset.metadata.updated
   event:
     $ref: ../../schemas/event.yaml
   asset:
