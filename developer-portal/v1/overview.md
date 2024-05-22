@@ -34,12 +34,12 @@ If you get some errors on POST or PUT requests, please use this [JSON Validator]
 
 Follow the training exercises sequentially, or cherry-pick them independently if you're limited on time.
 
-- [Getting Started with Authentication and Helper Utilities](training/authenticating.md)
-- [Search for Assets](training/search.md)
-- [Create Asset Relationships](training/relationships.md)
-- [Create Relationships in Bulk](training/bulk-relationships.md)
-- [Uploading Large Assets](training/large-upload.md)
-- [Creating Collections](training/collections.md)
+- [Getting Started with Authentication and Helper Utilities](../training/authenticating.md)
+- [Search for Assets](../training/search.md)
+- [Create Asset Relationships](../training/relationships.md)
+- [Create Relationships in Bulk](../training/bulk-relationships.md)
+- [Uploading Large Assets](../training/large-upload.md)
+- [Creating Collections](../training/collections.md)
 
 ## Asking for help
 
