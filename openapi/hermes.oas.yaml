@@ -1535,7 +1535,7 @@
         operationId: ShareAssets
         tags:
         - ASSETS
-        summary: Share Assets by Email
+        summary: Share Assetes by Email
         description: |-
           Share a selection of Assets to a user specified by Email address.
   
