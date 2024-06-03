@@ -71,7 +71,7 @@
         operationId: GetAction
         tags:
         - ACTIONS
-        summary: Get details about an invoked Action.
+        summary: Action Details
         description: |-
           Retrieve an Action by specifying an **Object ID** or **File ID** in the request path.
   
@@ -103,12 +103,17 @@
             type: string
         - name: id
           in: path
-          description: Action Object ID or File ID
+          description: Action **Object ID** or **File ID**
           required: true
           style: simple
           explode: false
           schema:
             type: string
+            format: uuid
+            maxLength: 36
+            minLength: 36
+            x-nullable: false
+            example: a1c6a2ab-4b01-4253-b4c9-70e04b3b48fc
         responses:
           "200":
             description: Returns JSON object
@@ -142,27 +147,27 @@
         operationId: CreateAsset
         tags:
         - ASSETS
-        summary: Create an Asset.
+        summary: Create Asset
         description: |-
-          Use this service to perform one of the following operations:
+          Use this endpoint to perform one of the following operations:
           1) Create a new **Asset**
           2) Create a new **Version** of an existing Asset
           3) Create a new **Metadata-only Asset**
           4) Create a new **Federated Asset**
   
-          Once the new Asset or Asset Version is created, a new Object ID is returned to identify the new Asset / Asset Version.
+          Once the new Asset or Asset Version is created, a new **Object ID** is returned to identify the new Asset / Asset Version.
   
-          When a new Asset is created, the Asset is considered a metadata-only Asset until a corresponding content file is uploaded.  The Asset's content file size must be less than or equal to 5GB.
+          When a new Asset is created, the Asset is considered a metadata-only asset until a corresponding content file is uploaded.  The Asset's content file size must be less than or equal to 5GB.
   
           After invoking the Create Asset service, the response shall include a signed URL to upload the content file.  The upload should be performed using a PUT request with the file content attached as binary data in the request body.
 
-          **After creating an asset greater than 100MB, multiple presigned urls will be returned.  You must upload file chunks of 100MB to each one.**
+          **After creating an asset greater than 100MB, multiple presigned URLs will be returned.  You must upload file chunks of 100MB to each one.**
 
           **You must call the /asset/complete endpoint to complete or cancel a multi-part file upload, otherwise the file will not be available to Tenovos.**
   
           The user submitting the request to create an Asset must have the **Upload** Security Role Privilege and be granted access to at least one Security Template to assign to the new Asset.
   
-          A Federated Asset is an Asset where the Asset's content file resides in a repository external to the Tenovos platform.  Currently the following external file repositories are supported:
+          A Federated Asset is an Asset where the Asset's content file resides in a repository external to the Tenovos platform. Currently the following external file repositories are supported:
           - AWS S3
   
           In order to create a Federated Asset, include the following properties in the request body:
@@ -205,7 +210,7 @@
         requestBody:
           description: |-
             The Request Body must be a JSON object.
-            To create a **new version** instead of new asset pass an additional property **originalFileId** as part of the JSON object.
+            To create a **new version** instead of new asset, pass an additional property **originalFileId** as part of the JSON object.
           content:
             application/json:
               schema:
@@ -274,9 +279,9 @@
         operationId: EditAssets
         tags:
         - ASSETS
-        summary: Bulk edit one or more Assets.
+        summary: Bulk Edit Assets
         description: |-
-          Perform metadata edits and/or reassign Security Templates to one or more Assets.  Assets are identified by Object ID.  If multiple Assets are specified, the same metadata and/or security edits will be applied to all Assets in the request.
+          Perform metadata edits and/or reassign Security Templates to one or more Assets.  Assets are identified by **Object ID**.  If multiple Assets are specified, the same metadata and/or security edits will be applied to all Assets in the request.
   
           Each Metadata Attribute is identified by a Metadata Definition ID.
   
@@ -358,9 +363,9 @@
         operationId: GetAsset
         tags:
         - ASSETS
-        summary: Get a single Asset.
+        summary: Get Asset
         description: |-
-          Retrieve an Asset by specifying an **Object ID** or **File ID** in the request path.
+          Retrieve an Asset's details and metadata by specifying an **Object ID** or **File ID** in the request path.
   
           The user requesting the Asset must have view access to the Asset in order to retrieve the Asset.
         parameters:
@@ -390,12 +395,15 @@
             type: string
         - name: id
           in: path
-          description: Asset Object ID or File ID
+          description: Asset **Object ID** or **File ID**
           required: true
           style: simple
           explode: false
           schema:
             type: string
+            format: uuid
+            minLength: 36
+            maxLength: 36 
         responses:
           "200":
             description: Returns JSON object
@@ -428,7 +436,7 @@
         operationId: UpdateAsset
         tags:
         - ASSETS
-        summary: Update a single Asset.
+        summary: Update Asset
         description: |-
           Update the metadata attributes and/or the Security Template assignments for an Asset identified by Object ID.  The Object ID must be specified in the request path.
   
@@ -520,7 +528,7 @@
         operationId: GetAssetContent
         tags:
         - ASSETS
-        summary: Get the content file download link of an Asset.
+        summary: Get Asset Download Link
         description: |-
           Retrieve a presigned URL to the Asset's source file by Object ID.
   
@@ -594,7 +602,7 @@
         operationId: DeleteAsset
         tags:
         - ASSETS
-        summary: Soft Delete or Un-delete an Asset.
+        summary: Delete or Restore Asset
         description: |-
           Soft delete or un-delete an Asset.  An Asset that has been soft-deleted can be later purged from the recycle bin.  A soft-deleted Asset cannot be edited or downloaded.
   
@@ -714,7 +722,7 @@
         operationId: GetLatestVersion
         tags:
         - ASSETS
-        summary: Get latest version of an Asset.
+        summary: Get Asset Latest Version
         description: |-
           Retrieve latest version of an Asset by specifying an **Object ID** in the request path.
   
@@ -785,7 +793,7 @@
         operationId: GetAssetRelationship
         tags:
         - ASSETS
-        summary: Retrieve Asset relationships associated with an Asset.
+        summary: Get Asset Relationships
         description: |-
           Retrieve all Asset relationships associated with an Asset specified by Object ID. In a relationship, the Asset can be a primary or secondary (related) Asset. For example, in a parent / derivative relationship, the primary Asset would be the **parent**, while the secondary Asset would be the **derivative**. Both the Object ID and relationship type for each Asset will be returned.  Relationships will be retrieved where the Asset is a primary or secondary Asset.
   
@@ -852,7 +860,7 @@
         operationId: CreateRelationship
         tags:
         - ASSETS
-        summary: Create a relationship between Assets.
+        summary: Create Asset Relationship
         description: |-
           Create a bidirectional relationship between a primary Asset and one or more secondary Assets.  Asset relationships allow a user to quickly navigate from one Asset to another related Asset.
   
@@ -942,7 +950,7 @@
         operationId: RemoveRelationship
         tags:
         - ASSETS
-        summary: Remove a relationship between Assets.
+        summary: Remove Asset Relationship
         description: |-
           Remove a relationship between a primary Asset and one or more secondary Assets.  Specify the primary Asset Object ID as a path parameter.  Specify the secondary Asset Object IDs and Link Types as an array in the request body.
   
@@ -1022,7 +1030,7 @@
         operationId: UpdateAssetTechMetadata
         tags:
         - ASSETS
-        summary: Update technical metadata of an asset.
+        summary: Update Asset Technical Metadata
         description: |-
           Update technical metadata of an asset created with federated (Yes) attribute **ONLY**.  **Nonfederated assets cannot have their technical metadata updated.**
   
@@ -1111,7 +1119,7 @@
         operationId: GetVersions
         tags:
         - ASSETS
-        summary: Get the version history of an Asset.
+        summary: Get Asset Version History
         description: |-
           Retrieve a list of all versions of an Asset by specifying an **Object ID** or Original **File ID** in the request path.
   
@@ -1184,7 +1192,7 @@
         operationId: FinishUpload
         tags:
         - ASSETS
-        summary: Complete Upload.
+        summary: Complete Upload
         description: Complete/Cancel multipart upload once all parts are uploaded. **This endpoint must be called after creating asset when the file is sent in chunks of 100MB each.  For files 100MB or less in size this operation is not needed.**  
         parameters:
         - name: X-API-Key
@@ -1265,8 +1273,8 @@
         operationId: ReplacePreview
         tags:
         - ASSETS
-        summary: Assign an image or PDF to be the new preview for one or more Assets.
-        description: "Generate a request to upload an image or PDF file to be the new preview for one or more Assets.  Supported preview image formats include: GIF, JPG, PNG, and TIFF.\n\nIf a PDF file is uploaded to be the preview for a document Asset, then the PDF will also be displayed in the Asset Detail page as the multi-page PDF preview.\n\nAfter submitting the request to replace an Asset preview, \n\nThe user replacing the Asset previews must be granted the **Replace Mezzanine** and **Upload** User Role Permissions and **View** Security Template Permission on the Assets being updated.\n\nFor Federated Assets, if user provides optional **contentPaths** key in the request body, then files referenced in the **contentPaths** > **<named-rendition-key>** properties are used as renditions. "
+        summary: Assign Asset Preview Image
+        description: "Generate a request to upload an image or PDF file to be the new preview for one or more Assets.  Supported preview image formats include: GIF, JPG, PNG, and TIFF.\n\nIf a PDF file is uploaded to be the preview for a document Asset, then the PDF will also be displayed in the Asset Detail page as the multi-page PDF preview.\n\nAfter submitting the request to replace an Asset preview, \n\nThe user replacing the Asset previews must be granted the **Replace Mezzanine** and **Upload** User Role Permissions and **View** Security Template Permission on the Assets being updated.\n\nFor Federated Assets, if user provides optional **contentPaths** key in the request body, then files referenced in the **contentPaths** > **<named-rendition-key>** properties are used as renditions."
         parameters:
         - name: X-API-Key
           in: header
@@ -1357,7 +1365,7 @@
         operationId: GetAssetUrl
         tags:
         - ASSETS
-        summary: Exposes Content.
+        summary: Generate Temporary Asset Preview Link
         description: |-
           Exposes Asset's pre-signed urls with expiration time given in seconds
   
@@ -1444,7 +1452,7 @@
         operationId: ScanAssets
         tags: 
           - SEARCH
-        summary: Scan assets by paging through an entire search result set.
+        summary: Scan Asset Search Results
         description: |-
           Provides the ability to scan a search result set of assets using a cursor to fetch the next set of results pages on the limit (page size) passed.
         parameters:
@@ -1527,7 +1535,7 @@
         operationId: ShareAssets
         tags:
         - ASSETS
-        summary: Share a selection of Assets.
+        summary: Share Assets by Email
         description: |-
           Share a selection of Assets to a user specified by Email address.
   
@@ -1617,7 +1625,7 @@
         operationId: GetTransformation
         tags:
         - ASSETS
-        summary: Share or download transformation of an Assets.
+        summary: Share or Download Asset Transformation
         description: |-
           Transform asset and download or share transformation with an email. If email is available then this API will share link (send email) of transformed file.
   
@@ -1715,7 +1723,7 @@
         operationId: GetProofTemplate
         tags:
         - PROOFING
-        summary: Get workflow templates.
+        summary: Get Workflow Templates
         description: Get active workflow templates.
         parameters:
         - name: X-API-Key
@@ -1770,7 +1778,7 @@
         operationId: GetProofStatus
         tags:
         - PROOFING
-        summary: Get Proof Status.
+        summary: Get Proof Status
         description: Get Proof status and decision status
         parameters:
         - name: X-API-Key
@@ -1839,8 +1847,8 @@
         operationId: CreateProofUser
         tags:
         - PROOFING
-        summary: Create a Proofing User.
-        description: Creates a Proofing User account.  Must be a Story Orchestration customer and have available user licenses.
+        summary: Create a Proofing User
+        description: Creates a Proofing User account. Must be a Story Orchestration customer and have available user licenses.
         parameters:
         - name: X-API-Key
           in: header
@@ -1907,7 +1915,7 @@
         operationId: GetReviewerUrl
         tags:
         - PROOFING
-        summary: Get Reviewer URL.
+        summary: Get Reviewer URL
         description: Get proof Reviewer URL.
         parameters:
         - name: X-API-Key
@@ -2000,18 +2008,170 @@
                   $ref: '#/components/schemas/GeneralErrorMessageResponse'
                 example:
                   message: Forbidden
+    /auth/token:
+      post:
+        security:
+          - BasicAuth: []
+            ApiKeyAuth: []
+        operationId: GetAuthToken
+        tags:
+        - AUTHENTICATION
+        summary: Authorize Session
+        description: |-
+          Generates authentication credentials that expire after one hour.
+  
+          The authentication response includes an **accessToken** which is used as the AccessToken request header when performing any authenticated operation.
+  
+          This operation will also accept the previous authentication response as the request payload to return a refreshed access token.  The access token expires after 1 hour and must be refreshed after expiration, using the included **refreshToken**.  The refresh token can be used for up to 30 days to request new access tokens, or until the refresh token is revoked.  Once the refresh token expires or is revoked, the user credentials must be provided again to generate a new access token and refresh token.
+        parameters:
+        - name: X-API-Key
+          in: header
+          description: Customer-specific API key required to invoke API.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            enum:
+            - application/json
+        requestBody:
+          description: |-
+            The Request Body must be a JSON-formatted string.
+  
+            The following parameters are required to request an access token:
+            * username
+            * password
+  
+            The following parameters are required to refresh the access token:
+            * accessToken
+            * refreshToken
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthRequest'
+              examples:
+                New_Token:
+                  $ref: '#/components/examples/newTokenExample'
+                Refresh_Token:
+                  $ref: '#/components/examples/refreshTokenExample'
+          required: true
+        responses:
+          "200":
+            description: Successful operation
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/AuthResponse'
+          "400":
+            description: Bad request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+                example:
+                  status: error
+                  message: Invalid Authentication Parameters
+          "401":
+            description: Unauthorized operation.  This occurs when invalid user credentials are provided.
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+                examples:
+                  No_Client_ID:
+                    value:
+                      status: error
+                      message: '2 validation errors detected: Value '''' at ''clientId'' failed to satisfy constraint: Member must have length greater than or equal to 1; Value '''' at ''clientId'' failed to satisfy constraint: Member must satisfy regular expression pattern: [\w+]+'
+                  No_Username:
+                    value:
+                      status: error
+                      message: Invalid Authentication Parameters
+                  No_Password:
+                    value:
+                      status: error
+                      message: Missing required parameter PASSWORD
+      delete:
+        operationId: ExpireToken
+        tags:
+        - AUTHENTICATION
+        summary: Expire Access Token
+        description: "Expire an access token before the token's expiration date and revoke access to the system.\n\nAccess tokens normally expire within an hour.  This operation expires an access token upon request so that the token may no longer be used for future operations.\n\nThe **Request Body** must be a JSON object.  \nThe following parameters are required to expire the access token:\n```\n{  \n  \"endpointUrl\": \"URL\",  \n  \"clientId\": \"string\",  \n  \"userPoolId\": \"string\",\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"session\":\n  {\n    \"accessToken\": \"string\",\n    \"refreshToken\": \"string\",\n    \"authorization\": \"string\"\n  }\n}\n```    "
+        parameters:
+        - name: X-API-Key
+          in: header
+          description: Customer-specific API key required to invoke API.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: AccessToken
+          in: header
+          description: Provided by Authentication Token creation operation.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            enum:
+            - application/json
+        requestBody:
+          description: |-
+            The Request Body must be a JSON-formatted string.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthExpireRequest'
+              examples:
+                Expire_Token:
+                  $ref: '#/components/examples/expireTokenExample'
+          required: true
+        responses:
+          "200":
+            description: Successful operation
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/AuthExpireResponse'
+          "401":
+            description: Unauthorized operation.  This occurs when invalid refresh token and user credentials are provided.
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+                example:
+                  status: error
+                  message: Failed to Expire Session and Logout 1
+          "502":
+            description: Bad Gateway. Missing clientId or userPoolId
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/GeneralErrorMessageResponse'
+                example:
+                  message: Internal server error
     /auth/impersonate:
       post:
         operationId: Impersonate
         tags:
         - AUTHENTICATION
-        summary: Impersonate a given user.
+        summary: Impersonate User
         description: |-
-          Use this operation to request an access token to perform other API operations that require authorization.
-  
-          The authentication response includes an **accessToken** which is used as the AccessToken request header when performing any authenticated operation.
-  
-          This operation will also accept the previous authentication response as the request payload to return a refreshed access token.  The access token expires after 1 hour and must be refreshed after expiration, using the included **refreshToken**.  The refresh token can be used for up to 30 days to request new access tokens, or until the refresh token is revoked.  Once the refresh token expires or is revoked, the user credentials must be provided again to generate a new access token and refresh token.
+          This endpoint generates an Access Token and Authorization given a system username.
         parameters:
         - name: X-API-Key
           in: header
@@ -2107,158 +2267,115 @@
                 example:
                   status: error
                   message: Invalid Authentication Parameters
-    /auth/token:
-      post:
-        security:
-          - BasicAuth: []
-            ApiKeyAuth: []
-        operationId: GetAuthToken
-        tags:
-        - AUTHENTICATION
-        summary: Request/Refresh an access token.
-        description: |-
-          Use this operation to request an access token to perform other API operations that require authorization.
-  
-  
-          The authentication response includes an **accessToken** which is used as the AccessToken request header when performing any authenticated operation.
-  
-          This operation will also accept the previous authentication response as the request payload to return a refreshed access token.  The access token expires after 1 hour and must be refreshed after expiration, using the included **refreshToken**.  The refresh token can be used for up to 30 days to request new access tokens, or until the refresh token is revoked.  Once the refresh token expires or is revoked, the user credentials must be provided again to generate a new access token and refresh token.
-        parameters:
-        - name: X-API-Key
-          in: header
-          description: Customer-specific API key required to invoke API.
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-            enum:
-            - application/json
-        requestBody:
-          description: |-
-            The Request Body must be a JSON-formatted string.
-  
-            The following parameters are required to request an access token:
-            * username
-            * password
-  
-            The following parameters are required to refresh the access token:
-            * accessToken
-            * refreshToken
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuthRequest'
-              examples:
-                New_Token:
-                  $ref: '#/components/examples/newTokenExample'
-                Refresh_Token:
-                  $ref: '#/components/examples/refreshTokenExample'
-          required: true
-        responses:
-          "200":
-            description: Successful operation
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/AuthResponse'
-          "400":
-            description: Bad request
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/ErrorResponse'
-                example:
-                  status: error
-                  message: Invalid Authentication Parameters
-          "401":
-            description: Unauthorized operation.  This occurs when invalid user credentials are provided.
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/ErrorResponse'
-                examples:
-                  No_Client_ID:
-                    value:
-                      status: error
-                      message: '2 validation errors detected: Value '''' at ''clientId'' failed to satisfy constraint: Member must have length greater than or equal to 1; Value '''' at ''clientId'' failed to satisfy constraint: Member must satisfy regular expression pattern: [\w+]+'
-                  No_Username:
-                    value:
-                      status: error
-                      message: Invalid Authentication Parameters
-                  No_Password:
-                    value:
-                      status: error
-                      message: Missing required parameter PASSWORD
-      delete:
-        operationId: ExpireToken
-        tags:
-        - AUTHENTICATION
-        summary: Expire an access token.
-        description: "Expire an access token before the token's expiration date and revoke access to the system.\n\nAccess tokens normally expire within an hour.  This operation expires an access token upon request so that the token may no longer be used for future operations.\n\nThe **Request Body** must be a JSON object.  \nThe following parameters are required to expire the access token:\n```\n{  \n  \"endpointUrl\": \"URL\",  \n  \"clientId\": \"string\",  \n  \"userPoolId\": \"string\",\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"session\":\n  {\n    \"accessToken\": \"string\",\n    \"refreshToken\": \"string\",\n    \"authorization\": \"string\"\n  }\n}\n```    "
-        parameters:
-        - name: X-API-Key
-          in: header
-          description: Customer-specific API key required to invoke API.
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-        - name: AccessToken
-          in: header
-          description: Provided by Authentication Token creation operation.
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-            enum:
-            - application/json
-        responses:
-          "200":
-            description: Successful operation
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/AuthResponse'
-          "401":
-            description: Unauthorized operation.  This occurs when invalid refresh token and user credentials are provided.
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/ErrorResponse'
-                example:
-                  status: error
-                  message: Failed to Expire Session and Logout 1
-          "502":
-            description: Bad Gateway. Missing clientId or userPoolId
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/GeneralErrorMessageResponse'
-                example:
-                  message: Internal server error
+                  /auth/impersonate:
+                    post:
+                      operationId: Impersonate
+                      tags:
+                      - AUTHENTICATION
+                      summary: Impersonate User
+                      description: |-
+                        This endpoint 
+                      parameters:
+                      - name: X-API-Key
+                        in: header
+                        description: Customer-specific API key required to invoke API.
+                        required: true
+                        style: simple
+                        explode: false
+                        schema:
+                          type: string
+                      - name: Authorization
+                        in: header
+                        description: Provided by Authentication Token creation operation
+                        required: true
+                        style: simple
+                        explode: false
+                        schema:
+                          type: string
+                      - name: AccessToken
+                        in: header
+                        description: JWT token provided by Authentication Token creation operation.
+                        required: true
+                        style: simple
+                        explode: false
+                        schema:
+                          type: string
+                      - name: Content-Type
+                        in: header
+                        required: true
+                        style: simple
+                        explode: false
+                        schema:
+                          type: string
+                          enum:
+                          - application/json
+                      requestBody:
+                        description: |-
+                          The Request Body must be a JSON-formatted string.
+                
+                          The following parameters are required to request an access token:
+                          * username
+                
+                          * The credentials obtained after invoking this API will not be able to refresh tokens
+                        content:
+                          application/json:
+                            schema:
+                              $ref: '#/components/schemas/ImpersonateRequest'
+                            examples:
+                              New_Session:
+                                $ref: '#/components/examples/impersonateUserExample'
+                        required: true
+                      responses:
+                        "200":
+                          description: Successful operation
+                          content:
+                            application/json:
+                              schema:
+                                $ref: '#/components/schemas/ImpersonateResponse'
+                        "400":
+                          description: Bad request
+                          content:
+                            application/json:
+                              schema:
+                                $ref: '#/components/schemas/ErrorResponse'
+                              example:
+                                status: error
+                                message: Invalid Authentication Parameters
+                        "401":
+                          description: Unauthorized
+                          content:
+                            application/json:
+                              schema:
+                                $ref: '#/components/schemas/ErrorResponse'
+                              examples:
+                                No_Username:
+                                  value:
+                                    status: error
+                                    message: Invalid Authentication Parameters
+                        "403":
+                          description: Forbidden
+                          content:
+                            application/json:
+                              schema:
+                                $ref: '#/components/schemas/ErrorResponse'
+                              example:
+                                status: error
+                                message: Invalid Authentication Parameters
+                        "422":
+                          description: Pre Conditions Failed
+                          content:
+                            application/json:
+                              schema:
+                                $ref: '#/components/schemas/ErrorResponse'
+                              example:
+                                status: error
+                                message: Invalid Authentication Parameters
     /collection:
       post:
         operationId: CreateCollection
         tags:
         - COLLECTIONS
-        summary: Create a Collection.
+        summary: Create Collection
         description: |-
           Create a collection and add assets to it. Assets in the collection are identified by FileID therefore **collectionDocument** contains **File ID**
   
@@ -2342,7 +2459,7 @@
         operationId: GetCollection
         tags:
         - COLLECTIONS
-        summary: Get a single Collection and assigned Assets.
+        summary: Get Collection
         description: |-
           Retrieve a single Collection specified by Collection ID.  The retrieved Collection may be either a secured Collection or a private Collection created by the User.  The Collection will include the list of Assets assigned to the Collection, referenced by Asset **File ID**.
   
@@ -2421,7 +2538,7 @@
         operationId: DeleteCollection
         tags:
         - COLLECTIONS
-        summary: Delete a Collection.
+        summary: Delete Collection
         description: |-
           User can delete the collection, but the Assets assigned to the Collection will remain and dissociate from this Collection.
   
@@ -2497,7 +2614,7 @@
         operationId: UpdateCollection
         tags:
         - COLLECTIONS
-        summary: Update a Collection.
+        summary: Update Collection
         description: |-
           Update a Collection's attributes or assigned Assets. The list of existing assets is replaced with assets provided in the call. Assets in the collection are referenced by Asset **FileID** therefore the **collectionDocument** must contain asset's **FileID**.
   
@@ -2588,7 +2705,7 @@
         operationId: ShareCollection
         tags:
         - COLLECTIONS
-        summary: Share all accessible Assets in a Collection.
+        summary: Share Collection Contents
         description: "Share the zip file of all accessible Assets in a collection and send to the specified emails in share users list. User can also send the custom share message along with request. \n\nThe user sharing the Assets must be granted the **Download** and **Share** Security Template permission on the Assets being shared."
         parameters:
         - name: X-API-Key
@@ -2674,7 +2791,7 @@
         operationId: GetMetadataTemplates
         tags:
         - METADATA
-        summary: Retrieve all Metadata Templates available to the current User.
+        summary: Retrieve Metadata Templates
         description: |-
           Retrieve all metadata templates available to the requesting user
   
@@ -2743,7 +2860,7 @@
         operationId: GetMetadataTemplate
         tags:
         - METADATA
-        summary: Get Metadata Template by ID.
+        summary: Get Metadata Template
         description: "Retrieve the metadata template and its attributes list by template ID \n\nThe user submitting the request to metadata template must have the **Metadata Template Management** security role privilege.\n\nIn response, it will contain the metadata groups template have and each group metadata attributes list."
         parameters:
         - name: X-API-Key
@@ -2823,7 +2940,7 @@
         operationId: GetAllControlledVocab
         tags:
         - METADATA
-        summary: Retrieve all Controlled Vocabularies available to the current User.
+        summary: Get Controlled Vocabularies
         description: |-
           Retrieve all the controlled vocabularies available to the current user.
   
@@ -2882,7 +2999,7 @@
         operationId: CreateControlledVocab
         tags:
         - METADATA
-        summary: Create a Controlled Vocabulary.
+        summary: Create Controlled Vocabulary
         description: |-
           Create a Controlled Vocabulary. User must have permission to create a controlled vocabulary.
   
@@ -2968,7 +3085,7 @@
         operationId: GetControlledVocab
         tags:
         - METADATA
-        summary: Get Controlled Vocabulary by ID.
+        summary: Get Controlled Vocabulary
         description: |-
           Retrieve the Controlled Vocabulary and its attributes by Controlled Vocabulary Id
   
@@ -3041,7 +3158,7 @@
         operationId: DeleteControlledVocab
         tags:
         - METADATA
-        summary: Remove a Controlled Vocabulary.
+        summary: Delete Controlled Vocabulary
         description: Delete a Controlled Vocabulary.
         parameters:
         - name: X-API-Key
@@ -3114,7 +3231,7 @@
         operationId: UpdateControlledVocab
         tags:
         - METADATA
-        summary: Update a Controlled Vocabulary.
+        summary: Update Controlled Vocabulary
         description: |-
           Update a Controlled Vocabulary. User must have permission to update a controlled vocabulary.
   
@@ -3213,7 +3330,7 @@
         operationId: ApplyMetadataChanges
         tags:
         - METADATA
-        summary: Apply the metadata definition changes.
+        summary: Apply Metadata Definition Changes
         description: |-
           Apply the metadata definition changes. Use this operation after making any modification in metadata.
   
@@ -3271,7 +3388,7 @@
         operationId: SearchCollections
         tags:
         - SEARCH
-        summary: Search for Collections.  Return a list of Collections.
+        summary: Search Collections
         description: |-
           Retrieve the collection list against the list of search terms/keywords. By default **AND** operation will be applied between the search terms.
   
@@ -3358,7 +3475,7 @@
         operationId: Search
         tags:
         - SEARCH
-        summary: Perform a Keyword Search.  Return a list of Assets.
+        summary: Search Assets by Keyword
         description: |-
           To Retrieve the Assets list there is two types of searches available,
   
@@ -3453,7 +3570,7 @@
         operationId: GetSecurityTemplates
         tags:
         - SECURITY
-        summary: Retrieve a list of Security Templates available to the current User.
+        summary: Get Security Templates
         description: |-
           User will get the list of Security Templates available to him.
   
@@ -3515,7 +3632,7 @@
         operationId: GetSecurityGroups
         tags:
         - SECURITY
-        summary: Retrieve a list of Security Groups.
+        summary: Retrieve Security Groups
         description: |-
           User will get the list of Security Groups available in the system.
   
@@ -3577,7 +3694,7 @@
         operationId: GetCurrentUser
         tags:
         - PEOPLE
-        summary: Get the current User's Profile.
+        summary: Get Current User Profile
         description: |-
           Use this endpoint to get the user profile information for the account that you've authenticated against the Tenovos API with.  
           This is useful when needing to check which groups you are in which may restrict the API calls you can make.
@@ -3633,7 +3750,7 @@
         operationId: CreateUser
         tags:
         - PEOPLE
-        summary: Create a new User in system.
+        summary: Create User
         description: |-
           Use this endpoint to create a new user account in the system.  You must have User Management role privilege and Security Template Management role privilege in order to create a user and assign groups.
           This endpoint can be used to create local or federated users.
@@ -3697,7 +3814,7 @@
         operationId: GetUser
         tags:
         - PEOPLE
-        summary: Get User Profile by ID.
+        summary: Get User Profile by ID
         description: |-
           Current user will get its profile information in response.
           User will also get ID of a role assign to him and a list of group IDs from which it belongs to.
@@ -3728,12 +3845,17 @@
             type: string
         - name: id
           in: path
-          description: Specify a User Profile ID.
+          description: A User Profile ID.
           required: true
           style: simple
           explode: false
           schema:
             type: string
+            format: uuid
+            x-nullable: false
+            maxLength: 36
+            minLength: 36
+            example: 4e428628-2537-40b5-91a4-5393cbf167df
         responses:
           "200":
             description: The Response Body will be a JSON object
@@ -3766,7 +3888,7 @@
         operationId: UpdateUser
         tags:
         - PEOPLE
-        summary: Update User attributes.
+        summary: Update User Attributes
         description: Update User Profile attributes such as First Name, Last Name, Friendly Name, Email, Company, Country, Contact, Phone, and User Role. The user role can be updated by sending either role id or role name.
         parameters:
         - name: X-API-Key
@@ -3852,7 +3974,7 @@
         operationId: AddUserToGroup
         tags:
         - PEOPLE
-        summary: Add User to Security Group.
+        summary: Add User to Group
         description: Assign a Security Group to a User Profile.
         parameters:
         - name: X-API-Key
@@ -3938,7 +4060,7 @@
         operationId: DeleteGroupFromUser
         tags:
         - PEOPLE
-        summary: Remove User from Security Group.
+        summary: Remove User from Group
         description: Remove an assigned Security Group from a User Profile.
         parameters:
         - name: X-API-Key
@@ -4024,7 +4146,7 @@
         operationId: GetUserByText
         tags:
         - PEOPLE
-        summary: Search User Profiles by Text.
+        summary: Search User Profiles
         description: |-
           User will get a list of User Profiles matching the searchText in response.
           Provided searchText will be matched against the user attributes case insensitively - First Name, Last Name, Friendly Name, Email, Phone, Company, Contact, Country, Group Names, and Role Name.
@@ -4092,8 +4214,8 @@
         operationId: getTemplates
         tags: 
           -  ADAPTIVE TEMPLATES
-        summary: Get all templates
-        description: For customers with the Adapative Template templates feature, use this endpoint to return a list of all available templates in the system
+        summary: Get Templates
+        description: For customers with the Adapative Template templates feature, use this endpoint to return a list of all available templates in the system.
         parameters:
           - name: X-API-Key
             in: header
@@ -4163,14 +4285,14 @@
         operationId: lanchTemplate
         tags: 
           -  ADAPTIVE TEMPLATES
-        summary: Get template URL
-        description: Returns a secure url to open the template via web broswer by template identifier
+        summary: Get Template URL
+        description: Returns a secure URL to open the template in a web browser using template identifier.
         requestBody: 
           description: The Request Body must be a JSON object
           content:
             application/json:
-              schema:
-                $ref: hermes/requests/launch-template.yaml
+              schema: 
+                $ref: '#/components/schemas/GeneralErrorMessageResponse'
           required: true
         responses:
           200:
@@ -4178,7 +4300,7 @@
             content:
               application/json:
                 schema:
-                  $ref: hermes/responses/launch.yaml
+                  $ref: '#/components/schemas/GeneralErrorMessageResponse'
           401:
             description: Unauthorized. Missing Authorization or AccessToken or Access Token expired
             content:
@@ -4194,216 +4316,7 @@
                 schema:
                   $ref: '#/components/schemas/GeneralErrorMessageResponse'
                 example:
-                  message: Forbidden 
-    /webhooks/endpoint:
-      post: 
-        operationId: createSubscription
-        tags: 
-          -  WEBHOOKS
-        summary: Create Endpoint
-        description: Create a subscription based on the topic and event type in order to be notified at your target URL when events about that topic occur.
-        parameters: 
-          - $ref: v2/parameters/content-type.yaml
-          - $ref: v2/parameters/authorization.yaml
-        requestBody:
-          content:
-            application/json:
-              schema:
-                type: array
-                minItems: 1
-                maxItems: 50
-                items:
-                  $ref: v2/requests/webhook.yaml
-        responses: 
-          '200':
-            description: "Successful Request. Webhook Subscriptions Created Successfully."
-            content:
-              application/json:
-                schema:
-                  $ref: v2/responses/webhooks.yaml
-          '400':
-            $ref: v2/schemas/400.yaml
-          '401':
-            $ref: v2/schemas/401.yaml
-          '403':
-            $ref: v2/schemas/403.yaml
-          '503':
-            $ref: v2/schemas/503.yaml
-    /webhooks/endpoint/list:
-      get:
-        operationId: getEndpointSubscriptionsList
-        tags: 
-          -  WEBHOOKS
-        summary: List Endpoints
-        description: This endpoint returns an array (List) of all endpoints (your endpoints) and the event types subscribed. 
-        parameters: 
-          - $ref: v2/parameters/before.yaml
-          - $ref: v2/parameters/after.yaml
-          - $ref: v2/parameters/content-type.yaml
-          - $ref: v2/parameters/authorization.yaml
-        responses: 
-          '200':
-            description: "Successful Request. Endpoints Retrieved Successfully."
-            content:
-              application/json:
-                schema: 
-                  type: array
-                  items: 
-                    $ref: v2/responses/endpoint.yaml
-          '400':
-            $ref: v2/schemas/400.yaml
-          '401':
-            $ref: v2/schemas/401.yaml
-          '403':
-            $ref: v2/schemas/403.yaml
-          '503':
-            $ref: v2/schemas/503.yaml  
-    /webhooks/event-type/list:
-      get:
-        operationId: getEventTypeList
-        tags: 
-          -  WEBHOOKS
-        summary: List Event Types
-        description: This endpoint returns an array (List) of all event types.
-        parameters: 
-          - $ref: v2/parameters/before.yaml
-          - $ref: v2/parameters/after.yaml
-          - $ref: v2/parameters/content-type.yaml
-          - $ref: v2/parameters/authorization.yaml
-        responses: 
-          '200':
-            description: "Successful Request. Event Types Retrieved Successfully."
-            content:
-              application/json:
-                schema: 
-                  type: array
-                  items: 
-                    $ref: v2/responses/eventType.yaml
-          '400':
-            $ref: v2/schemas/400.yaml
-          '401':
-            $ref: v2/schemas/401.yaml
-          '403':
-            $ref: v2/schemas/403.yaml
-          '503':
-            $ref: v2/schemas/503.yaml  
-    /webhooks/endpoint/{id}:
-      get: 
-        operationId: getEndpointById
-        tags: 
-          -  WEBHOOKS
-        summary: Endpoint by ID
-        description: This endpoint returns a single endpoint and its configuration by ID.
-        parameters: 
-          - $ref: v2/parameters/subscriptionId.yaml
-          - $ref: v2/parameters/content-type.yaml
-          - $ref: v2/parameters/authorization.yaml
-        responses: 
-          '200':
-            description: "Successful Request. Endpoint Retrieved Successfully."
-            content:
-              application/json:
-                schema: 
-                  $ref: v2/responses/endpoint.yaml
-          '400':
-            $ref: v2/schemas/400.yaml
-          '401':
-            $ref: v2/schemas/401.yaml
-          '403':
-            $ref: v2/schemas/403.yaml
-          '503':
-            $ref: v2/schemas/503.yaml 
-      patch: 
-        operationId: updateEndpointById
-        tags: 
-          -  WEBHOOKS
-        summary: Update Endpoint
-        description: This endpoint updates a single endpoint and its configuration by ID.
-        parameters: 
-          - $ref: v2/parameters/subscriptionId.yaml
-          - $ref: v2/parameters/content-type.yaml
-          - $ref: v2/parameters/authorization.yaml
-        requestBody:
-          content:
-            application/json:
-              schema:
-                $ref: v2/requests/webhook.yaml
-        responses: 
-          '204':
-            description: "Successful Request. Endpoint Updated Successfully."
-          '400':
-            $ref: v2/schemas/400.yaml
-          '401':
-            $ref: v2/schemas/401.yaml
-          '403':
-            $ref: v2/schemas/403.yaml
-          '503':
-            $ref: v2/schemas/503.yaml   
-      delete:
-        operationId: deleteWebhook
-        tags:
-          - WEBHOOKS
-        summary: Delete Endpoint
-        description: Delete a subscription you have to a Webhook based on the ID of the Webhook Subscription
-        parameters: 
-          - $ref: v2/parameters/subscriptionId.yaml
-          - $ref: v2/parameters/content-type.yaml
-          - $ref: v2/parameters/authorization.yaml
-        responses: 
-          '204':
-            description: "Successful Request. Webhook Subscription Deleted Successfully."
-          '400':
-            $ref: v2/schemas/400.yaml
-          '401':
-            $ref: v2/schemas/401.yaml
-          '403':
-            $ref: v2/schemas/403.yaml
-          '503':
-            $ref: v2/schemas/503.yaml
-    /webhooks/endpoint/oauth/{endpointId}:
-      put:
-        operationId: CreateOauth
-        tags:
-          - WEBHOOKS
-        summary: Add OAuth
-        description: Add an authorized OAuth client to an existing endpoint.
-        parameters: 
-          - $ref: v2/parameters/endpointId.yaml
-        requestBody:
-          content:
-            application/json:
-              schema:
-                $ref: v2/requests/webhook-oauthCreate.yaml
-        responses:
-          '204':
-            description: "Successful Request. OAuth Added Successfully."
-          '400':
-            $ref: v2/schemas/400.yaml
-          '401':
-            $ref: v2/schemas/401.yaml
-          '403':
-            $ref: v2/schemas/403.yaml
-          '503':
-            $ref: v2/schemas/503.yaml
-      delete:
-        operationId: DeleteOauth
-        tags:
-          - WEBHOOKS
-        summary: Remove OAuth
-        description: Remove an authorized OAuth client from an existing endpoint.
-        parameters: 
-          - $ref: v2/parameters/endpointId.yaml
-        responses:
-          '204':
-            description: "Successful Request. Webhook Subscription Deleted Successfully."
-          '400':
-            $ref: v2/schemas/400.yaml
-          '401':
-            $ref: v2/schemas/401.yaml
-          '403':
-            $ref: v2/schemas/403.yaml
-          '503':
-            $ref: v2/schemas/503.yaml   
+                  message: Forbidden    
           
         
   components:
@@ -4629,6 +4542,8 @@
             type: string
             description: Metadata Template ID to assign to the edited Assets.
             format: uuid
+            minLength: 36
+            maxLength: 36
             example: ea6eb24d-adef-4080-bd02-f64f567c437f
           metadataDocument:
             type: array
@@ -4646,6 +4561,8 @@
             items:
               type: string
               format: uuid
+              minLength: 36
+              maxLength: 36
               example: e55bdb0c-022b-475d-9e26-9d74552e1e81
           securityTemplateIds:
             type: array
@@ -4800,10 +4717,15 @@
             type: string
             description: ID of the file. When provided a new version will be created.
             format: uuid
+            minLength: 36
+            maxLength: 36
+            example: ea6eb24d-adef-4080-bd02-f64f567c437f
           metadataTemplateId:
             type: string
             description: ID of metadata template to apply.
             format: uuid
+            minLength: 36
+            maxLength: 36
             example: ea6eb24d-adef-4080-bd02-f64f567c437f
           metadata:
             $ref: '#/components/schemas/MetadataDocument'
@@ -4819,14 +4741,14 @@
             description: Asset file name.
           contentPath:
             type: string
-            description: S3 path to the federated file
+            description: S3 path to the file. Required only for Federated files.
           skipTranscode:
             type: boolean
-            description: Flag to skip content transformation
+            description: Flag to skip content transformation. Required only for Federated files.
           filesize:
             type: number
             description: Size of file in bytes
-        description: JSON Object included when submitting a request to create an asset. **metadata** property is required but can be an empty array
+        description: JSON Object included when submitting a request to create an asset. The **Metadata** property is required and nullable.
       AssetCreateResponse:
         type: object
         properties:
@@ -5460,6 +5382,58 @@
             description: Use in **new token** request.  Valid password for the Tenovos user account.
           session:
             $ref: '#/components/schemas/AuthRequest_session'
+      AuthExpireResponse:
+        type: object
+        required: 
+          -  endpointUrl
+          -  clientId
+          -  userPoolId
+          -  username
+          -  session
+        properties:
+          endpointUrl:
+            type: string
+            format: URL
+            description: The API's base URL.
+            example: https://endpoint.url/v1
+          clientId:
+            type: string
+            description: The **clientId**. Available in the response of an Access Token generation request.
+          userPoolId:
+            type: string
+            description: The **Cognito Pool ID** of your Tenovos tenant.
+          username:
+            type: string
+            format: username
+            description: Use in a **new token** request.  Username of the user in Tenovos.
+          session:
+            $ref: '#/components/schemas/AuthExpireResponse_session'
+      AuthExpireRequest:
+        type: object
+        required: 
+          -  endpointUrl
+          -  clientId
+          -  userPoolId
+          -  username
+          -  session
+        properties:
+          endpointUrl:
+            type: string
+            format: URL
+            description: The API's base URL.
+            example: https://endpoint.url/v1
+          clientId:
+            type: string
+            description: The **clientId**. Available in the response of an Access Token generation request.
+          userPoolId:
+            type: string
+            description: The **Cognito Pool ID** of your Tenovos tenant.
+          username:
+            type: string
+            format: username
+            description: Use in a **new token** request.  Username of the user in Tenovos.
+          session:
+            $ref: '#/components/schemas/AuthExpireRequest_session'
       AuthResponse:
         type: object
         properties:
@@ -6446,35 +6420,60 @@
             type: string
             description: group-name of a valid existing user-security-group of a customer
       UserCreateRequest:
+        required:
+        - firstName
+        - lastName
+        - friendlyName
+        - email
+        - username
+        - password
+        - accountType
+        - userRoleId
+        - groups
         type: object
         properties:
           firstName:
             type: string
             description: First Name of the User.
+            minLength: 1
+            maxLength: 50
             example: John
           lastName:
             type: string
             description: Last Name of the User.
+            minLength: 1
+            maxLength: 50
             example: Wick
           friendlyName:
             type: string
             description: Friendly Name of the User.
+            minLength: 1
+            maxLength: 50
             example: john.wick
           email:
             type: string
             description: Email of the User.
+            format: email
+            minLength: 6
+            maxLength: 75
             example: john.wick@tenovos.com
           username:
             type: string
+            format: username
+            minLength: 1
+            maxLength: 50
             description: Username of the User.
             example: john.wick
           password:
             type: string
+            format: password
+            minLength: 8
+            maxLength: 150
             description: Password of the User.
             example: sdhg&uuUz78u
           accountType:
             type: string
-            description: Account Type of the User.
+            description: Account Type of the User. Local accounts use a password; Federated accounts use an SSO service.
             example: local
             enum:
             - local
@@ -6483,14 +6482,20 @@
             $ref: '#/components/schemas/UserCreateRequest_customAttributes'
           userRoleId:
             type: string
-            description: Account Type of the User.
+            format: uuid
+            minLength: 36
+            maxLength: 36
+            description: ID of the User's role. Only one role is allowed.
             example: 1401df5e-3f13-4c88-a5a8-de64f6227a03
           groups:
             type: array
-            description: List of group IDs that user belongs to
+            minLength: 1
+            description: List of group IDs the User belongs to. At least one group is required.
             items:
               type: string
               format: uuid
+              minLength: 36
+              maxLength: 36
               example: 7d6207c0-f423-11e9-8071-89c0c4052141
       UserResponse:
         type: object
@@ -6661,6 +6666,38 @@
           accessToken:
             type: string
         description: Use this to **refresh** token
+      AuthExpireRequest_session:
+        type: object
+        properties:
+          authorization:
+            type: string
+            description: Authorization token generate with Access Tokens.
+            example: eyJraWQiOiJqQWNzNDFBdFBEcXdKTVN6Y0dzV01SNFR0T3hETDhcL3dtOW9qQ0JOWVdqcz0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI0ZmUwZTVhZi0yMjU1LTRiZDUtYjAwYS0yM2FkMTIxZTA2ZjIiLCJhdWQiOiI3c201amlsZG5iZnJyOGNncTNrZWRpZW83IiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJldmVudF9pZCI6IjQ1YWI3YzJjLTJjYWUtNDE2MS1hYmE4LWMyMmIxZmQ5NGViYyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjEzNzUyODE3LCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9PU2dRdlRhVEEiLCJjb2duaXRvOnVzZXJuYW1lIjoiamVmZiIsImV4cCI6MTYxMzc1NjQyMCwiaWF0IjoxNjEzNzUyODIwLCJlbWFpbCI6ImplZmZAdGVub3Zvcy5jb20ifQ.kzu1AddXc-HIopmmsxnnXjDiKXhOLox6P2Hx5HCg0gzupbjW9hjbMWVl0NIZRgrLJIEkYjTl9zRUre_QpiJdeVdluMVPLi6OfMUy8XskeqrOAUFDr3nqrkt99uR-LSrVd_hI8NSGvRPXEcWXV6A35Nq8_xZ8tHHlWEanGhtNcEPzgWa1JU1LdQPDCtixgwQGhroevX2TByGC_yfbimn9l5JeveQGyWKNIfvUPR9zLu2g8bPgCzCUroNWU1QRh1o-p1-8lMVwyROl3mIiCfSTo_QwtLArcFTJi5MyMsWCwWHXV
+          accessToken:
+            type: string
+            description: Session Access Token.
+            example: eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAifQ.jkuKuQVDhGxbX04I3iczTCioh9ah2MA90YkOcY7DTyLS94XCvS_JpOhUSHhk70uM_ZNxLCU00OtahFm7Ktc-Zw_21qjuA40yf9Uf0KcQok5DEbv-9-_j8F4PAdChaS8Cok_-SjUoZmbiIgC-uF601vcczTHgC2SLs4FiOubdc-3tVjQrt6sf0k_W3cBBR-ajbYrDYMdHiJGEtetod88bO1WYJlSWhSddHXkjWOYE0-x3flkDswYJkEq1FKpc1lgqaeoVGShJ90H4S9Yj_FS9vHd0Yq8pwOUkCjIr_P3xFK4d9pRtEc35gkQ3QMbE1Nx93srzUx2rkI75_J2Hf3IltA.jlAjOx1FRapys-J-.YfjwTEQMsnp1wPXkKab_NvA_6lZp15ur2zNUEuX0NqC4hfQ6kbzzQXOl_nLujNwLI8YqqNgLni3l4Eu-luxHDCM2fHvjVaL6_ULJ9VThkBlkJYmxFQZX8c20EPWa1IBH630EPKslFNwPgYT113
+          refreshToken:
+            type: string
+            description: Refresh Token generated with Access Tokens.
+            example: eyJraWQiOiJITk5BbmN6bW1NajFaMUlGNXE3SXdzM3RvbE1QWnFYRjBWVFVzUGQyTnc4PSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI0ZmUwZTVhZi0yMjU1LTRiZDUtYjAwYS0yM2FkMTIxZTA2ZjIiLCJldmVudF9pZCI6IjQ1YWI3YzJjLTJjYWUtNDE2MS1hYmE4LWMyMmIxZmQ5NGViYyIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE2MTM3NTI4MTcsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy1lYXN0LTEuYW1hem9uYXdzLmNvbVwvdXMtZWFzdC0xX09TZ1F2VGFUQSIsImV4cCI6MTYxMzc1NjQyMCwiaWF0IjoxNjEzNzUyODIwLCJqdGkiOiI3NWJjZWYzZi03Njg3LTQ5MjgtOTY2Zi05MzM0MmQ0MjFmYjkiLCJjbGllbnRfaWQiOiI3c201amlsZG5iZnJyOGNncTNrZWRpZW83IiwidXNlcm5hbWUiOiJqZWZmIn0.COepDhay_VaqCHJwNOT
+        description: Session information.
+      AuthExpireResponse_session:
+          type: object
+          properties:
+            authorization:
+              type: string
+              description: Authorization token generate with Access Tokens.
+              example: ""
+            accessToken:
+              type: string
+              description: Session Access Token.
+              example: ""
+            refreshToken:
+              type: string
+              description: Refresh Token generated with Access Tokens.
+              example: eyJraWQiOiJITk5BbmN6bW1NajFaMUlGNXE3SXdzM3RvbE1QWnFYRjBWVFVzUGQyTnc4PSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI0ZmUwZTVhZi0yMjU1LTRiZDUtYjAwYS0yM2FkMTIxZTA2ZjIiLCJldmVudF9pZCI6IjQ1YWI3YzJjLTJjYWUtNDE2MS1hYmE4LWMyMmIxZmQ5NGViYyIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE2MTM3NTI4MTcsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy1lYXN0LTEuYW1hem9uYXdzLmNvbVwvdXMtZWFzdC0xX09TZ1F2VGFUQSIsImV4cCI6MTYxMzc1NjQyMCwiaWF0IjoxNjEzNzUyODIwLCJqdGkiOiI3NWJjZWYzZi03Njg3LTQ5MjgtOTY2Zi05MzM0MmQ0MjFmYjkiLCJjbGllbnRfaWQiOiI3c201amlsZG5iZnJyOGNncTNrZWRpZW83IiwidXNlcm5hbWUiOiJqZWZmIn0.COepDhay_VaqCHJwNOT
+          description: Session information.
       AuthResponse_session:
         type: object
         properties:
@@ -6925,30 +6962,33 @@
         properties:
           from:
             type: integer
-            description: Search offset from which index search will start
+            description: The beginning index of the search. A value greater than 0 will offset the search.
             example: 0
+            default: 0
+            maximum: 10000
             required: 
               -  from
             x-nullable: false
           limit:
             type: integer
             default: 50
-            maximum: 50
+            maximum: 100
             minimum: 1
             example: 50
-            description: The maximum number of templates to return per page
+            description: The maximum number of templates to return per page.
             required: 
               -  limit
             x-nullable: true
           searchTerm:
             type: array
-            description: List of search terms with AND operation be default
+            description: List of search terms with AND operation by default
             items:
               type: string
               example: '*'
             x-nullable: true
           sortBy:
             type: array
+            description: The metadata attribute and order to sort by.
             items:
               $ref: '#/components/schemas/Search_sortBy'
             required: 
@@ -6964,17 +7004,26 @@
     examples:
       impersonateUserExample:
         value:
-          username: user-name
+          username: john.wick
       newTokenExample:
         value:
-          username: user@co.com
-          password: XXXX
-          clientId: '123355543'
+          username: john.wick@tenovos.com
+          password: m#P52s@ap$V
       refreshTokenExample:
         value:
           session:
             accessToken: yJraWQiOiJITk5BbmN6bW1NajFaMUlGN
             refreshToken: eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2
+      expireTokenExample:
+        value:
+          endpointUrl: https://endpoint.url/v1
+          clientId: abcdefghijklmnop1234567890
+          userPoolId: us-east-1_123456789
+          username: john.wick
+          session:
+            authorization: eyJraWQiOiJqQWNzNDFBdFBEcXdKTVN6Y0dzV01SNFR0T3hETDhcL3dtOW9qQ0JOWVdqcz0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI0ZmUwZTVhZi0yMjU1LTRiZDUtYjAwYS0yM2FkMTIxZTA2ZjIiLCJhdWQiOiI3c201amlsZG5iZnJyOGNncTNrZWRpZW83IiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJldmVudF9pZCI6IjQ1YWI3YzJjLTJjYWUtNDE2MS1hYmE4LWMyMmIxZmQ5NGViYyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjEzNzUyODE3LCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9PU2dRdlRhVEEiLCJjb2duaXRvOnVzZXJuYW1lIjoiamVmZiIsImV4cCI6MTYxMzc1NjQyMCwiaWF0IjoxNjEzNzUyODIwLCJlbWFpbCI6ImplZmZAdGVub3Zvcy5jb20ifQ.kzu1AddXc-HIopmmsxnnXjDiKXhOLox6P2Hx5HCg0gzupbjW9hjbMWVl0NIZRgrLJIEkYjTl9zRUre_QpiJdeVdluMVPLi6OfMUy8XskeqrOAUFDr3nqrkt99uR-LSrVd_hI8NSGvRPXEcWXV6A35Nq8_xZ8tHHlWEanGhtNcEPzgWa1JU1LdQPDCtixgwQGhroevX2TByGC_yfbimn9l5JeveQGyWKNIfvUPR9zLu2g8bPgCzCUroNWU1QRh1o-p1-8lMVwyROl3mIiCfSTo_QwtLArcFTJi5MyMsWCwWHXV
+            accessToken: eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAifQ.jkuKuQVDhGxbX04I3iczTCioh9ah2MA90YkOcY7DTyLS94XCvS_JpOhUSHhk70uM_ZNxLCU00OtahFm7Ktc-Zw_21qjuA40yf9Uf0KcQok5DEbv-9-_j8F4PAdChaS8Cok_-SjUoZmbiIgC-uF601vcczTHgC2SLs4FiOubdc-3tVjQrt6sf0k_W3cBBR-ajbYrDYMdHiJGEtetod88bO1WYJlSWhSddHXkjWOYE0-x3flkDswYJkEq1FKpc1lgqaeoVGShJ90H4S9Yj_FS9vHd0Yq8pwOUkCjIr_P3xFK4d9pRtEc35gkQ3QMbE1Nx93srzUx2rkI75_J2Hf3IltA.jlAjOx1FRapys-J-.YfjwTEQMsnp1wPXkKab_NvA_6lZp15ur2zNUEuX0NqC4hfQ6kbzzQXOl_nLujNwLI8YqqNgLni3l4Eu-luxHDCM2fHvjVaL6_ULJ9VThkBlkJYmxFQZX8c20EPWa1IBH630EPKslFNwPgYT113
+            refreshToken: eyJraWQiOiJITk5BbmN6bW1NajFaMUlGNXE3SXdzM3RvbE1QWnFYRjBWVFVzUGQyTnc4PSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI0ZmUwZTVhZi0yMjU1LTRiZDUtYjAwYS0yM2FkMTIxZTA2ZjIiLCJldmVudF9pZCI6IjQ1YWI3YzJjLTJjYWUtNDE2MS1hYmE4LWMyMmIxZmQ5NGViYyIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE2MTM3NTI4MTcsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy1lYXN0LTEuYW1hem9uYXdzLmNvbVwvdXMtZWFzdC0xX09TZ1F2VGFUQSIsImV4cCI6MTYxMzc1NjQyMCwiaWF0IjoxNjEzNzUyODIwLCJqdGkiOiI3NWJjZWYzZi03Njg3LTQ5MjgtOTY2Zi05MzM0MmQ0MjFmYjkiLCJjbGllbnRfaWQiOiI3c201amlsZG5iZnJyOGNncTNrZWRpZW83IiwidXNlcm5hbWUiOiJqZWZmIn0.COepDhay_VaqCHJwNOT
       ControlledVocabularyNameChange:
         value:
           name: Color List
