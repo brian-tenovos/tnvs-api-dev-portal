@@ -4316,7 +4316,216 @@
                 schema:
                   $ref: '#/components/schemas/GeneralErrorMessageResponse'
                 example:
-                  message: Forbidden    
+                  message: Forbidden 
+    /webhooks/endpoint:
+      post: 
+        operationId: createSubscription
+        tags: 
+          -  WEBHOOKS
+        summary: Create Endpoint
+        description: Create a subscription based on the topic and event type in order to be notified at your target URL when events about that topic occur.
+        parameters: 
+          - $ref: v2/parameters/content-type.yaml
+          - $ref: v2/parameters/authorization.yaml
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: array
+                minItems: 1
+                maxItems: 50
+                items:
+                  $ref: v2/requests/webhook.yaml
+        responses: 
+          '200':
+            description: "Successful Request. Webhook Subscriptions Created Successfully."
+            content:
+              application/json:
+                schema:
+                  $ref: v2/responses/webhooks.yaml
+          '400':
+            $ref: v2/schemas/400.yaml
+          '401':
+            $ref: v2/schemas/401.yaml
+          '403':
+            $ref: v2/schemas/403.yaml
+          '503':
+            $ref: v2/schemas/503.yaml
+    /webhooks/endpoint/list:
+      get:
+        operationId: getEndpointSubscriptionsList
+        tags: 
+          -  WEBHOOKS
+        summary: List Endpoints
+        description: This endpoint returns an array (List) of all endpoints (your endpoints) and the event types subscribed. 
+        parameters: 
+          - $ref: v2/parameters/before.yaml
+          - $ref: v2/parameters/after.yaml
+          - $ref: v2/parameters/content-type.yaml
+          - $ref: v2/parameters/authorization.yaml
+        responses: 
+          '200':
+            description: "Successful Request. Endpoints Retrieved Successfully."
+            content:
+              application/json:
+                schema: 
+                  type: array
+                  items: 
+                    $ref: v2/responses/endpoint.yaml
+          '400':
+            $ref: v2/schemas/400.yaml
+          '401':
+            $ref: v2/schemas/401.yaml
+          '403':
+            $ref: v2/schemas/403.yaml
+          '503':
+            $ref: v2/schemas/503.yaml  
+    /webhooks/event-type/list:
+      get:
+        operationId: getEventTypeList
+        tags: 
+          -  WEBHOOKS
+        summary: List Event Types
+        description: This endpoint returns an array (List) of all event types.
+        parameters: 
+          - $ref: v2/parameters/before.yaml
+          - $ref: v2/parameters/after.yaml
+          - $ref: v2/parameters/content-type.yaml
+          - $ref: v2/parameters/authorization.yaml
+        responses: 
+          '200':
+            description: "Successful Request. Event Types Retrieved Successfully."
+            content:
+              application/json:
+                schema: 
+                  type: array
+                  items: 
+                    $ref: v2/responses/eventType.yaml
+          '400':
+            $ref: v2/schemas/400.yaml
+          '401':
+            $ref: v2/schemas/401.yaml
+          '403':
+            $ref: v2/schemas/403.yaml
+          '503':
+            $ref: v2/schemas/503.yaml  
+    /webhooks/endpoint/{id}:
+      get: 
+        operationId: getEndpointById
+        tags: 
+          -  WEBHOOKS
+        summary: Endpoint by ID
+        description: This endpoint returns a single endpoint and its configuration by ID.
+        parameters: 
+          - $ref: v2/parameters/subscriptionId.yaml
+          - $ref: v2/parameters/content-type.yaml
+          - $ref: v2/parameters/authorization.yaml
+        responses: 
+          '200':
+            description: "Successful Request. Endpoint Retrieved Successfully."
+            content:
+              application/json:
+                schema: 
+                  $ref: v2/responses/endpoint.yaml
+          '400':
+            $ref: v2/schemas/400.yaml
+          '401':
+            $ref: v2/schemas/401.yaml
+          '403':
+            $ref: v2/schemas/403.yaml
+          '503':
+            $ref: v2/schemas/503.yaml 
+      patch: 
+        operationId: updateEndpointById
+        tags: 
+          -  WEBHOOKS
+        summary: Update Endpoint
+        description: This endpoint updates a single endpoint and its configuration by ID.
+        parameters: 
+          - $ref: v2/parameters/subscriptionId.yaml
+          - $ref: v2/parameters/content-type.yaml
+          - $ref: v2/parameters/authorization.yaml
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: v2/requests/webhook.yaml
+        responses: 
+          '204':
+            description: "Successful Request. Endpoint Updated Successfully."
+          '400':
+            $ref: v2/schemas/400.yaml
+          '401':
+            $ref: v2/schemas/401.yaml
+          '403':
+            $ref: v2/schemas/403.yaml
+          '503':
+            $ref: v2/schemas/503.yaml   
+      delete:
+        operationId: deleteWebhook
+        tags:
+          - WEBHOOKS
+        summary: Delete Endpoint
+        description: Delete a subscription you have to a Webhook based on the ID of the Webhook Subscription
+        parameters: 
+          - $ref: v2/parameters/subscriptionId.yaml
+          - $ref: v2/parameters/content-type.yaml
+          - $ref: v2/parameters/authorization.yaml
+        responses: 
+          '204':
+            description: "Successful Request. Webhook Subscription Deleted Successfully."
+          '400':
+            $ref: v2/schemas/400.yaml
+          '401':
+            $ref: v2/schemas/401.yaml
+          '403':
+            $ref: v2/schemas/403.yaml
+          '503':
+            $ref: v2/schemas/503.yaml
+    /webhooks/endpoint/oauth/{endpointId}:
+      put:
+        operationId: CreateOauth
+        tags:
+          - WEBHOOKS
+        summary: Add OAuth
+        description: Add an authorized OAuth client to an existing endpoint.
+        parameters: 
+          - $ref: v2/parameters/endpointId.yaml
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: v2/requests/webhook-oauthCreate.yaml
+        responses:
+          '204':
+            description: "Successful Request. OAuth Added Successfully."
+          '400':
+            $ref: v2/schemas/400.yaml
+          '401':
+            $ref: v2/schemas/401.yaml
+          '403':
+            $ref: v2/schemas/403.yaml
+          '503':
+            $ref: v2/schemas/503.yaml
+      delete:
+        operationId: DeleteOauth
+        tags:
+          - WEBHOOKS
+        summary: Remove OAuth
+        description: Remove an authorized OAuth client from an existing endpoint.
+        parameters: 
+          - $ref: v2/parameters/endpointId.yaml
+        responses:
+          '204':
+            description: "Successful Request. Webhook Subscription Deleted Successfully."
+          '400':
+            $ref: v2/schemas/400.yaml
+          '401':
+            $ref: v2/schemas/401.yaml
+          '403':
+            $ref: v2/schemas/403.yaml
+          '503':
+            $ref: v2/schemas/503.yaml   
           
         
   components:
