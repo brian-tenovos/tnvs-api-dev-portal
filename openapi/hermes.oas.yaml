@@ -3494,11 +3494,31 @@
         operationId: UpdateUser
         tags:
         - PEOPLE
-        summary: Update User Attributes
+        summary: Update User Details
         description: |-
-          Update User Profile attributes such as First Name, Last Name, Friendly Name, Email, Company, Country, Contact, Phone, and User Role. The user role can be updated by sending either role id or role name.
+          Update a user's profile details. To use this endpoint, you must have the **User Management** role privilege. This endpoint allows you to update the following attributes:
+            - Role
+            - First name
+            - Last name
+            - Friendly name
+            - Phone number
+            - Company
+            - Country
+            - Internal Contact
+            - Groups
 
+          This endpoint **does not** allow you to change the following user attributes:
+            - Email
+            - Username
+            - Password
+            - profileId
+            - Status
+          
+          The user role can be updated by sending either role id or role name. Identifying the user's current role by name or ID is required even if you are not updating the user's role.
+
+          If you are using this endpoint to manage a user's groups, you may find it easier to use the [Add User to Group](/openapi/reference/v1.5/operation/AddUserToGroup) and [Remove User from Group](/openapi/reference/v1.5/operation/DeleteGroupFromUser) endpoints.
         # INTERNAL NOTE: Contact information fields (other than email) are nullable. They are not required by this endpoint, but if supplied, they are not allowed to have length 0. This means that existing contact information cannot be removed with this endpoint (even though it should be possible).
+        # You might need BOTH the user management and security template management privileges, but I don't know how to quickly check the latter. If this is true of this one, it is probably true of a few of the other endpoints in this category. Update accordingly.
         parameters:
         - name: X-API-Key
           in: header
@@ -3529,7 +3549,7 @@
           description: |- 
             The body of this request must contain either **userRoleId** or **userRoleName**. If both are supplied, the API will attempt to use the value in **userRoleName**, even if it is not a valid role name.
           
-            Other than identifying the user's role, no other fields are required. Fields that are supplied in the request body will be updated, and any omitted fields will not be changed.
+            You must identify the user's role, but no other fields are required. Fields that are supplied in the request body will be updated, and any omitted fields will not be changed.
           content:
             application/json:
               schema:
@@ -4722,7 +4742,7 @@
           profileCreator:
             type: string
             example: Hewlett-Packard
-          profileID:
+          profileId:
             type: string
             example: "0"
           profileCopyright:
@@ -6180,44 +6200,75 @@
             example: Asset update was successful
       User:
         type: object
+        required: 
+          - userRoleId
+          - userRoleName
         properties:
-          userId:
+          userRoleId:
             type: string
-            description: Current User ID
+            description: The **roleId** of the user's current or updated role.
             format: uuid
-            example: 7d675ef0-f423-11e9-8071-89c0c4052141
-          customerId:
+            minLength: 36
+            maxLength: 36
+            example: ca6d9867-f838-4a44-b93b-3p2ic5w5nb8v
+          userRoleName:
             type: string
-            description: Parent Customer ID
-            example: "1588014574305"
-          emailId:
-            type: string
-            description: User email
-            format: email
-            example: ash.ketchum@tenovos.com
+            minLength: 1
+            maxLength: 32
+          # INTERNAL NOTE: Not a typo. It is 32.
+            description: The name of the user's current or updated role. Must be a valid existing role name. This field is case-sensitive.
+            example: Pokemon Trainer
           firstName:
             type: string
-            description: User first name
+            description: The user's first name.
+            minLength: 1
+            maxLength: 50
             example: Ash
           lastName:
             type: string
-            description: User last name
+            minLength: 1
+            maxLength: 50
+            description: The user's last name.
             example: Ketchum
-          roleId:
+          friendlyName:
             type: string
-            description: User role ID
-            format: uuid
-            example: ca6d9867-f838-4a44-b93b-3p2ic5w5nb8v
-          status:
+            description: A friendly name for the user.
+            example: Ash Ketchum
+            minLength: 1
+            maxLength: 50
+          phone:
+            type: number
+            minLength: 8
+            maxLength: 15
+            description: The user's phone number.
+            example: 2126559846
+          # INTERNAL NOTE: Technically wrong. See internal note on POST Create User for details.
+          company:
             type: string
-            description: User account status
-            example: enabled
+            minLength: 1
+            maxLength: 50
+            description: The user's company.
+            example: Tenovos
+          country:
+            type: string
+            description: The user's country.
+            minLength: 1
+            maxLength: 50
+            example: USA
+          contact:
+            type: string
+            description: An internal contact for the user.
+            minLength: 1
+            maxLength: 50
+            example: Professor Oak
           groups:
             type: array
-            description: List of group IDs the user belongs to.
-            example:
-              - 0da424a9-b5ef-4e71-ad06-k7ymg3q75wlj
-              - 4f6a2af0-5627-4a17-b908-f5vyy8y84gyy
+            description: List of group IDs the user belongs to. At least one group is required.
+            items:
+              type: string
+              description: User Group ID.
+              format: uuid
+              example: 7d6207c0-f423-11e9-8071-89c0c4052141
       UserUpdateSecurityGroupRequest:
         type: object
         properties:
@@ -6373,29 +6424,36 @@
             minLength: 1
             maxLength: 50
           phone:
-            type: string
-            description: The user's phone number. Conventional phone number formatting (e.g. +1 (800) 555-5555) is optional.
+            type: number
+            minLength: 8
+            maxLength: 15
+            description: The user's phone number.
             example: 2126559846
+          # INTERNAL NOTE: Technically wrong. See internal note on POST Create User for details.
           company:
             type: string
+            minLength: 1
             maxLength: 50
             description: The user's company.
             example: Tenovos
           country:
             type: string
             description: The user's country.
+            minLength: 1
             maxLength: 50
             example: USA
           contact:
-            type: number
+            type: string
             description: An internal contact for the user.
+            minLength: 1
+            maxLength: 50
             example: Professor Oak
           groups:
             type: array
-            description: List of group IDs the user belongs to. At least one group is required.
+            description: List of group IDs the user belongs to. If this field is included, at least one group is required.
             items:
               type: string
-              description: User group id
+              description: User Group ID.
               format: uuid
               example: 7d6207c0-f423-11e9-8071-89c0c4052141
       UserUpdateSecurityGroupResponse:
@@ -6776,10 +6834,10 @@
         description: Some of the user's contact information.
         properties:
           phone:
-            type: string
+            type: number
             minLength: 8
-            maxLength: 50
-            description: The user's phone number. This should contain between 8 and 15 numbers.
+            maxLength: 15
+            description: The user's phone number.
             example: "2126559846"
           # INTERNAL NOTE: The platform implementation of this feature's limitations is problematic. When editing a phone number via the UI, the total character limit is 50, just like company, country, and contact. However, this field (via the UI) can be either empty or contain 8-15 NUMBERS with a total character limit of 50. 
 
