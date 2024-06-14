@@ -3539,12 +3539,15 @@
             format: JWT
         - name: id
           in: path
-          description: Specify a User Profile ID.
+          description: The **userId** of the user whose details you are modifying.
           required: true
           style: simple
           explode: false
           schema:
             type: string
+            format: uuid
+            minLength: 36
+            maxLength: 36
         requestBody:
           description: |- 
             The body of this request must contain either **userRoleId** or **userRoleName**. If both are supplied, the API will attempt to use the value in **userRoleName**, even if it is not a valid role name.
@@ -3624,12 +3627,15 @@
             format: JWT
         - name: id
           in: path
-          description: Specify a User Profile ID.
+          description: The **userId** of the user you are adding to a group.
           required: true
           style: simple
           explode: false
           schema:
             type: string
+            format: uuid
+            minLength: 36
+            maxLength: 36
         requestBody:
           description: The request body must include either a valid group name or group ID. If both are provided, the group ID will be used.
           content:
@@ -3706,12 +3712,15 @@
             format: JWT
         - name: id
           in: path
-          description: Specify a User Profile ID.
+          description: The **userId** of the user you are removing from a group.
           required: true
           style: simple
           explode: false
           schema:
             type: string
+            format: uuid
+            minLength: 36
+            maxLength: 36
         requestBody:
           description: The request body must include either a valid group name or group ID. If both are provided, the group ID will be used.
           content:
@@ -3765,9 +3774,21 @@
         - PEOPLE
         summary: Search User Profiles
         description: |-
-          User will get a list of User Profiles matching the searchText in response.
-          Provided searchText will be matched against the user attributes case insensitively - First Name, Last Name, Friendly Name, Email, Phone, Company, Contact, Country, Group Names, and Role Name.
-          User will only see the list of users that are part of the user groups that it belongs to.
+          Search user profiles. This search is **exact** but **case insensitive**. Even though the response body does not contain all of them, the search will return matches against the following fields:
+            - First name
+            - Last name
+            - Friendly name
+            - Username
+            - Email
+            - Phone number
+            - Company
+            - Country
+            - Internal Contact
+            - Group name
+            - Role name
+            - userId
+          **NOTE:** This search only returns users that share a group with the user making the request.
+        # INTERNAL NOTE: Why does this endpoint only return users in the same group as you? Is that remotely useful?
         parameters:
         - name: X-API-Key
           in: header
@@ -3788,12 +3809,13 @@
             format: JWT
         - name: searchText
           in: path
-          description: Specify searchText to search across user attributes.
+          description: A search term.
           required: true
           style: simple
           explode: false
           schema:
             type: string
+          # INTERNAL NOTE: I tested the max length of this to be 1,468 characters. However, of all the fields against which it is searching, none allows a value greater than 50 characters. Thus, it is impossible that a user will be returned any results when using a search term greater than 50 characters. Which should be documented?
         responses:
           "200":
             description: The Response Body will be a JSON object
@@ -6395,7 +6417,62 @@
             type: array
             description: List of User objects
             items:
-              $ref: '#/components/schemas/User'
+              type: object
+              required: 
+                - userRoleId
+                - userRoleName
+              properties:
+                userId:
+                  format: uuid
+                customerId:
+                  format: uuid
+                emailId:
+                  format: email
+                firstName:
+                  format: string
+                lastName:
+                  format: string
+                roleId:
+                  format: uuid
+                status:
+                  format: string
+                groups:
+                  format: array
+          count:
+            format: number
+        example:
+          status: success
+          data:
+            - userId: 7d675ef0-f423-11e9-8071-89c0c4052141
+              customerId: "1588014574305"
+              emailId: ash.ketchum@tenovos.com
+              firstName: Ash
+              lastName: Ketchum
+              roleId: ca6d9867-f838-4a44-b93b-3p2ic5w5nb8v
+              status: enabled
+              groups:
+                - 0da424a9-b5ef-4e71-ad06-k7ymg3q75wlj
+                - 4f6a2af0-5627-4a17-b908-f5vyy8y84gyy
+            - userId: 469f2475-328e-4ac6-be22-533d2e31d9f6
+              customerId: "1588014574305"
+              emailId: brock.takeshi@tenovos.com
+              firstName: Brock
+              lastName: Takeshi
+              roleId: ca6d9867-f838-4a44-b93b-3p2ic5w5nb8v
+              status: enabled
+              groups:
+                - 0da424a9-b5ef-4e71-ad06-k7ymg3q75wlj
+            - userId: a4b56d12-7c34-4bc8-84b9-9946c8d3b233
+              customerId: "1588014574305"
+              emailId: misty.kasumi@tenovos.com
+              firstName: Misty
+              lastName: Kasumi
+              roleId: ca6d9867-f838-4a44-b93b-3p2ic5w5nb8v
+              status: enabled
+              groups:
+                - 0da424a9-b5ef-4e71-ad06-k7ymg3q75wlj
+                - f123e98d-90ab-4bcf-923d-5e4a77f7e0d1
+          count: 3
       UserUpdateRequest:
         type: object
         required: 
