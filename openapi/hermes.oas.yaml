@@ -3600,7 +3600,10 @@
         tags:
         - PEOPLE
         summary: Add User to Group
-        description: Assign a Security Group to a User Profile.
+        description: |-
+          Add a user to a group using the group's name or ID. This endpoint only accepts one group at a time.
+
+          You must have the **User Management** role privilege to use this endpoint.
         parameters:
         - name: X-API-Key
           in: header
@@ -3628,7 +3631,7 @@
           schema:
             type: string
         requestBody:
-          description: The Request Body must be a JSON object
+          description: The request body must include either a valid group name or group ID. If both are provided, the group ID will be used.
           content:
             application/json:
               schema:
@@ -3679,7 +3682,10 @@
         tags:
         - PEOPLE
         summary: Remove User from Group
-        description: Remove an assigned Security Group from a User Profile.
+        description: |-
+          Remove a user from a group using the group's name or ID. This endpoint only accepts one group at a time.
+
+          You must have the **User Management** role privilege to use this endpoint.
         parameters:
         - name: X-API-Key
           in: header
@@ -3707,7 +3713,7 @@
           schema:
             type: string
         requestBody:
-          description: The Request Body must be a JSON object
+          description: The request body must include either a valid group name or group ID. If both are provided, the group ID will be used.
           content:
             application/json:
               schema:
@@ -6274,12 +6280,17 @@
         properties:
           userGroupId:
             type: string
-            description: group-id of a valid existing user-security-group of customer
+            description: The **groupId** of an existing group the user is not already in.
             format: uuid
-            example: 7d6207c0-f423-11e9-8071-89c0c4052141
+            minLength: 36
+            maxLength: 36
+            example: 0da424a9-b5ef-4e71-ad06-k7ymg3q75wlj
           userGroupName:
             type: string
-            description: group-name of a valid existing user-security-group of a customer
+            example: Pokemon Trainers
+            minLength: 1
+            maxLength: 32
+            description: The **groupName** of an existing group the user is not already in. This field is case-sensitive.
       UserCreateRequest:
         required:
         - firstName
