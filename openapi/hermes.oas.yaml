@@ -3207,11 +3207,10 @@
         - SECURITY
         summary: Get Security Templates
         description: |-
-          User will get the list of Security Templates available to him.
-  
-          The user submitting the request must have administrator rights to view Security Templates.
-  
-          In response user will get a list, containing template names and their corresponding template id.
+          Retrieve a list of available metadata templates, their permissions, and the groups they apply to.
+
+          **NOTE:** This endpoint requires the administrative **Security Template Management** role privilege.
+        # INTERNAL NOTE: Existing doc says "user will get the list of security templates available to him. The user submitting the request must have administrator rights to view security templates." I'm not sure how to interpret this.
         parameters:
         - name: X-API-Key
           in: header
@@ -3235,10 +3234,62 @@
             description: The Response Body is a JSON object.
             content:
               application/json:
-                schema:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/SecurityTemplate'
+                example:
+                  - templateId: 300b4ff2-0ff7-46e9-b142-e023232f8afb
+                    templateName: Full Access
+                    securityDenormalized:
+                      - groupId: 0da424a9-b5ef-4e71-ad06-k7ymg3q75wlj
+                        permissions:
+                          - 8bda6bd4-06c3-4c14-8d12-3010a70e7dde
+                          - e7bc1f48-a51e-40ac-915b-f33b832e0c6c
+                          - 4f25f626-94d5-4a6c-be7d-5540e67029ef
+                      - groupId: 4f6a2af0-5627-4a17-b908-f5vyy8y84gyy
+                        permissions:
+                          - 8bda6bd4-06c3-4c14-8d12-3010a70e7dde
+                          - e7bc1f48-a51e-40ac-915b-f33b832e0c6c
+                          - 4f25f626-94d5-4a6c-be7d-5540e67029ef
+                    templateDocument:
+                      - groupId: 0da424a9-b5ef-4e71-ad06-k7ymg3q75wlj
+                        groupPermissions:
+                          - isPermitted: true
+                            permissionId: 8bda6bd4-06c3-4c14-8d12-3010a70e7dde
+                          - isPermitted: true
+                            permissionId: e7bc1f48-a51e-40ac-915b-f33b832e0c6c
+                          - isPermitted: true
+                            permissionId: 4f25f626-94d5-4a6c-be7d-5540e67029ef
+                      - groupId: 4f6a2af0-5627-4a17-b908-f5vyy8y84gyy
+                        groupPermissions:
+                          - isPermitted: true
+                            permissionId: 8bda6bd4-06c3-4c14-8d12-3010a70e7dde
+                          - isPermitted: true
+                            permissionId: e7bc1f48-a51e-40ac-915b-f33b832e0c6c
+                          - isPermitted: true
+                            permissionId: 4f25f626-94d5-4a6c-be7d-5540e67029ef
+                  - templateId: c171f749-bf3e-4b57-97f2-d6491f28156a
+                    templateName: Limited Access
+                    securityDenormalized:
+                      - groupId: 0da424a9-b5ef-4e71-ad06-k7ymg3q75wlj
+                        permissions:
+                          - 8bda6bd4-06c3-4c14-8d12-3010a70e7dde
+                          - e7bc1f48-a51e-40ac-915b-f33b832e0c6c
+                          - 4f25f626-94d5-4a6c-be7d-5540e67029ef
+                      - groupId: 4f6a2af0-5627-4a17-b908-f5vyy8y84gyy
+                        permissions:
+                          - 8bda6bd4-06c3-4c14-8d12-3010a70e7dde
+                    templateDocument:
+                      - groupId: 0da424a9-b5ef-4e71-ad06-k7ymg3q75wlj
+                        groupPermissions:
+                          - isPermitted: true
+                            permissionId: 8bda6bd4-06c3-4c14-8d12-3010a70e7dde
+                          - isPermitted: true
+                            permissionId: e7bc1f48-a51e-40ac-915b-f33b832e0c6c
+                          - isPermitted: true
+                            permissionId: 4f25f626-94d5-4a6c-be7d-5540e67029ef
+                      - groupId: 4f6a2af0-5627-4a17-b908-f5vyy8y84gyy
+                        groupPermissions:
+                          - isPermitted: true
+                            permissionId: 8bda6bd4-06c3-4c14-8d12-3010a70e7dde
+                          # INTERNAL NOTE: I know this should be a $ref, but I couldn't get the example to render properly any other way. For someone that knows how to do that, the information is here.
           "401":
             description: Unauthorized. Missing or expired Authorization.
             content:
@@ -3260,13 +3311,11 @@
         operationId: GetSecurityGroups
         tags:
         - SECURITY
-        summary: Retrieve Security Groups
+        summary: Get Security Groups
         description: |-
-          User will get the list of Security Groups available in the system.
-  
-          The user submitting the request must have administrator rights to User Management.
-  
-          In response user will get a list, containing group names and their corresponding group id.
+          Retrieve a list of available security group names and their **groupIds**.
+
+          **NOTE:** This endpoint requires the administrative **User Management** role privilege.
         parameters:
         - name: X-API-Key
           in: header
@@ -3290,10 +3339,14 @@
                 description: The Response Body is a JSON object of Security User Groups and ID's.
                 content:
                   application/json:
-                    schema:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/SecurityGroups'
+                    example:
+                      securityGroups:
+                        - groupId: 0da424a9-b5ef-4e71-ad06-k7ymg3q75wlj
+                          groupName: Pokemon Trainers
+                        - groupId: 4f6a2af0-5627-4a17-b908-f5vyy8y84gyy
+                          groupName: Pallet Town Citizens
+                        - groupId: f123e98d-90ab-4bcf-923d-5e4a77f7e0d1
+                          groupName: Gym Leaders
               "401":
                 description: Unauthorized. Missing Authorization or AccessToken or Access Token expired
                 content:
@@ -3815,7 +3868,7 @@
           explode: false
           schema:
             type: string
-          # INTERNAL NOTE: I tested the max length of this to be 1,468 characters. However, of all the fields against which it is searching, none allows a value greater than 50 characters. Thus, it is impossible that a user will be returned any results when using a search term greater than 50 characters. Which should be documented?
+          # INTERNAL NOTE: I tested the max length of this to be 1,468 characters. However, of all the fields against which it is searching, none allow a value greater than 50 characters. Thus, it is impossible that a user will be returned any results when using a search term greater than 50 characters. Which should be documented?
         responses:
           "200":
             description: The Response Body will be a JSON object
@@ -6144,7 +6197,7 @@
             description: The name of the User Group associated to the Group ID
             example: EMEA Marketing
       SecurityTemplate:
-        type: object
+        type: array
         properties:
           templateId:
             type: string
@@ -7031,16 +7084,6 @@
       refreshTokenExample:
         value:
           session:
-            accessToken: eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAifQ.jkuKuQVDhGxbX04I3iczTCioh9ah2MA90YkOcY7DTyLS94XCvS_JpOhUSHhk70uM_ZNxLCU00OtahFm7Ktc-Zw_21qjuA40yf9Uf0KcQok5DEbv-9-_j8F4PAdChaS8Cok_-SjUoZmbiIgC-uF601vcczTHgC2SLs4FiOubdc-3tVjQrt6sf0k_W3cBBR-ajbYrDYMdHiJGEtetod88bO1WYJlSWhSddHXkjWOYE0-x3flkDswYJkEq1FKpc1lgqaeoVGShJ90H4S9Yj_FS9vHd0Yq8pwOUkCjIr_P3xFK4d9pRtEc35gkQ3QMbE1Nx93srzUx2rkI75_J2Hf3IltA.jlAjOx1FRapys-J-.YfjwTEQMsnp1wPXkKab_NvA_6lZp15ur2zNUEuX0NqC4hfQ6kbzzQXOl_nLujNwLI8YqqNgLni3l4Eu-luxHDCM2fHvjVaL6_ULJ9VThkBlkJYmxFQZX8c20EPWa1IBH630EPKslFNwPgYT113
-            refreshToken: eyJraWQiOiJITk5BbmN6bW1NajFaMUlGNXE3SXdzM3RvbE1QWnFYRjBWVFVzUGQyTnc4PSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI0ZmUwZTVhZi0yMjU1LTRiZDUtYjAwYS0yM2FkMTIxZTA2ZjIiLCJldmVudF9pZCI6IjQ1YWI3YzJjLTJjYWUtNDE2MS1hYmE4LWMyMmIxZmQ5NGViYyIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE2MTM3NTI4MTcsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy1lYXN0LTEuYW1hem9uYXdzLmNvbVwvdXMtZWFzdC0xX09TZ1F2VGFUQSIsImV4cCI6MTYxMzc1NjQyMCwiaWF0IjoxNjEzNzUyODIwLCJqdGkiOiI3NWJjZWYzZi03Njg3LTQ5MjgtOTY2Zi05MzM0MmQ0MjFmYjkiLCJjbGllbnRfaWQiOiI3c201amlsZG5iZnJyOGNncTNrZWRpZW83IiwidXNlcm5hbWUiOiJqZWZmIn0.COepDhay_VaqCHJwNOT
-      expireTokenExample:
-        value:
-          endpointUrl: https://endpoint.url/v1
-          clientId: pd2n2xp9td5iklcbhaxy01op9i
-          userPoolId: us-east-1_qkR6g7oPr
-          username: ash.ketchum
-          session:
-            authorization: eyJraWQiOiJqQWNzNDFBdFBEcXdKTVN6Y0dzV01SNFR0T3hETDhcL3dtOW9qQ0JOWVdqcz0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI0ZmUwZTVhZi0yMjU1LTRiZDUtYjAwYS0yM2FkMTIxZTA2ZjIiLCJhdWQiOiI3c201amlsZG5iZnJyOGNncTNrZWRpZW83IiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJldmVudF9pZCI6IjQ1YWI3YzJjLTJjYWUtNDE2MS1hYmE4LWMyMmIxZmQ5NGViYyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjEzNzUyODE3LCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9PU2dRdlRhVEEiLCJjb2duaXRvOnVzZXJuYW1lIjoiamVmZiIsImV4cCI6MTYxMzc1NjQyMCwiaWF0IjoxNjEzNzUyODIwLCJlbWFpbCI6ImplZmZAdGVub3Zvcy5jb20ifQ.kzu1AddXc-HIopmmsxnnXjDiKXhOLox6P2Hx5HCg0gzupbjW9hjbMWVl0NIZRgrLJIEkYjTl9zRUre_QpiJdeVdluMVPLi6OfMUy8XskeqrOAUFDr3nqrkt99uR-LSrVd_hI8NSGvRPXEcWXV6A35Nq8_xZ8tHHlWEanGhtNcEPzgWa1JU1LdQPDCtixgwQGhroevX2TByGC_yfbimn9l5JeveQGyWKNIfvUPR9zLu2g8bPgCzCUroNWU1QRh1o-p1-8lMVwyROl3mIiCfSTo_QwtLArcFTJi5MyMsWCwWHXV
             accessToken: eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAifQ.jkuKuQVDhGxbX04I3iczTCioh9ah2MA90YkOcY7DTyLS94XCvS_JpOhUSHhk70uM_ZNxLCU00OtahFm7Ktc-Zw_21qjuA40yf9Uf0KcQok5DEbv-9-_j8F4PAdChaS8Cok_-SjUoZmbiIgC-uF601vcczTHgC2SLs4FiOubdc-3tVjQrt6sf0k_W3cBBR-ajbYrDYMdHiJGEtetod88bO1WYJlSWhSddHXkjWOYE0-x3flkDswYJkEq1FKpc1lgqaeoVGShJ90H4S9Yj_FS9vHd0Yq8pwOUkCjIr_P3xFK4d9pRtEc35gkQ3QMbE1Nx93srzUx2rkI75_J2Hf3IltA.jlAjOx1FRapys-J-.YfjwTEQMsnp1wPXkKab_NvA_6lZp15ur2zNUEuX0NqC4hfQ6kbzzQXOl_nLujNwLI8YqqNgLni3l4Eu-luxHDCM2fHvjVaL6_ULJ9VThkBlkJYmxFQZX8c20EPWa1IBH630EPKslFNwPgYT113
             refreshToken: eyJraWQiOiJITk5BbmN6bW1NajFaMUlGNXE3SXdzM3RvbE1QWnFYRjBWVFVzUGQyTnc4PSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI0ZmUwZTVhZi0yMjU1LTRiZDUtYjAwYS0yM2FkMTIxZTA2ZjIiLCJldmVudF9pZCI6IjQ1YWI3YzJjLTJjYWUtNDE2MS1hYmE4LWMyMmIxZmQ5NGViYyIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE2MTM3NTI4MTcsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy1lYXN0LTEuYW1hem9uYXdzLmNvbVwvdXMtZWFzdC0xX09TZ1F2VGFUQSIsImV4cCI6MTYxMzc1NjQyMCwiaWF0IjoxNjEzNzUyODIwLCJqdGkiOiI3NWJjZWYzZi03Njg3LTQ5MjgtOTY2Zi05MzM0MmQ0MjFmYjkiLCJjbGllbnRfaWQiOiI3c201amlsZG5iZnJyOGNncTNrZWRpZW83IiwidXNlcm5hbWUiOiJqZWZmIn0.COepDhay_VaqCHJwNOT
       ControlledVocabularyNameChange:
