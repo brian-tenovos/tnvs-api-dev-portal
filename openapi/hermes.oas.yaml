@@ -2145,15 +2145,14 @@
             enum:
             - application/json
         requestBody:
-          description: 'The Request Body must be a JSON object. '
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/CollectionCreateRequest'
               examples:
-                Private_Collection:
+                Private Collection:
                   $ref: '#/components/examples/createPrivateCollection'
-                Shared_Collection:
+                Shared Collection:
                   $ref: '#/components/examples/createSharedCollection'
           required: true
         responses:
@@ -2196,9 +2195,12 @@
         - COLLECTIONS
         summary: Get Collection
         description: |-
-          Retrieve a single Collection specified by Collection ID.  The retrieved Collection may be either a secured Collection or a private Collection created by the User.  The Collection will include the list of Assets assigned to the Collection, referenced by Asset **File ID**.
-  
-          The User retrieving the Collection must have the **Collection** Security Role Privilege.
+          Get a single collection by its **collectionId**.
+
+          Collections can be either `secured` or `privateSecured`. **collectionDocument** includes a list of asset **fileIds** that belong to the collection.
+
+          To use this endpoint, you must have collection role privileges.
+        # INTERNAL NOTE: I'm not sure exactly what these privileges are.
         parameters:
         - name: X-API-Key
           in: header
@@ -2228,12 +2230,16 @@
             - application/json
         - name: id
           in: path
-          description: Specify Collection ID
+          description: The collection's **collectionId**.
           required: true
           style: simple
           explode: false
           schema:
             type: string
+            format: uuid
+            minLength: 36
+            maxLength: 36
+            example: 4b5896b4-33e4-41ac-b251-39a4dbaa25b1
         responses:
           "200":
             description: The Response Body is a JSON object describing the collection.
@@ -5379,73 +5385,99 @@
       Collection:
         type: object
         properties:
-          expirationDate:
-            type: integer
-            description: Expiration date in milliseconds
-            example: 1613755131855
+          createdEpoch:
+            type: number
+            format: epoch
+            minLength: 13
+            maxLength: 13
+            example: 1546300800000
           lastUpdatedEpoch:
-            type: integer
-            description: Last update time in milliseconds
-            example: 1613755131855
+            type: number
+            format: epoch
+            minLength: 13
+            maxLength: 13
+            example: 15463609440
+          collectionDocument:
+            format: array
+            items:
+              type: string
+              format: uuid
+              minLength: 36
+              maxLength: 36
+            example:
+              - e564cc18-be35-4e28-bdd4-ade0209e28e7
+              - 9001aec2-b90c-453d-aef1-80aec0e0a877
+          userCognitoId:
+            type: string
+            format: uuid
+            minLength: 36
+            maxLength: 36
+            example: d79c5eb9-bc27-419d-a62b-8081ed9ccabc
+          downloadId:
+            type: string
+            format: uuid
+            minLength: 36
+            maxLength: 36
+            example: 11111111-1111-1111-1111-111111111111
+          # INTERNAL NOTE: This is a real downloadId from Tenovos. This is likely a placeholder ID used before any downloads actually occur. I am using it in the doc to demonstrate that this may be the case.
+          expirationDate:
+            type: number
+            format: epoch
+            minLength: 13
+            maxLength: 13
+            example: 15463609440
+          # INTERNAL NOTE: I don't know why expirationDate is the same as lastUpdatedEpoch, but that is the case in the real example I am using.
+          createdBy:
+            type: string
+            format: uuid
+            minLength: 36
+            maxLength: 36
+            example: 7d675ef0-f423-11e9-8071-89c0c4052141
+          # INTERNAL NOTE: This is empty in my real example, but I feel like it should be populated for documentation.
+          lastUpdatedBy:
+            type: string
+            format: uuid
+            minLength: 36
+            maxLength: 36
+            example: a4b56d12-7c34-4bc8-84b9-9946c8d3b233
+          collectionId:
+            type: string
+            format: uuid
+            minLength: 36
+            maxLength: 36
+            example: 4b5896b4-33e4-41ac-b251-39a4dbaa25b1
+          customerId:
+            type: string
+            minLength: 13
+            maxLength: 13
+            example: 1588014574305
+          collectionType:
+            type: string
+            enum:
+              - secured
+              - privateSecured
+            example: privateSecured
+          name:
+            type: string
+            example: Ash's Pokedex
+          sender:
+            type: object
+            example: {}
+          recipients:
+            type: array
+            example: []
+          shared:
+            type: string
+            enum:
+              - Y
+              - N
+            example: N
+          shareDocument:
+            type: array
+            example: []
           shareMessage:
             type: string
             example: ""
-          recipients:
-            type: array
-            items:
-              type: string
-          downloadId:
-            type: string
-            example: "NULL"
-          shared:
-            type: string
-            description: Shared Collection Flag (Y | N)
-            enum:
-            - "N"
-            - "Y"
-          name:
-            type: string
-            description: Collection Name
-            example: Best of the month
-          shareDocument:
-            type: array
-            description: Array of Asset IDs for shared Collection
-            items:
-              type: string
-              format: uuid
-          sender:
-            type: object
-          createdEpoch:
-            type: integer
-            description: Creation time in milliseconds
-            example: 1613755131855
-          userCognitoId:
-            type: string
-            description: User ID who created this Collection
-            format: uuid
-            example: 7d675ef0-f423-11e9-8071-89c0c4052141
-          collectionType:
-            type: string
-            description: Type of Collection (secured | private)
-            enum:
-            - secured
-            - private
-          collectionId:
-            type: string
-            description: Collection ID
-            format: uuid
-            example: 4dc328ce-4b3f-4f76-b7bb-1e83ad35458a
-          collectionDocument:
-            type: array
-            description: Array of Asset IDs in Collection
-            items:
-              type: string
-              format: uuid
-              example: 0176c8e6-1017-4308-be3b-2de3931cbb37
-          customerId:
-            type: string
-            description: Customer ID
-            example: "1235644566523"
       CollectionCreateRequest:
         type: object
         required: 
@@ -7296,7 +7328,7 @@
       createSharedCollection:
         value:
           collectionType: secured
-          name: Pokedex Collection
+          name: Ash's Pokedex
           metadataTemplateId: b7b4e518-b221-40ec-9051-3a9596883cf5
           securityTemplateIds:
             - 42b5dc04-79af-4911-93aa-96d73b1c2f75
