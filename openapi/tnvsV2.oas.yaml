@@ -1174,7 +1174,7 @@ paths:
       operationId: shareCollection
       tags: 
         - SHARING
-      summary: Share a Collection
+      summary: Share a Collection of assets.
       security: 
         -  OAuth2: []
       description: Share a Collection, internally or externally.  
