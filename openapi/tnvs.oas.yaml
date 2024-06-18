@@ -1988,6 +1988,7 @@
     /auth/impersonate:
       post:
         operationId: Impersonate
+        deprecated: true
         tags:
         - Authentication Operations
         summary: Impersonate a given user.
