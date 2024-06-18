@@ -2435,7 +2435,10 @@
         tags:
         - COLLECTIONS
         summary: Share Collection Contents
-        description: "Share the zip file of all accessible Assets in a collection and send to the specified emails in share users list. User can also send the custom share message along with request. \n\nThe user sharing the Assets must be granted the **Download** and **Share** Security Template permission on the Assets being shared."
+        description: |-
+          Share a zip file of all assets in a collection via email. The request body allows you to include a custom message to send to multiple emails along with the zip file.
+
+          To use this endpoint, you must have  the **Download** and **Asset External Share** role privileges.
         parameters:
         - name: X-API-Key
           in: header
@@ -2465,14 +2468,17 @@
             - application/json
         - name: id
           in: path
-          description: Specify Collection ID
+          description: The collection's **collectionId**.
           required: true
           style: simple
           explode: false
           schema:
             type: string
+            format: uuid
+            minLength: 36
+            maxLength: 36
+            example: 4b5896b4-33e4-41ac-b251-39a4dbaa25b1
         requestBody:
-          description: The Request Body must be a JSON object.
           content:
             application/json:
               schema:
@@ -5679,18 +5685,22 @@
               type: object
       CollectionShareRequest:
         type: object
+        required:
+          - sender
+          - shareUsers
+          - shareMessage
         properties:
           sender:
             $ref: '#/components/schemas/Sender'
           shareUsers:
             type: array
-            description: A list of email addresses of the recipients.
+            description: A list of recipients. Each recipient requires a name and an email.
             items:
               $ref: '#/components/schemas/Recipient'
           shareMessage:
             type: string
             description: A message from sender to recipient
-            example: A message from sender to recipient
+            example: Check out this Tenovos collection.
       CollectionShareResponse:
         type: object
         properties:
@@ -6093,10 +6103,14 @@
           email:
             type: string
             format: email
-            example: john@mail.com
           name:
             type: string
-            example: John
+          # INTERNAL NOTE: Lengths untested for now.
+        example:
+          - email: brock.takeshi@tenovos.com
+            name: Brock Takeshi
+          - email: misty.kasumi@tenovos.com
+            name: Misty Kasumi
       RelationshipCreateRequest:
         type: object
         properties:
@@ -6520,8 +6534,8 @@
         properties:
           name:
             type: string
-            description: The name of the person ton display in the email
-            example: Michael Lee
+            description: The name of the user who shared the collection. This will be included in the email.
+            example: Ash Ketchum
       StringErrorResponse:
         type: string
       TechnicalMetadataRequest:
