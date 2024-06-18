@@ -2348,9 +2348,10 @@
         - COLLECTIONS
         summary: Update Collection
         description: |-
-          Update a Collection's attributes or assigned Assets. The list of existing assets is replaced with assets provided in the call. Assets in the collection are referenced by Asset **FileID** therefore the **collectionDocument** must contain asset's **FileID**.
+          This endpoint allows you to update the name, type, and contents of a collection using its **collectionId**.
   
           The User editing the Collection must have the **Collection** Security Role Privilege.  The User must have **View** access to the Assets that are being added to or removed from the Collection.
+        # INTERNAL NOTE: This endpoint allows you to make a private collection shared. To my understanding, a shared collection requires securityTemplateIds. When making a private collection shared with this endpoint, you are not required to provide any securityTemplateIds.
         parameters:
         - name: X-API-Key
           in: header
@@ -2380,14 +2381,17 @@
             - application/json
         - name: id
           in: path
-          description: Specify Collection ID
+          description: The collection's **collectionId**.
           required: true
           style: simple
           explode: false
           schema:
             type: string
+            format: uuid
+            minLength: 36
+            maxLength: 36
+            example: 4b5896b4-33e4-41ac-b251-39a4dbaa25b1
         requestBody:
-          description: The Request Body must be a JSON object.
           content:
             application/json:
               schema:
@@ -5500,7 +5504,7 @@
             description: |-
               A **collectionType** of `privateSecured` will create a private collection.
             
-              A **collectionType** of `secured` will create a shared collection. When creating a `secured` collection, the `securityTemplateIds` field is required. Otherwise, it should be omitted.
+              A **collectionType** of `secured` will create a shared collection. When creating a secured collection, the securityTemplateIds field is required. Otherwise, it should be omitted.
           name:
             type: string
             minLength: 1
@@ -5574,20 +5578,32 @@
         properties:
           collectionType:
             type: string
-            description: Type of the collection.
+            description: |-
+              A collectionType of `privateSecured` will create a private collection.
+
+              A collectionType of `secured` will create a shared collection. When creating a shared collection, the securityTemplateIds field is required. Otherwise, it should be omitted.
             enum:
             - secured
             - private
           name:
             type: string
-            description: Name of the collection
-            example: Photo Collection
+            description: The collection name.
+            example: Ash's Pokedex
+            minLength: 1
+            maxLength: 200
           collectionDocument:
             type: array
-            description: List of fileIDs to be added to collection. This list will replace the current set of assets in the collection.
+            description: |-
+              An array of asset **fileIds**. The collection's current **collectionDocument** will be _replaced by_ this array, not merged with.
+
+              Note that these are **fileIds**, not **assetIds** or **objectIds**.
             items:
               type: string
               format: uuid
+              example:
+                - e564cc18-be35-4e28-bdd4-ade0209e28e7
+                - 54db131c-3f53-4fc6-b6d3-845bd7deda51
+                - 6507bacd-79be-4e19-9879-9edeadcad6ca
         description: Updates specified properties of the collection. Only those properties that need to be updated should be specified.
       CollectionUpdateResponse:
         type: object
