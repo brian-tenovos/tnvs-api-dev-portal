@@ -2199,8 +2199,8 @@
 
           Collections can be either `secured` or `privateSecured`. **collectionDocument** includes a list of asset **fileIds** that belong to the collection.
 
-          To use this endpoint, you must have collection role privileges.
-        # INTERNAL NOTE: I'm not sure exactly what these privileges are.
+          To use this endpoint, you must have the **View Collections** role privilege.
+        # INTERNAL NOTE: unverified
         parameters:
         - name: X-API-Key
           in: header
@@ -2274,9 +2274,9 @@
         - COLLECTIONS
         summary: Delete Collection
         description: |-
-          User can delete the collection, but the Assets assigned to the Collection will remain and dissociate from this Collection.
-  
-          The User submitting the request to delete a private Collection must have the **Collection** and **Delete** Security Role Privilege.  Secured Collections may only be deleted by Users with the **Purge** Security Role Privilege.
+          Delete a collection by **collectionId**. The assets in a collection are **not** deleted when their parent collection is deleted.
+
+          To use this endpoint, you must have the **View Collections** and **Delete** role privileges.
         parameters:
         - name: X-API-Key
           in: header
@@ -2306,12 +2306,16 @@
             - application/json
         - name: id
           in: path
-          description: Specify Collection ID
+          description: The collection's **collectionId**.
           required: true
           style: simple
           explode: false
           schema:
             type: string
+            format: uuid
+            minLength: 36
+            maxLength: 36
+            example: 4b5896b4-33e4-41ac-b251-39a4dbaa25b1
         responses:
           "200":
             description: Successful operation
@@ -2321,6 +2325,7 @@
                   type: array
                   items:
                     $ref: '#/components/schemas/CollectionDeleteResponse'
+                  # INTERNAL NOTE: Response unverified. 
           "401":
             description: Unauthorized. Missing or expired Authorization.
             content:
