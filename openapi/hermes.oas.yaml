@@ -2350,7 +2350,7 @@
         description: |-
           This endpoint allows you to update the name, type, and contents of a collection using its **collectionId**.
   
-          The User editing the Collection must have the **Collection** Security Role Privilege.  The User must have **View** access to the Assets that are being added to or removed from the Collection.
+          To use this endpoint, you must have the **View Collections** role privilege and **View** privileges on all of the assets in the collection.
         # INTERNAL NOTE: This endpoint allows you to make a private collection shared. To my understanding, a shared collection requires securityTemplateIds. When making a private collection shared with this endpoint, you are not required to provide any securityTemplateIds.
         parameters:
         - name: X-API-Key
