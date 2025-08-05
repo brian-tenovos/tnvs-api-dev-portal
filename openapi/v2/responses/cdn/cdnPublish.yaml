@@ -1,0 +1,6 @@
+type: object
+properties:
+  success:
+    type: boolean
+    description: Indicates whether or not the action was successfull.
+    example: true

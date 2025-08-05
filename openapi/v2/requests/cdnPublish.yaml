@@ -1,0 +1,13 @@
+type: object
+properties:
+  assets:
+    type: array
+    description: An array of strings.  This array must contain the asset Identifiers (objectId) for each asset that you want to publish to the CDN.
+    minItems: 1
+    maxItems: 5000
+    items:
+      type: string
+      format: uuid
+    required:
+      - assets
+    example: ['9e99cfad-0ce2-4595-875a-ce38b970778c', 'acbe98c1-2581-4dbc-bba5-39016a8e479c', 'a14530f7-667c-44da-9b8b-0ff48b68c70e']

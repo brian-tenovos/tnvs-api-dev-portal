@@ -1,0 +1,42 @@
+type: object
+properties:
+  name:
+    type: string
+    x-nullable: false
+    required: 
+      -  name
+    description: You must provide a name for the CDN Zone.
+    minLength: 5
+    maxLength: 100
+    example: ABC Customer Global Delivery
+  region: 
+    type: string
+    x-nullable: false
+    required:
+      - region
+    description: One of the available CDN delivery zones for where content will be served from, at edge.  
+    example: 'de'
+    enum: 
+      - 'de'
+      - 'ny'
+      - 'la'
+      - 'sg'
+  enableGeoReplication:
+    type: boolean
+    x-nullable: true
+    default: false
+    description: Boolean value that determines whether or not to replicate content to all available zones, over 77 countries.  Ensures the lowest latency possible for content that accessed globally.
+    example: true
+  enabled:
+    type: boolean
+    x-nullable: true
+    default: true
+    description: Boolean value that indicates whether or not publishing to the CDN is enabled for Tenovos users.  If false, content can still be unpublished, but no new content will be published.
+    example: true
+  url:
+    format: url
+    required: 
+      -  url
+    x-nullable: false
+    description: The CNAME that you would like for the CDN url where your content will be accessed format.
+    example: https://company-abc-cdn.net

@@ -41,6 +41,9 @@
     description: Invoke the Asset API to create, retrieve, manipulate, and share Assets.  This API also provides operations to manage Asset relationships and download Asset content.
   - name: AUTHENTICATION
     description: Invoke the Authentication API to generate, refresh, and revoke access tokens.  An access token is required to perform any authorized API operation.
+  - name: CDN
+    description: |-
+      Invoke the CDN API to configure, publish, and unpublish your centralized DAM content to our global CDN.
   - name: COLLECTIONS
     description: |-
       Invoke the Collection API to create, retrieve, edit, and delete Collections.  Collections are used to group and catalog related Assets for quick access and consumption.  Collections can be configured as:
@@ -2371,6 +2374,254 @@
                               example:
                                 status: error
                                 message: Invalid Authentication Parameters
+    /cdn/configure:
+      post: 
+        operationId: cdnConfigure
+        tags: 
+          -  CDN
+        summary: Configure CDN
+        description: |-
+          Configure Tenovos CDN Zone.  CDN Zones should be based on a region closest to where your content needs to be delivered to ensure the lowest latency possible.  Consider geo-replication for global delivery.
+        parameters:
+        - name: X-API-Key
+          in: header
+          description: Customer-specific API key required to invoke API.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Provided by Authentication Token creation operation
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: AccessToken
+          in: header
+          description: JWT token provided by Authentication Token creation operation.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            enum:
+            - application/json
+        requestBody:
+          description: 'The Request Body must be a JSON object of the available configuration properties.'
+          content:
+            application/json:
+              schema: 
+                $ref: v2/requests/cdnConfigure.yaml
+        responses: 
+          '200':
+            description: "Successful Request. CDN Zone Successfully Created."
+            content:
+              application/json:
+                schema:
+                  $ref: v2/responses/cdn/cdnZone.yaml
+          '400':
+            $ref: v2/schemas/400.yaml
+          '401':
+            $ref: v2/schemas/401.yaml
+          '403':
+            $ref: v2/schemas/403.yaml
+          '503':
+            $ref: v2/schemas/503.yaml
+      patch: 
+        operationId: editCdnConfiguration
+        tags: 
+          -  CDN
+        summary: Update CDN Configuration
+        description: |-
+          Update your Tenovos CDN Zone Configuration.  CDN Zones should be based on a region closest to where your content needs to be delivered to ensure the lowest latency possible.  Consider geo-replication for global delivery.
+        parameters:
+        - name: X-API-Key
+          in: header
+          description: Customer-specific API key required to invoke API.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Provided by Authentication Token creation operation
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: AccessToken
+          in: header
+          description: JWT token provided by Authentication Token creation operation.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            enum:
+            - application/json
+        requestBody:
+          description: 'The Request Body must be a JSON object of the available configuration properties.'
+          content:
+            application/json:
+              schema: 
+                $ref: v2/requests/cdnConfigurePatch.yaml
+        responses: 
+          '204':
+            description: "The CDN zone was successfully updated"
+          '400':
+            $ref: v2/schemas/400.yaml
+          '401':
+            $ref: v2/schemas/401.yaml
+          '403':
+            $ref: v2/schemas/403.yaml
+          '503':
+            $ref: v2/schemas/503.yaml 
+    /cdn/publish:
+      post: 
+        operationId: cdnPublish
+        tags: 
+          -  CDN
+        summary: Publish Content
+        description: |-
+          Provide a list of one or more asset identifiers (objectId) to publish to the CDN.  This prefetches the content from Tenovos and makes it ready for access via the configured CDN zone.
+        parameters:
+        - name: X-API-Key
+          in: header
+          description: Customer-specific API key required to invoke API.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Provided by Authentication Token creation operation
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: AccessToken
+          in: header
+          description: JWT token provided by Authentication Token creation operation.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            enum:
+            - application/json
+        requestBody:
+          description: 'The Request Body must be a JSON object of the available configuration properties.'
+          content:
+            application/json:
+              schema: 
+                $ref: v2/requests/cdnPublish.yaml
+        responses: 
+          '200':
+            description: "Successful Request. CDN Zone Successfully Created."
+            content:
+              application/json:
+                schema:
+                  $ref: v2/responses/cdn/cdnPublish.yaml
+          '400':
+            $ref: v2/schemas/400.yaml
+          '401':
+            $ref: v2/schemas/401.yaml
+          '403':
+            $ref: v2/schemas/403.yaml
+          '503':
+            $ref: v2/schemas/503.yaml
+    /cdn/unpublish:
+      post: 
+        operationId: cdnUnpublish
+        tags: 
+          -  CDN
+        summary: Remove Content
+        description: |-
+          Provide a list of one or more asset identifiers (objectId) to remove from the CDN.  This removed the file from the Cache and prevents the CDN from pulling that content anymore from Tenovos.
+        parameters:
+        - name: X-API-Key
+          in: header
+          description: Customer-specific API key required to invoke API.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Provided by Authentication Token creation operation
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: AccessToken
+          in: header
+          description: JWT token provided by Authentication Token creation operation.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            enum:
+            - application/json
+        requestBody:
+          description: 'The Request Body must be a JSON object of the available configuration properties.'
+          content:
+            application/json:
+              schema: 
+                $ref: v2/requests/cdnPublish.yaml
+        responses: 
+          '200':
+            description: "Successful Request. CDN Zone Successfully Created."
+            content:
+              application/json:
+                schema:
+                  $ref: v2/responses/cdn/cdnPublish.yaml
+          '400':
+            $ref: v2/schemas/400.yaml
+          '401':
+            $ref: v2/schemas/401.yaml
+          '403':
+            $ref: v2/schemas/403.yaml
+          '503':
+            $ref: v2/schemas/503.yaml
+                    
     /collection:
       post:
         operationId: CreateCollection
@@ -4527,8 +4778,7 @@
             $ref: v2/schemas/403.yaml
           '503':
             $ref: v2/schemas/503.yaml   
-          
-        
+
   components:
     securitySchemes:
       bearerAuth:

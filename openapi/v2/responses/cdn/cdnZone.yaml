@@ -1,0 +1,74 @@
+type: object
+properties:
+  id:
+    type: integer
+    x-nullable: false
+    required: 
+      -  id
+    description: The ID of the storage zone.
+    example: 1234567891011121314
+  name:
+    type: string
+    x-nullable: false
+    description: Name of the CDN Zone.
+    minLength: 5
+    maxLength: 100
+    example: ABC Customer Global Delivery
+  dateModified:
+    type: string
+    description: The date when the zone was last modified
+    example: 10/12/2025
+  deleted:
+    type: boolean
+    description: Determines if the zone was deleted or not
+    example: false
+  storageUsed:
+    type: integer
+    description: The total amount of storage used by this zone
+    example: 102465
+  filesStored:
+    type: integer
+    description: The total number of files stored by this zone
+  region: 
+    type: string
+    x-nullable: false
+    required:
+      - region
+    description: The main region used by this zone.  
+    example: 'de'
+    enum: 
+      - 'de'
+      - 'ny'
+      - 'la'
+      - 'sg'
+  replicationRegions:
+    type: array
+    description: Array of strings that contains the region codes where content is replicated for this zone.
+    x-nullable: true
+    items:
+      type: string
+    example: ['ny', 'sg']
+  enableGeoReplication:
+    type: boolean
+    x-nullable: true
+    default: false
+    description: Boolean value that determines whether or not to replicate content to all available zones, over 77 countries.  Ensures the lowest latency possible for content that accessed globally.
+    example: true
+  enabled:
+    type: boolean
+    x-nullable: true
+    default: true
+    description: Boolean value that indicates whether or not publishing to the CDN is enabled for Tenovos users.  If false, content can still be unpublished, but no new content will be published.
+    example: true
+  url:
+    format: url
+    required: 
+      -  url
+    x-nullable: false
+    description: The CNAME domain of the pull zone for setting up custom hostnames.
+    example: https://company-abc-cdn.net
+  monthlyBandwidthLimit:
+    type: integer
+    description: The monthly limit of bandwidth in bytes that the zone is allowed to user.
+    x-nullable: false
+    example: 648994531
